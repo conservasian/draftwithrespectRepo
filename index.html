@@ -7,30 +7,6 @@
   <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="//github.com/bassjobsen/Bootstrap-3-Typeahead/blob/master/bootstrap3-typeahead.js"></script>
   
-  <script type="text/javascript">
-$(document).ready(function(){
-    // Defining the local dataset
-    var cars = ['Audi', 'BMW', 'Bugatti', 'Ferrari', 'Ford', 'Lamborghini', 'Mercedes Benz', 'Porsche', 'Rolls-Royce', 'Volkswagen'];
-    
-    // Constructing the suggestion engine
-    var cars = new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.whitespace,
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        local: cars
-    });
-    
-    // Initializing the typeahead
-    $('.typeahead').typeahead({
-        hint: true,
-        highlight: true, /* Enable substring highlighting */
-        minLength: 1 /* Specify minimum characters required for showing result */
-    },
-    {
-        name: 'cars',
-        source: cars
-    });
-});  
-</script>
   <style type="text/css">
     .jumbotron {
         background: #532f8c;
@@ -86,9 +62,9 @@ $(document).ready(function(){
 	<form class="form-inline">
 	  	<div class="form-group">
     	<label for="exampleInputName2">Search by name:</label>
-   		<input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+   		<input type="text" class="form-control" id="exampleInputName2" placeholder="">
 	    </div>
-        <button type="submit" class="btn btn-default">Send invitation</button>
+        <button type="submit" class="btn btn-default">Search</button>
 	</form>
   </div>
 </div>
