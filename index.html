@@ -19,7 +19,7 @@
 <script>
 $(document).ready(function(){
     $("#playerInput").submit(function(event){
-        $("#output").text("player name");
+        $("#output").text($("#playerInputBox").val());
         event.preventDefault();
     });
 });
