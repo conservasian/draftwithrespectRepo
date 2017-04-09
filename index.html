@@ -16,6 +16,15 @@
   ga('create', 'UA-97066876-1', 'auto');
   ga('send', 'pageview');
 </script>
+
+<script>
+$(document).ready(function(){
+    $("#playerInput").submit(function(){
+        $("#output").append("player input");
+    });
+});
+</script>
+
   
   <style type="text/css">
     .jumbotron {
@@ -71,12 +80,15 @@
     <p>A resource for the fans that want the best players, on the field and off the field</p>
 	<form class="form-inline">
 	  	<div class="form-group">
-    	<label for="exampleInputName2">Search by name:</label>
-   		<input type="text" class="form-control" id="exampleInputName2" placeholder="">
+    	<label for="playerInput">Search by name:</label>
+   		<input type="text" class="form-control" id="playerInput" placeholder="">
 	    </div>
         <button type="submit" class="btn btn-default">Search</button>
 	</form>
   </div>
+</div>
+<div class="container">
+	<p id="output"></p>
 </div>
 <div class="container">
   <div class="alert alert-info text-center" role="alert">
