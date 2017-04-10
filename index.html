@@ -20,6 +20,11 @@
 $(document).ready(function(){
     $("#playerInput").submit(function(event){
         $("#output").text($("#playerInputBox").val());
+        
+        $.getJSON( "incidents.js", function(data) {
+        	console.log(data);
+        })
+        
         event.preventDefault();
     });
 });
@@ -117,13 +122,6 @@ $(document).ready(function(){
           <li><code>heroku git:remote -a &lt;your-app-name></code> - associate the Heroku app with the repository</li>
           <li>You'll now be set up to run the app locally, or <a href="https://devcenter.heroku.com/articles/getting-started-with-python#push-local-changes">deploy changes</a> to Heroku</li>
         </ul>
-      </ul>
-      <h3><span class="glyphicon glyphicon-link"></span> Helpful Links</h3>
-      <ul>
-        <li><a href="https://www.heroku.com/home">Heroku</a></li>
-        <li><a href="https://devcenter.heroku.com/">Heroku Dev Center</a></li>
-        <li><a href="https://devcenter.heroku.com/articles/getting-started-with-python">Getting Started with Python on Heroku</a></li>
-        <li><a href="https://devcenter.heroku.com/articles/django-app-configuration">Configuring Django Apps for Heroku</a></li>
       </ul>
     </div>
   </div> <!-- row -->
