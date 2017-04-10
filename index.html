@@ -21,10 +21,9 @@ $(document).ready(function(){
     $("#playerInput").submit(function(event){
         $("#output").text($("#playerInputBox").val());
         console.log("success");
-		$("#output2").text($("#playerInputBox").val());
         
         
-        $.get("incidents.json")
+        $.get("/incidents.json")
 		    .done(function() { 
         	// exists code 
 		    }).fail(function() { 
