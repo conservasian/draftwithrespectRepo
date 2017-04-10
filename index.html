@@ -25,7 +25,7 @@ $(document).ready(function(){
         $.getJSON("//draftwithrespect.com/incidents.json", function (data) {
         	console.log(data);
         	$("#output").append(data.incidents);
-        })
+        });
         
         event.preventDefault();
     });
