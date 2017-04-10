@@ -21,6 +21,7 @@ $(document).ready(function(){
     $("#playerInput").submit(function(event){
         $("#output").text($("#playerInputBox").val());
         console.log("success");
+		$("#output2").text($("#playerInputBox").val());
         
         
         $.get("incidents.json")
@@ -104,6 +105,9 @@ $(document).ready(function(){
 </div>
 <div class="container">
 	<p id="output"></p>
+</div>
+<div class="container">
+	<p id="output2"></p>
 </div>
 <div class="container">
   <div class="alert alert-info text-center" role="alert">
