@@ -24,15 +24,6 @@ $(document).ready(function(){
         alert("testing");
 		console.log("success");        
         
-        $.get("/incidents.json") {
-        	alert("got file");
-        };
-        
-        $.getJSON("incidents.json", function (data) {
-        	console.log(data);
-        	$("#output").append(data.incidents);
-        });
-        
         event.preventDefault();
     });
 });
