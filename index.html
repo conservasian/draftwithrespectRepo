@@ -22,7 +22,15 @@ $(document).ready(function(){
         $("#output").text($("#playerInputBox").val());
         console.log("success");
         
-        $.getJSON("//draftwithrespect.com/incidents.json", function (data) {
+        
+        $.get("incidents.json")
+		    .done(function() { 
+        	// exists code 
+		    }).fail(function() { 
+        	// not exists code
+		    });
+        
+        $.getJSON("incidents.json", function (data) {
         	console.log(data);
         	$("#output").append(data.incidents);
         });
