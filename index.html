@@ -21,7 +21,7 @@ $(document).ready(function(){
     $("#playerInput").submit(function(event){
         $("#output").text($("#playerInputBox").val());
         
-        $.getJSON( "incidents.js", function(data) {
+        $.getJSON( "incidents.json", function(data) {
         	console.log(data);
         })
         
