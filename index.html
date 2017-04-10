@@ -20,9 +20,9 @@
 $(document).ready(function(){
     $("#playerInput").submit(function(event){
         $("#output").text($("#playerInputBox").val());
-        console.log("success");
+
         alert("testing");
-        
+		console.log("success");        
         
         $.get("/incidents.json") {
         	alert("got file");
