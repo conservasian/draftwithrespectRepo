@@ -21,14 +21,12 @@ $(document).ready(function(){
     $("#playerInput").submit(function(event){
         $("#output").text($("#playerInputBox").val());
         console.log("success");
+        alert("testing");
         
         
-        $.get("/incidents.json")
-		    .done(function() { 
-        	// exists code 
-		    }).fail(function() { 
-        	// not exists code
-		    });
+        $.get("/incidents.json") {
+        	alert("got file");
+        };
         
         $.getJSON("incidents.json", function (data) {
         	console.log(data);
