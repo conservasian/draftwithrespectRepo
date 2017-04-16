@@ -140,12 +140,15 @@ function findPlayerData(playerName) {
 $(document).ready(function(){
 
     $("#playerInput").submit(function(event){
+
+    	$("#output").empty();
+
         playerName = $("#playerInputBox").val()
 
 		var result = findPlayerData(playerName);
 		
 		if (result == "not found") {
-			$("#output").append(" " + result);
+			$("#output").append(playerName + " " + result);
 		} else {
 			$("#output").append("<br>" + result[0] + "<br>" + result[1] + "<br>" + result[2]);
         }
