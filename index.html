@@ -134,7 +134,6 @@ function findPlayerData(playerName) {
 		return [data.incidents[index].Name, data.incidents[index].Status, data.incidents[index].Link];
 	}
 }
-
 </script>
 
 <script>
@@ -142,12 +141,11 @@ $(document).ready(function(){
 
     $("#playerInput").submit(function(event){
         playerName = $("#playerInputBox").val()
-        $("#output").text(playerName);
 
 		var result = findPlayerData(playerName);
 		
 		if (result == "not found") {
-			$("#output").append(result);
+			$("#output").append(" " + result);
 		} else {
 			$("#output").append("<br>" + result[0] + "<br>" + result[1] + "<br>" + result[2]);
         }
