@@ -130,10 +130,10 @@ function findPlayerData(playerName) {
     }
     console.log(names)
     
-    if (playerName in names) {
-    	return "found"; }
+    if (names.indexOf(playerName) == -1) {
+    	return "not found"; }
 	else {
-		return "not found";
+		return "found";
 	}
 }
 
