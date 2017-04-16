@@ -17,19 +17,17 @@
 </script>
 
 <script>
-var xmlhttp = new XMLHttpRequest();
-xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        myObj = JSON.parse(this.responseText);
-        document.getElementById("output2").innerHTML = myObj.name;
-    }
-};
-xmlhttp.open("GET", "incidents.json", true);
-xmlhttp.send();
-</script>
-
-<script>
 $(document).ready(function(){
+
+	var myObj, x;
+	myObj = {"incidents":[
+					{ "Name":"Josh Brown", "Status":"Arrested, not charged" },
+					{ "Name":"Ezekiel Elliot", "Status":"Accused, not charged" }
+				]
+			}
+	x = myObj.incidents.Name[0];
+	document.getElementById("output2").innerHTML = x;
+
     $("#playerInput").submit(function(event){
         $("#output").text($("#playerInputBox").val());
 
