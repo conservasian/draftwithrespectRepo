@@ -20,11 +20,11 @@
 $(document).ready(function(){
 
 	var myObj, x;
-	myObj = {"incidents":[
-					{ "Name":"Josh Brown", "Status":"Arrested, not charged" },
-					{ "Name":"Ezekiel Elliot", "Status":"Accused, not charged" }
-				]
-			}
+myObj = {
+    "name":"John",
+    "age":30,
+    "cars":[ "Ford", "BMW", "Fiat" ]
+};
 	x = myObj.incidents.Name[0];
 	document.getElementById("output2").innerHTML = x;
 
