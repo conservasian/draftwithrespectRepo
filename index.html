@@ -117,10 +117,38 @@
 </div>
 
 <script>
+function findPlayerData(playerName) {
+	data = {"incidents":[
+					{ "Name":"Josh Brown", "Status":"Arrested, not charged" },
+					{ "Name":"Ezekiel Elliot", "Status":"Accused, not charged" }
+				]
+			}
+
+	var names = []; 			
+	for (i in data.incidents) {
+	    names.append(data.incidents[i].Name)
+    }
+    
+    if (playerName in names) {
+    	return "found"; }
+	else {
+		return "not found";
+	}
+}
+
+</script>
+
+<script>
 $(document).ready(function(){
 
     $("#playerInput").submit(function(event){
-        $("#output").text($("#playerInputBox").val());
+        playerName = $("#playerInputBox").val()
+        $("#output").text(playerName);
+
+		var result = findPlayerData(playerName);
+		
+		$("#output2").text(result);
+
 
         alert("testing");
 		console.log("success");        
@@ -130,16 +158,18 @@ $(document).ready(function(){
 });
 </script>
 
+<!-- 
 <script>
-	var myObj, x;
-	myObj = {"incidents":[
+	var data, x;
+	data = {"incidents":[
 					{ "Name":"Josh Brown", "Status":"Arrested, not charged" },
 					{ "Name":"Ezekiel Elliot", "Status":"Accused, not charged" }
 				]
 			}
-	x = myObj.incidents[0].Name;
+	x = data.incidents[0].Name;
 	$("#output2").text(x);
 </script>
+ -->
 
 </body>
 </html>
