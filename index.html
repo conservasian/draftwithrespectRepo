@@ -17,17 +17,6 @@
 </script>
 
 <script>
-	var myObj, x;
-	myObj = {
-    "name":"John",
-    "age":30,
-    "cars":[ "Ford", "BMW", "Fiat" ]
-};
-x = myObj.cars[2];
-	document.getElementById("output2").innerHTML = x;
-</script>
-
-<script>
 $(document).ready(function(){
 
     $("#playerInput").submit(function(event){
@@ -140,6 +129,17 @@ $(document).ready(function(){
     Please do work through the Getting Started guide, even if you do know how to build such an application.  The guide covers the basics of working with Heroku, and will familiarize you with all the concepts you need in order to build and deploy your own apps.
   </div>
 </div>
+
+<script>
+	var myObj, x;
+	myObj = {
+    "name":"John",
+    "age":30,
+    "cars":[ "Ford", "BMW", "Fiat" ]
+};
+x = myObj.cars[2];
+	document.getElementById("output2").innerHTML = x;
+</script>
 
 </body>
 </html>
