@@ -128,6 +128,7 @@ function findPlayerData(playerName) {
 	for (i in data.incidents) {
 	    names.push(data.incidents[i].Name)
     }
+    console.log(names)
     
     if (playerName in names) {
     	return "found"; }
@@ -148,10 +149,6 @@ $(document).ready(function(){
 		var result = findPlayerData(playerName);
 		
 		$("#output2").text(result);
-
-
-        alert("testing");
-		console.log("success");        
         
         event.preventDefault();
     });
