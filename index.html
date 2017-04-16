@@ -126,7 +126,7 @@ function findPlayerData(playerName) {
 
 	var names = []; 			
 	for (i in data.incidents) {
-	    names.append(data.incidents[i].Name)
+	    names.push(data.incidents[i].Name)
     }
     
     if (playerName in names) {
