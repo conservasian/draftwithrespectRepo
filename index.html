@@ -18,6 +18,20 @@
 
 <script>
 $(document).ready(function(){
+	$.ajax({
+	  url: "/incidents.json",
+	  dataType: "json",
+	  success: function(response) {
+		$.each(response.incidents, function(item) {
+		  console.log(item);
+		});
+	  }
+	});
+});
+</script>
+
+<script>
+$(document).ready(function(){
     $("#playerInput").submit(function(event){
         $("#output").text($("#playerInputBox").val());
 
