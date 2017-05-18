@@ -80,7 +80,7 @@
 </div>
 <div class="container">
 	<div class="row">
-	<div class="col-md-4">Name</div>
+	<div class="col-md-4"><p id="profile"></p></div>
 	<div class="col-md-8"><p id="output">Data</p></div>
 	</div>
 </div>
@@ -144,12 +144,14 @@ $(document).ready(function(){
 
     $("#playerInput").submit(function(event){
 
+    	$("#profile").empty();
     	$("#output").empty();
 
         playerName = $("#playerInputBox").val()
 
 		var result = findPlayerData(playerName);
 		
+		$("#output").append(playerName);
 		if (result == "not found") {
 			$("#output").append(playerName + " " + result);
 		} else {
