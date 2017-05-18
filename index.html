@@ -135,7 +135,8 @@ function findPlayerData(playerName) {
 
 	data2 = {"name_pos_team":[
 					{ "Name":"Josh Brown", "Position":"Kicker", "Team":"New York Giants"},
-					{ "Name":"Ezekiel Elliot", "Position":"Running Back", "Team":"Dallas Cowboys" }
+					{ "Name":"Ezekiel Elliot", "Position":"Running Back", "Team":"Dallas Cowboys"},
+					{ "Name":"Tom Brady", "Position":"Quarterback", "Team":"New England Patriots"}
 				]
 			}
 
@@ -148,7 +149,7 @@ function findPlayerData(playerName) {
     
     
     var names2 = []; 			
-	for (i in data2.incidents) {
+	for (i in data2.name_pos_team) {
 	    names2.push(data2.name_pos_team[i].Name)
     }
     var index2 = names2.indexOf(playerName);
