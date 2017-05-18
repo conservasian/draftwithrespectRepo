@@ -52,6 +52,9 @@
         max-width: 100%
     }
 
+    .profile {
+        background: #ffe3aa;
+    }
 
   </style>
 </head>
@@ -80,8 +83,14 @@
 </div>
 <div class="container">
 	<div class="row">
-	<div class="col-md-4"><p id="profile"></p></div>
-	<div class="col-md-8"><p id="output"></p></div>
+		<div class="profile">
+			<div class="col-md-4">
+			<h2 id="name"></p>
+			<p id="position"></p>
+			<p id="team"></p>
+			</div>
+		</div>
+			<div class="col-md-8"><p id="output"></p></div>
 	</div>
 </div>
 <div class="container">
@@ -124,17 +133,30 @@ function findPlayerData(playerName) {
 				]
 			}
 
+	data2 = {"name_pos_team":[
+					{ "Name":"Josh Brown", "Position":"Kicker", "Team":"New York Giants"},
+					{ "Name":"Ezekiel Elliot", "Position":"Running Back", "Team":"Dallas Cowboys" }
+				]
+			}
+
 	var names = []; 			
 	for (i in data.incidents) {
 	    names.push(data.incidents[i].Name)
     }
-    console.log(names)
     
     var index = names.indexOf(playerName);
+    
+    
+    var names2 = []; 			
+	for (i in data2.incidents) {
+	    names2.push(data2.name_pos_team[i].Name)
+    }
+    var index2 = names2.indexOf(playerName);
+    
     if (index == -1) {
     	return "not found"; }
 	else {
-		return [data.incidents[index].Name, data.incidents[index].Status, data.incidents[index].Link];
+		return [data.incidents[index].Name, data.incidents[index].Status, data.incidents[index].Link, data2.name_pos_team[index2].Position, data2.name_pos_team[index2].Team];
 	}
 }
 </script>
@@ -144,18 +166,22 @@ $(document).ready(function(){
 
     $("#playerInput").submit(function(event){
 
-    	$("#profile").empty();
+    	$("#name").empty();
+    	$("#position").empty();
+    	$("#team").empty();
     	$("#output").empty();
 
         playerName = $("#playerInputBox").val()
 
 		var result = findPlayerData(playerName);
 		
-		$("#profile").append(playerName);
+		$("#name").append(playerName);
 		if (result == "not found") {
 			$("#output").append(playerName + " " + result);
 		} else {
 			$("#output").append(result[0] + "<br>" + result[1] + "<br>" + result[2]);
+			$("#position").append(result[3]);
+			$("#team").append(result[4]);
         }
         event.preventDefault();
     });
