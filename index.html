@@ -79,7 +79,10 @@
   </div>
 </div>
 <div class="container">
-	<p id="output"></p>
+	<div class="row">
+	<div class="col-md-4">Name</div>
+	<div class="col-md-8"><p id="output">Data</p></div>
+	</div>
 </div>
 <div class="container">
   <hr>
@@ -150,7 +153,7 @@ $(document).ready(function(){
 		if (result == "not found") {
 			$("#output").append(playerName + " " + result);
 		} else {
-			$("#output").append("<br>" + result[0] + "<br>" + result[1] + "<br>" + result[2]);
+			$("#output").append(result[0] + "<br>" + result[1] + "<br>" + result[2]);
         }
         event.preventDefault();
     });
