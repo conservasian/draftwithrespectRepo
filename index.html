@@ -81,7 +81,7 @@
 <div class="container">
 	<div class="row">
 	<div class="col-md-4"><p id="profile"></p></div>
-	<div class="col-md-8"><p id="output">Data</p></div>
+	<div class="col-md-8"><p id="output"></p></div>
 	</div>
 </div>
 <div class="container">
@@ -151,7 +151,7 @@ $(document).ready(function(){
 
 		var result = findPlayerData(playerName);
 		
-		$("#output").append(playerName);
+		$("#profile").append(playerName);
 		if (result == "not found") {
 			$("#output").append(playerName + " " + result);
 		} else {
