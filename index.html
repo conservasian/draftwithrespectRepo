@@ -186,8 +186,8 @@ $(document).ready(function(){
 			$("#output").append(playerName + " " + result);
 		} else {
 			if (result[1] == "Arrested, not charged") {
-				$("status").addClass("label label-warning");
-				$("status").append(result[1]);
+				$("#status").addClass("label label-warning");
+				$("#status").append(result[1]);
 			}
 			$("#links").append(result[2]);
 			$("#position").append(result[3]);
