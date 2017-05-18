@@ -90,7 +90,11 @@
 			<p id="team"></p>
 			</div>
 		</div>
-			<div class="col-md-8"><p id="output"></p></div>
+			<div class="col-md-8">
+			<h3><span id="status"></span><h3>
+			<p id="details"></p>
+			<p id="links">
+			</div>
 	</div>
 </div>
 <div class="container">
@@ -130,6 +134,7 @@ function findPlayerData(playerName) {
 	data = {"incidents":[
 					{ "Name":"Josh Brown", "Status":"Arrested, not charged", "Link":"npr.org"},
 					{ "Name":"Ezekiel Elliot", "Status":"Accused, not charged", "Link":"bleacherreport.com" }
+					{ "Name":"Tom Brady", "Status":"No records found", "Link":"none"},
 				]
 			}
 
@@ -180,7 +185,11 @@ $(document).ready(function(){
 		if (result == "not found") {
 			$("#output").append(playerName + " " + result);
 		} else {
-			$("#output").append(result[0] + "<br>" + result[1] + "<br>" + result[2]);
+			if (result[1] == "Arrested, not charged") {
+				$("status").addClass("label label-warning");
+				$("status").append(result[1]);
+			}
+			$("#links").append(result[2]);
 			$("#position").append(result[3]);
 			$("#team").append(result[4]);
         }
