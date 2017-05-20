@@ -184,13 +184,14 @@ $(document).ready(function(){
 			$.ajax({
 				'async': false,
 				'global': false,
-				'url': "/incidents.json",
+				'url': "incidents.json",
 				'dataType': "json",
 				'success': function (data) {
 					json = data;
 				}
 			});
-				return json;
+			return json;
+			console.log("success");
 	    })();
 
 
