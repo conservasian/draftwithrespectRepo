@@ -127,15 +127,7 @@
 </div>
 
 <script>
-function findPlayerData(playerName, data) {
-
-	data2 = {"name_pos_team":[
-					{ "Name":"Josh Brown", "Position":"Kicker", "Team":"New York Giants"},
-					{ "Name":"Ezekiel Elliot", "Position":"Running Back", "Team":"Dallas Cowboys"},
-					{ "Name":"Tom Brady", "Position":"Quarterback", "Team":"New England Patriots"},
-					{ "Name":"Daryl Washington", "Position":"Linebacker", "Team":"Arizona Cardinals"}
-				]
-			}
+function findPlayerData(playerName, data, data2) {
 
 	var names = []; 			
 	for (i in data.incidents) {
@@ -171,7 +163,7 @@ $(document).ready(function(){
     	$("#details").empty();
     	$("#links").empty();
 
-
+		// load incident data
 		var incidents_json = (function() {
 			var incidents_json = null;
 			$.ajax({
@@ -186,13 +178,27 @@ $(document).ready(function(){
 			return incidents_json;
 	    })();
 	    
-	    if (typeof incidents_json != 'undefined') {
+	    var playerTeams_json = (function() {
+			var playerTeams_json = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "playerTeams.json",
+				'dataType': "json",
+				'success': function (data) {
+					playerTeams_json = data;
+				}
+			});
+			return playerTeams_json;
+	    })();
+	    
+	    if (typeof playerTeams_json != 'undefined') {
 	    	console.log("data loaded");
-	    	console.log(incidents_json);
+	    	console.log(playerTeams_json);
 	    }
 
         playerName = $("#playerInputBox").val()
-		var result = findPlayerData(playerName, incidents_json);
+		var result = findPlayerData(playerName, incidents_json, playerTeams_json);
 
 		$("#profile_div").addClass("profile"); 		
 		$("#name").append(playerName);
