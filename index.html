@@ -230,9 +230,9 @@ $(document).ready(function(){
 			} else {
 
 				// color-code status			
-				if (result[1] == "Arrested, not charged" || result[1] == "Accused, not charged") {
+				if (result[3] == "Arrested, not charged" || result[3] == "Accused, not charged") {
 					$("#status").addClass("label label-warning"); 
-				} else if (result[1] == "Pleaded guilty" || result[1] == "Publicly admitted") {
+				} else if (result[3] == "Pleaded guilty" || result[3] == "Publicly admitted") {
 					$("#status").addClass("label label-danger"); 
 				}	
 
