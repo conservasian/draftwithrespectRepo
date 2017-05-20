@@ -178,8 +178,24 @@ $(document).ready(function(){
     	$("#details").empty();
     	$("#links").empty();
 
-        playerName = $("#playerInputBox").val()
 
+		var json = (function() {
+			var json = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "/incidents.json",
+				'dataType': "json",
+				'success': function (data) {
+					json = data;
+				}
+			});
+				return json;
+	    })();
+
+
+
+        playerName = $("#playerInputBox").val()
 		var result = findPlayerData(playerName);
 
 		$("#profile_div").addClass("profile"); 		
