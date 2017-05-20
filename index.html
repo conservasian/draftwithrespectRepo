@@ -128,21 +128,22 @@
 
 <script>
 function findPlayerData(playerName, data, data2) {
-
+	
+	// find player name in incident data
 	var names = []; 			
 	for (i in data.incidents) {
 	    names.push(data.incidents[i].Name)
     }
-    
     var index = names.indexOf(playerName);
-    
-    
+
+	// find player name in player team data    
     var names2 = []; 			
 	for (i in data2.name_pos_team) {
 	    names2.push(data2.name_pos_team[i].Name)
     }
     var index2 = names2.indexOf(playerName);
     
+    // output data
     if (index == -1) {
     	return "not found"; }
 	else {
@@ -156,15 +157,16 @@ $(document).ready(function(){
 
     $("#playerInput").submit(function(event){
 
+		// clear data display elements
     	$("#name").empty();
     	$("#positionteam").empty();
-    	
+
     	$("#status").empty();
 		$("#status").removeClass();
     	$("#details").empty();
     	$("#links").empty();
 
-		// load incident data
+		// load incident and player team data
 		var incidents_json = (function() {
 			var incidents_json = null;
 			$.ajax({
@@ -192,15 +194,12 @@ $(document).ready(function(){
 			});
 			return playerTeams_json;
 	    })();
-	    
-	    if (typeof playerTeams_json != 'undefined') {
-	    	console.log("data loaded");
-	    	console.log(playerTeams_json);
-	    }
 
+		// process query based on player name
         playerName = $("#playerInputBox").val()
 		var result = findPlayerData(playerName, incidents_json, playerTeams_json);
 
+		// display data
 		$("#profile_div").addClass("profile"); 		
 		$("#name").append(playerName);
 		$("#positionteam").append(result[3] + "<br>" + result[4]);
