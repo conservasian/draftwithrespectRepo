@@ -147,7 +147,7 @@ function findPlayerData(playerName, data, data2) {
     if (index == -1 && index2 == -1) {
     	return "not found in both"; }
     else if (index == -1 && index2 != -1) {
-    	return "not found in incidents"
+    	return ["not found in incidents", data2.name_pos_team[index2].Position, data2.name_pos_team[index2].Team]];
     }
 	else {
 		return [data.incidents[index].Name, data.incidents[index].Status, data.incidents[index].Link, data2.name_pos_team[index2].Position, data2.name_pos_team[index2].Team];
@@ -207,16 +207,16 @@ $(document).ready(function(){
 		$("#profile_div").addClass("profile"); 		
 		$("#name").append(playerName);
 		
-		if (result == "not found in both") {
+		if (result[0] == "not found in both") {
 			$("#status").addClass("label label-default");
 			$("#status").append("Not in database");
 			$("#links").append("We haven't had time to research this player yet -- stay tuned for updates.");
 
-		} else if (result == "not found in incidents") { 
+		} else if (result[0] == "not found in incidents") { 
 			$("#status").addClass("label label-default");
 			$("#status").append("Not in database");
 			$("#links").append("We haven't had time to research this player yet -- stay tuned for updates.");		
-			$("#positionteam").append(result[3] + "<br>" + result[4]);
+			$("#positionteam").append(result[1] + "<br>" + result[2]);
 
 		} else {
 
