@@ -202,13 +202,14 @@ $(document).ready(function(){
 		// display data
 		$("#profile_div").addClass("profile"); 		
 		$("#name").append(playerName);
-		$("#positionteam").append(result[3] + "<br>" + result[4]);
 		
 		if (result == "not found") {
 			$("#status").addClass("label label-default");
 			$("#status").append("Not in database");
 			$("#links").append("We haven't had time to research this player yet -- stay tuned for updates.");
 		} else {
+
+			$("#positionteam").append(result[3] + "<br>" + result[4]);
 		
 			if (result[1] == "No records found") {
 				$("#status").addClass("label label-success");
