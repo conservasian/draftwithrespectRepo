@@ -131,8 +131,8 @@
 <script>
 function findPlayerData(playerName) {
 	data = {"incidents":[
-					{ "Name":"Josh Brown", "Status":"Arrested, not charged", "Link":"npr.org"},
-					{ "Name":"Ezekiel Elliot", "Status":"Accused, not charged", "Link":"bleacherreport.com"},
+					{ "Name":"Josh Brown", "Status":"Arrested, not charged", "Link":"http://www.npr.org/sections/thetwo-way/2016/10/21/498811933/nfl-struggles-as-another-star-player-is-accused-of-domestic-abuse"},
+					{ "Name":"Ezekiel Elliot", "Status":"Accused, not charged", "Link":"http://www.espn.com/nfl/story/_/id/18479727/ezekiel-elliott-dallas-cowboys-responding-additional-questions-nfl-surrounding-assault-accusations"},
 					{ "Name":"Tom Brady", "Status":"No records found", "Link":"none"}
 				]
 			}
@@ -189,12 +189,17 @@ $(document).ready(function(){
 			if (result[1] == "Arrested, not charged" || result[1] == "Accused, not charged") {
 				$("#status").addClass("label label-warning");
 				$("#status").append(result[1]);
+				
+				if (result[2].includes("npr")) {
+					$("#links").append("<a href='" + result[2] + "'>NPR</a>");
+				} else {
+					$("#links").append(result[2]);
+				}
 			} else if (result[1] == "No records found") {
 				$("#status").addClass("label label-success");
 				$("#status").append(result[1]);
+				$("#links").append("We thoroughly searched and couldn't find any relevant records online.");
 			}
-			
-			$("#links").append(result[2]);
 			$("#positionteam").append(result[3] + "<br>" + result[4]);
         }
         event.preventDefault();
