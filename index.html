@@ -156,6 +156,38 @@ function findPlayerData(playerName, data, data2) {
 </script>
 
 <script>
+$( function() {
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    $( "#playerInputBox" ).autocomplete({
+      source: availableTags
+    });
+  } );
+</script>
+
+<script>
 $(document).ready(function(){
 
     $("#playerInput").submit(function(event){
