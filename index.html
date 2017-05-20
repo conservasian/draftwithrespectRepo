@@ -83,7 +83,7 @@
 </div>
 <div class="container">
 	<div class="row">
-		<div class="col-md-4 profile">
+		<div id="profile_div" class="col-md-4">
 			<h2 id="name"></h2>
 			<p id="positionteam"></p>
 		</div>
@@ -181,7 +181,8 @@ $(document).ready(function(){
         playerName = $("#playerInputBox").val()
 
 		var result = findPlayerData(playerName);
-		
+
+		$("#profile_div").addClass("profile"); 		
 		$("#name").append(playerName);
 		$("#positionteam").append(result[3] + "<br>" + result[4]);
 		
