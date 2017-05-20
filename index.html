@@ -196,7 +196,8 @@ $(document).ready(function(){
 	    })();
 
 		// process query based on player name
-        playerName = $("#playerInputBox").val()
+        var playerName = $("#playerInputBox").val();
+        playerName = playerName.trim();
 		var result = findPlayerData(playerName, incidents_json, playerTeams_json);
 
 		// display data
