@@ -127,14 +127,7 @@
 </div>
 
 <script>
-function findPlayerData(playerName) {
-	data = {"incidents":[
-					{ "Name":"Josh Brown", "Status":"Arrested, not charged", "Link":"http://www.npr.org/sections/thetwo-way/2016/10/21/498811933/nfl-struggles-as-another-star-player-is-accused-of-domestic-abuse"},
-					{ "Name":"Ezekiel Elliot", "Status":"Accused, not charged", "Link":"http://www.espn.com/nfl/story/_/id/18479727/ezekiel-elliott-dallas-cowboys-responding-additional-questions-nfl-surrounding-assault-accusations"},
-					{ "Name":"Tom Brady", "Status":"No records found", "Link":"none"},
-					{ "Name":"Daryl Washington", "Status":"Pleaded guilty", "Link":"http://www.sbnation.com/2017/4/25/15428040/daryl-washington-reinstated-arizona-cardinals-suspension"}
-				]
-			}
+function findPlayerData(playerName, data) {
 
 	data2 = {"name_pos_team":[
 					{ "Name":"Josh Brown", "Position":"Kicker", "Team":"New York Giants"},
@@ -179,27 +172,27 @@ $(document).ready(function(){
     	$("#links").empty();
 
 
-		var json = (function() {
-			var json = null;
+		var incidents_json = (function() {
+			var incidents_json = null;
 			$.ajax({
 				'async': false,
 				'global': false,
 				'url': "incidents.json",
 				'dataType': "json",
 				'success': function (data) {
-					json = data;
+					incidents_json = data;
 				}
 			});
-			return json;
+			return incidents_json;
 	    })();
 	    
-	    if (typeof json != 'undefined') {
+	    if (typeof incidents_json != 'undefined') {
 	    	console.log("data loaded");
-	    	console.log(json);
+	    	console.log(incidents_json);
 	    }
 
         playerName = $("#playerInputBox").val()
-		var result = findPlayerData(playerName);
+		var result = findPlayerData(playerName, incidents_json);
 
 		$("#profile_div").addClass("profile"); 		
 		$("#name").append(playerName);

@@ -1,5 +1,7 @@
 {"incidents":[
-    	{ "Name":"Josh Brown", "Status":"Arrested, not charged" },
-	    { "Name":"Ezekiel Elliot", "Status":"Accused, not charged" }
-	]
-}
+					{ "Name":"Josh Brown", "Status":"Arrested, not charged", "Link":"http://www.npr.org/sections/thetwo-way/2016/10/21/498811933/nfl-struggles-as-another-star-player-is-accused-of-domestic-abuse"},
+					{ "Name":"Ezekiel Elliot", "Status":"Accused, not charged", "Link":"http://www.espn.com/nfl/story/_/id/18479727/ezekiel-elliott-dallas-cowboys-responding-additional-questions-nfl-surrounding-assault-accusations"},
+					{ "Name":"Tom Brady", "Status":"No records found", "Link":"none"},
+					{ "Name":"Daryl Washington", "Status":"Pleaded guilty", "Link":"http://www.sbnation.com/2017/4/25/15428040/daryl-washington-reinstated-arizona-cardinals-suspension"}
+				]
+			}
