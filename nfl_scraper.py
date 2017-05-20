@@ -109,10 +109,11 @@ for j in range(len(nfl_links)):
 
 # add bad apples who are not currently playing
 
-name.append("Josh Brown")
-pos.append("K")
-team.append("free agent")
-status.append("UFA")
+if ("Josh Brown" not in name):
+	name.append("Josh Brown")
+	pos.append("K")
+	team.append("free agent")
+	status.append("UFA")
 
 if ("Ezekiel Elliott" not in name):
 	name.append("Ezekiel Elliot")

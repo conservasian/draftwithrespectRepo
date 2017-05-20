@@ -150,7 +150,7 @@ function findPlayerData(playerName, data, data2) {
     	return ["not found in incidents", data2.name_pos_team[index2].Position, data2.name_pos_team[index2].Team];
     }
 	else {
-		return [data.incidents[index].Name, data.incidents[index].Status, data.incidents[index].Link, data2.name_pos_team[index2].Position, data2.name_pos_team[index2].Team];
+		return ["found in both databases", data2.name_pos_team[index2].Position, data2.name_pos_team[index2].Team, data.incidents[index].Status, data.incidents[index].Details, data.incidents[index].Link];
 	}
 }
 </script>
@@ -220,7 +220,7 @@ $(document).ready(function(){
 
 		} else {
 
-			$("#positionteam").append(result[3] + "<br>" + result[4]);
+			$("#positionteam").append(result[1] + "<br>" + result[2]);
 		
 			if (result[1] == "No records found") {
 				$("#status").addClass("label label-success");
@@ -228,23 +228,29 @@ $(document).ready(function(){
 				$("#links").append("We thoroughly searched and couldn't find any relevant records online.");
 				
 			} else {
-			
+
+				// color-code status			
 				if (result[1] == "Arrested, not charged" || result[1] == "Accused, not charged") {
 					$("#status").addClass("label label-warning"); 
 				} else if (result[1] == "Pleaded guilty" || result[1] == "Publicly admitted") {
 					$("#status").addClass("label label-danger"); 
 				}	
-					
-				$("#status").append(result[1]);
-			
-				if (result[2].includes("npr")) {
-					$("#links").append("<a href='" + result[2] + "'>NPR</a>");
-				} else if (result[2].includes("espn")) {
-					$("#links").append("<a href='" + result[2] + "'>ESPN</a>");
-				} else if (result[2].includes("sbnation")) {
-					$("#links").append("<a href='" + result[2] + "'>SBNation</a>");
+
+				// add status
+				$("#status").append(result[3]);
+				
+				// add details
+				$("#details").append(result[4]);
+				
+				// add links
+				if (result[5].includes("npr")) {
+					$("#links").append("<a href='" + result[5] + "'>NPR</a>");
+				} else if (result[5].includes("espn")) {
+					$("#links").append("<a href='" + result[5] + "'>ESPN</a>");
+				} else if (result[5].includes("sbnation")) {
+					$("#links").append("<a href='" + result[5] + "'>SBNation</a>");
 				} else {
-					$("#links").append(result[2]);
+					$("#links").append(result[5]);
 				}
 				
 			}
