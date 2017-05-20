@@ -191,10 +191,11 @@ $(document).ready(function(){
 				}
 			});
 			return json;
-			console.log("success");
 	    })();
-
-
+	    
+	    if (typeof json != 'undefined') {
+	    	console.log("data loaded");
+	    }
 
         playerName = $("#playerInputBox").val()
 		var result = findPlayerData(playerName);
