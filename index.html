@@ -147,7 +147,7 @@ function findPlayerData(playerName, data, data2) {
     if (index == -1 && index2 == -1) {
     	return "not found in both"; }
     else if (index == -1 && index2 != -1) {
-    	return ["not found in incidents", data2.name_pos_team[index2].Position, data2.name_pos_team[index2].Team]];
+    	return ["not found in incidents", data2.name_pos_team[index2].Position, data2.name_pos_team[index2].Team];
     }
 	else {
 		return [data.incidents[index].Name, data.incidents[index].Status, data.incidents[index].Link, data2.name_pos_team[index2].Position, data2.name_pos_team[index2].Team];
@@ -231,7 +231,7 @@ $(document).ready(function(){
 			
 				if (result[1] == "Arrested, not charged" || result[1] == "Accused, not charged") {
 					$("#status").addClass("label label-warning"); 
-				} else if (result[1] == "Pleaded guilty") {
+				} else if (result[1] == "Pleaded guilty" || result[1] == "Publicly admitted") {
 					$("#status").addClass("label label-danger"); 
 				}	
 					
