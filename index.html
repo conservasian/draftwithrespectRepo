@@ -58,6 +58,39 @@
 
   </style>
 </head>
+
+<script>
+$( function() {
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    $( "#playerInputBox" ).autocomplete({
+      source: availableTags
+    });
+  } );
+</script>
+
 <body>
 <nav class="navbar navbar-default navbar-static-top navbar-inverse">
   <div class="container">
@@ -81,6 +114,7 @@
 	</form>
   </div>
 </div>
+
 <div class="container">
 	<div class="row">
 		<div id="profile_div" class="col-md-4">
@@ -94,6 +128,7 @@
 		</div>
 	</div>
 </div>
+
 <div class="container">
   <hr>
   <div class="row">
@@ -153,38 +188,6 @@ function findPlayerData(playerName, data, data2) {
 		return ["found in both databases", data2.name_pos_team[index2].Position, data2.name_pos_team[index2].Team, data.incidents[index].Status, data.incidents[index].Details, data.incidents[index].Link];
 	}
 }
-</script>
-
-<script>
-$( function() {
-    var availableTags = [
-      "ActionScript",
-      "AppleScript",
-      "Asp",
-      "BASIC",
-      "C",
-      "C++",
-      "Clojure",
-      "COBOL",
-      "ColdFusion",
-      "Erlang",
-      "Fortran",
-      "Groovy",
-      "Haskell",
-      "Java",
-      "JavaScript",
-      "Lisp",
-      "Perl",
-      "PHP",
-      "Python",
-      "Ruby",
-      "Scala",
-      "Scheme"
-    ];
-    $( "#playerInputBox" ).autocomplete({
-      source: availableTags
-    });
-  } );
 </script>
 
 <script>
