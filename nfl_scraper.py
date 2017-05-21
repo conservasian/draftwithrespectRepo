@@ -139,3 +139,6 @@ for k in range(len(name)):
 
 with open('playerTeams.json', 'w') as f:
      json.dump(data, f)
+     
+with open('names.json', 'w') as f:
+     json.dump(name, f)
