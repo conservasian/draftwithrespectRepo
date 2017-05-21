@@ -226,11 +226,11 @@ $(document).ready(function(){
 			$("#status").addClass("label label-default");
 			$("#status").append("Not in database");
 			$("#links").append("We haven't had time to research this player yet -- stay tuned for updates.");		
-			$("#positionteam").append(result[1] + "<br>" + result[2]);
+			$("#positionteam").append("Position: " + result[1] + "<br>" + "Team: " + result[2]);
 
 		} else {
 
-			$("#positionteam").append(result[1] + "<br>" + result[2]);
+			$("#positionteam").append("Position: " + result[1] + "<br>" + "Team: " + result[2]);
 		
 			if (result[3] == "No records found") {
 				$("#status").addClass("label label-success");
