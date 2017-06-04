@@ -121,7 +121,11 @@ if ("Ezekiel Elliott" not in name):
 	team.append("Dallas Cowboys")
 	status.append("unknown")
 
-
+if ("Greg Hardy" not in name):
+	name.append("Greg Hardy")
+	pos.append("DE")
+	team.append("free agent")
+	status.append("UFA")
 
 # write to ginormous json file
 # make dictionary
