@@ -107,25 +107,8 @@ for j in range(len(nfl_links)):
 	pos, name, status, team = getPlayerData(nfl_links[j])
 	print j
 
-# add bad apples who are not currently playing
+# for bad apples who are not currently playing, index.html can find position, defaults team to "not active"
 
-if ("Josh Brown" not in name):
-	name.append("Josh Brown")
-	pos.append("K")
-	team.append("free agent")
-	status.append("UFA")
-
-if ("Ezekiel Elliott" not in name):
-	name.append("Ezekiel Elliot")
-	pos.append("RB")
-	team.append("Dallas Cowboys")
-	status.append("unknown")
-
-if ("Greg Hardy" not in name):
-	name.append("Greg Hardy")
-	pos.append("DE")
-	team.append("free agent")
-	status.append("UFA")
 
 # write to ginormous json file
 # make dictionary

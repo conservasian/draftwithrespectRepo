@@ -4,6 +4,7 @@
 import csv
 
 playerName = []
+position = []
 assaultRelated = []
 status = []
 details = []
@@ -13,6 +14,7 @@ with open('#dwr - Incidents.csv', 'rb') as csvfile:
 	filereader = csv.reader(csvfile)
 	for row in filereader:
 		playerName.append(row[0])
+		position.append(row[2])
 		assaultRelated.append(row[4])
 		status.append(row[6])
 		details.append(row[5])
@@ -27,6 +29,7 @@ data["incidents"] = []
 for k in range(1, len(playerName)):
     data["incidents"].append({
     	"Name":playerName[k],
+    	"Position":position[k],
     	"AssaultRelated":assaultRelated[k],
 		"Status":status[k],
 		"Details":details[k],
