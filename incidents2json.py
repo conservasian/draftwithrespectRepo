@@ -24,7 +24,7 @@ import json
 data = {}
 data["incidents"] = []
 
-for k in range(len(playerName)):
+for k in range(1, len(playerName)):
     data["incidents"].append({
     	"Name":playerName[k],
     	"AssaultRelated":assaultRelated[k],
@@ -35,3 +35,5 @@ for k in range(len(playerName)):
 
 with open('incidents.json', 'w') as f:
      json.dump(data, f)
+     
+print json.dumps(data, sort_keys=True, indent=4, separators=(',', ': '))
