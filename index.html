@@ -207,15 +207,15 @@ $(document).ready(function(){
 			$("#links").append("Source(s): ");
 			// add links
 			if (result[4].includes("npr")) {
-				$("#links").append("<a href='" + result[5] + "'>NPR</a>");
+				$("#links").append("<a href='" + result[4] + "'>NPR</a>");
 			} else if (result[4].includes("espn")) {
-				$("#links").append("<a href='" + result[5] + "'>ESPN</a>");
+				$("#links").append("<a href='" + result[4] + "'>ESPN</a>");
 			} else if (result[4].includes("sbnation")) {
-				$("#links").append("<a href='" + result[5] + "'>SBNation</a>");
+				$("#links").append("<a href='" + result[4] + "'>SBNation</a>");
 			} else if (result[4].includes("usatoday")) {
-				$("#links").append("<a href='" + result[5] + "'>USA Today</a>");
+				$("#links").append("<a href='" + result[4] + "'>USA Today</a>");
 			} else {
-				$("#links").append(result[4]);
+				$("#links").append("<a href=" + result[4] + "'>" + result[4] + "</a>");
 			}
 
 		} else {
@@ -253,7 +253,7 @@ $(document).ready(function(){
 				} else if (result[5].includes("usatoday")) {
 					$("#links").append("<a href='" + result[5] + "'>USA Today</a>");
 				} else {
-					$("#links").append(result[5]);
+					$("#links").append("<a href=" + result[5] + "'>" + result[5] + "</a>");
 				}
 				
 			}
