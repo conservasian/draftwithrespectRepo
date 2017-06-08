@@ -91,6 +91,7 @@
   </div>
 </div>
 
+
 <script>
 $.get("names.json", function(data){
   $("#playerInputBox").typeahead({ source:data });
@@ -106,6 +107,10 @@ function findPlayerData(playerName, data_incidents, data_roster) {
 	    names_incidents.push(data_incidents.incidents[i].Name)
     }
     var index_incident = names_incidents.indexOf(playerName);
+    
+    var num_incidents = names_incidents.reduce(function(n, val) {
+	    return n + (val === playerName);
+	}, 0);
 
 	// find player name in player team data    
     var names_roster = []; 			
@@ -120,10 +125,11 @@ function findPlayerData(playerName, data_incidents, data_roster) {
     else if (index_incident == -1 && index_roster != -1) {
     	return ["not in incidents", data_roster.name_pos_team[index_roster].Position, data_roster.name_pos_team[index_roster].Team];
     } else if (index_incident != -1 && index_roster == -1) {
-    	return ["not in roster", data_incidents.incidents[index_incident].Position, data_incidents.incidents[index_incident].Status, data_incidents.incidents[index_incident].Details, data_incidents.incidents[index_incident].Link];
+    	return ["not in roster", data_incidents.incidents[index_incident].Position, data_incidents.incidents[index_incident].Status, data_incidents.incidents[index_incident].Details, data_incidents.incidents[index_incident].Link, num_incidents];
     } else {
-		return ["found in both databases", data_roster.name_pos_team[index_roster].Position, data_roster.name_pos_team[index_roster].Team, data_incidents.incidents[index_incident].Status, data_incidents.incidents[index_incident].Details, data_incidents.incidents[index_incident].Link];
+		return ["found in both databases", data_roster.name_pos_team[index_roster].Position, data_roster.name_pos_team[index_roster].Team, data_incidents.incidents[index_incident].Status, data_incidents.incidents[index_incident].Details, data_incidents.incidents[index_incident].Link, num_incidents];
 	}
+	console.log(index_incident)
 }
 </script>
 
