@@ -44,11 +44,11 @@
 </div>
 
 <div id="results_div">
-			<h2 id="name"></h2>
-			<p id="positionteam"></p>
-		<h3><span id="status"></span></h3>
-		<p id="details"></p>
-		<p id="links"></p>
+	<h2 id="name"></h2>
+	<p id="positionteam"></p>
+	<h3><span id="status"></span></h3>
+	<p id="details"></p>
+	<p id="links"></p>
 </div>
 
 <div id="jumbotron3" class="jumbotron text-center">
@@ -59,6 +59,7 @@
 </div>
 <div id="jumbotron4" class="jumbotron text-center">
       <h2>What you can do to help</h2>
+      <br>
     <h3>Question whether you can support players with a record of domestic violence.</h3>
     Would you feel comfortable earning fantasy points from someone who has abused victims?<br>
     <br>
@@ -160,7 +161,9 @@ $(document).ready(function(){
 		var result = findPlayerData(playerName, incidents_json, playerTeams_json);
 
 		// display data
-		$("#results_div").addClass("jumbotron text-center"); 		
+		$("#results_div").addClass("jumbotron text-center"); 
+		$("name").css("background", #000099)
+		$("status").css("background", #000099)
 		$("#name").append(playerName);
 		
 		if (result[0] == "not in both") {
