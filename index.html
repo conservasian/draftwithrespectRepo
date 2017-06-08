@@ -46,7 +46,7 @@
 <div id="results_div">
 	<h2 id="name"></h2>
 	<p id="positionteam"></p>
-	<h3><span id="status"></span></h3>
+	<h3 id="status_span"><span id="status"></span></h3>
 	<p id="details"></p>
 	<p id="links"></p>
 </div>
@@ -163,7 +163,7 @@ $(document).ready(function(){
 		// display data
 		$("#results_div").addClass("jumbotron text-center"); 
 		$("name").css("background", #000099)
-		$("status").css("background", #000099)
+		$("status_span").css("background", #000099)
 		$("#name").append(playerName);
 		
 		if (result[0] == "not in both") {
