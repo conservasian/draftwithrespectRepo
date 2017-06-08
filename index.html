@@ -45,12 +45,10 @@
   </div>
 </div>
 
-<div class="jumbotron text-center">
+<div id="results_div" class="jumbotron text-center">
 <div class="container">
-		<div id="profile_div">
 			<h2 id="name"></h2>
 			<p id="positionteam"></p>
-		</div>
 		<h3><span id="status"></span></h3>
 		<p id="details"></p>
 		<p id="links"></p>
@@ -180,7 +178,7 @@ $(document).ready(function(){
 		var result = findPlayerData(playerName, incidents_json, playerTeams_json);
 
 		// display data
-		$("#profile_div").addClass("profile"); 		
+		$("#results_div").addClass("jumbotron text-center"); 		
 		$("#name").append(playerName);
 		
 		if (result[0] == "not in both") {
