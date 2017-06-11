@@ -112,15 +112,20 @@ function findPlayerData(playerName, data_incidents, data_roster) {
 }
 </script>
 
+
 <script>
-function displayResults(position, team, status, details, link) {
+function displayPositionTeam(position, team) {
+	// position and team	
+	$("#results_div").append("<p id='positionteam' class='results'>Position: " + position + "<br>Team: " + team + "</p>")
+}
+</script>
+
+<script>
+function displayResults(status, details, link) {
 
 	console.log(status)	
 	console.log(details)
 	console.log(link)
-	
-	// position and team	
-	$("#results_div").append("<p id='positionteam' class='results'>Position: " + position + "<br>Team: " + team + "</p>")
 		
 	// status
 	$("#results_div").append("<h3 id='status_span' class='results'><span id='status' class='results'>" + status + "</span></h3>")
@@ -227,7 +232,8 @@ $(document).ready(function(){
 			var details = "We haven't had time to research this player yet -- stay tuned for updates.";
 			var link = "";
 			
-			displayResults(position, team, status, details, link)
+			displayPositionTeam(position, team)
+			displayResults(status, details, link)
 
 		} else if (result[0] == "not in roster") { 
 
@@ -237,20 +243,24 @@ $(document).ready(function(){
 			var details = result[3];
 			var link = result[4];
 			
-			displayResults(position, team, status, details, link)
+			displayPositionTeam(position, team)
+			displayResults(status, details, link)
 
 		} else {
-		
+			
+			var status = result[3];
 			var numIncidents = status.length;
 
+			var position = result[1][0];
+			var team = result[2][0];
+			displayPositionTeam(position, team)
+
 			for (j=0; j < numIncidents; j++) {
-				var position = result[1][j];
-				var team = result[2][j];
 				var status = result[3][j];
 				var details = result[4][j];
 				var link = result[5][j];
 
-				displayResults(position, team, status, details, link)
+				displayResults(status, details, link)
 			}		
         }
         event.preventDefault();
