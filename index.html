@@ -75,10 +75,12 @@ $.get("names.json", function(data){
 <script>
 function findPlayerData(playerName, data_incidents, data_roster) {
 	
-	// find player name in incident data
-	var names_incidents = []; 		
-		
+	// find player name in incident data	
 	var index_incident = [];
+	var status_incident = [];
+	var details_incident = [];
+	var links_incident = [];
+	
 	for (i in data_incidents.incidents) {
 
 	    index_incident.push(i);
@@ -87,10 +89,6 @@ function findPlayerData(playerName, data_incidents, data_roster) {
 	    details_incident.push(data_incidents.incidents[i].Details);
    	    links_incident.push(data_incidents.incidents[i].Link);	       
     }
-    
-    var num_incidents = names_incidents.reduce(function(n, val) {
-	    return n + (val === playerName);
-	}, 0);
 
 	// find player name in player team data    
     var names_roster = []; 			
@@ -216,14 +214,14 @@ $(document).ready(function(){
 			$("#results_div").append("<p id='details' class='results'>We haven't had time to research this player yet -- stay tuned for updates.</p>");
 
 		} else if (result[0] == "not in incidents") { 
-			// position and team
+
 			var position = result[1];
 			var team = result[2];
-			$("#results_div").append("<p id='positionteam' class='results'>Position: " + position + "<br>Team: " + team + "</p>")
+			var status = "Not in database";
+			var details = "We haven't had time to research this player yet -- stay tuned for updates.";
+			var links = "";
 			
-			// no status, no details
-			$("#results_div").append("<h3 id='status_span' class='results'><span id='status' class='results label label-default'>Not in database</span></h3>")
-			$("#results_div").append("<p id='details' class='results'>We haven't had time to research this player yet -- stay tuned for updates.</p>");
+			displayResults(position, team, status, details, links)
 
 		} else if (result[0] == "not in roster") { 
 
