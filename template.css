@@ -36,7 +36,7 @@
 }
 #results_div {
 	margin-bottom: 0px;
-	padding: 0px 0 0 0 /* so the start bg is not blue */
+	padding: 0px 0px 0px 0px; /* so the start bg is not blue */
 	background: #000099
 }
 #jumbotron3 {
