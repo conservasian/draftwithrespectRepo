@@ -121,48 +121,63 @@ function displayPositionTeam(position, team) {
 </script>
 
 <script>
-function displayResults(status, details, link) {
+function displayResults(status, details, link, j) {
 
 	console.log(status)	
 	console.log(details)
 	console.log(link)
 		
+	// unique element ids if numIncidents > 1
+	if (j == 0) {
+		var status_id = 'status';
+		var details_id = 'details';
+		var link_id = 'link';
+		var status_id_ht = '#status';
+		var link_id_ht = '#link'
+	} else
+		var status_id = 'status' + j;
+		var details_id = 'details' + j;
+		var link_id = 'link' + j;
+		var status_id_ht = '#status' + j;
+		var link_id_ht = '#link' + j;
+	}
+		
 	// status
-	$("#results_div").append("<h3 id='status_span' class='results'><span id='status' class='results'>" + status + "</span></h3>")
+	$("#results_div").append("<h3 class='results'><span id='" + status_id + "' class='results'>" + status + "</span></h3>")
 
 	// if good guy
 	if (status == "No records found") {
 		// color-code green
-		$("#status").addClass("label label-success");
+		$(status_id_ht).addClass("label label-success");
 		
 		// add links
-		$("#results_div").append("<p id='links' class='results'>We thoroughly searched and couldn't find any relevant records online.</p>");
+		$("#results_div").append("<p id='" + link_id + "' class='results'>We thoroughly searched and couldn't find any relevant records online.</p>");
 		
 	} else {
 
 		// color-code status			
 		if (status == "Arrested, not charged" || status == "Accused, not charged" || status.indexOf("settled") != -1) {
-			$("#status").addClass("label label-warning"); 
+			$(status_id_ht).addClass("label label-warning"); 
 		} else if (status == "Pleaded guilty" || status == "Publicly admitted" || status == 'Found guilty') {
-			$("#status").addClass("label label-danger"); 
+			$(status_id_ht).addClass("label label-danger"); 
 		}	
 		
 		// add details
-		$("#results_div").append("<p id='details' class='results'>" + details + "</p>");
+		$("#results_div").append("<p id='" + details_id + "' class='results'>" + details + "</p>");
 		
 		// add sources
-		$("#results_div").append("<p id='link' class='results'>Source(s): </p>");
+		$("#results_div").append("<p id='" + link_id + "' class='results'>Source(s): </p>");
 		// add links
 		if (link.includes("npr")) {
-			$("#link").append("<a href='" + link + "'>NPR</a>");
+			$(link_id_ht).append("<a href='" + link + "'>NPR</a>");
 		} else if (link.includes("espn")) {
-			$("#link").append("<a href='" + link + "'>ESPN</a>");
+			$(link_id_ht).append("<a href='" + link + "'>ESPN</a>");
 		} else if (link.includes("sbnation")) {
-			$("#link").append("<a href='" + link + "'>SBNation</a>");
+			$(link_id_ht).append("<a href='" + link + "'>SBNation</a>");
 		} else if (link.includes("usatoday")) {
-			$("#link").append("<a href='" + link + "'>USA Today</a>");
+			$(link_id_ht).append("<a href='" + link + "'>USA Today</a>");
 		} else {
-			$("#link").append("<a href=" + link + "'>" + link + "</a>");
+			$(link_id_ht).append("<a href=" + link + "'>" + link + "</a>");
 		}	
 	}
 }
@@ -261,7 +276,7 @@ $(document).ready(function(){
 				details = result[4][j];
 				link = result[5][j];
 
-				displayResults(status, details, link)
+				displayResults(status, details, link, j)
 			}		
         }
         event.preventDefault();
