@@ -107,7 +107,7 @@ function findPlayerData(playerName, data_incidents, data_roster) {
     } else if (index_incident.length > 0 && index_roster == -1) {
     	return ["not in roster", data_incidents.incidents[index_incident].Position, status_incident, details_incident, link_incident];
     } else {
-		return ["found in both databases", data_roster.name_pos_team[index_roster].Position, data_roster.name_pos_team[index_roster].Team, , status_incident, details_incident, link_incident];
+		return ["found in both databases", data_roster.name_pos_team[index_roster].Position, data_roster.name_pos_team[index_roster].Team, status_incident, details_incident, link_incident];
 	}
 }
 </script>
