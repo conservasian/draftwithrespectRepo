@@ -219,11 +219,13 @@ $(document).ready(function(){
 			var status = result[3];
 			$("#results_div").append("<h3 id='status_span' class='results'><span id='status' class='results'>" + status + "</span></h3>")
 
-			// color-code status
+			// if good guy
 			if (status == "No records found") {
+				// color-code green
 				$("#status").addClass("label label-success");
-				$("#status").append(result[3]);
-				$("#links").append("We thoroughly searched and couldn't find any relevant records online.");
+				
+				// add links
+				$("#results_div").append("<p id='links' class='results'>We thoroughly searched and couldn't find any relevant records online.</p>");
 				
 			} else {
 
