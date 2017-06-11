@@ -250,15 +250,16 @@ $(document).ready(function(){
 			
 			var status = result[3];
 			var numIncidents = status.length;
+			console.log(numIncidents);
 
-			var position = result[1][0];
-			var team = result[2][0];
+			var position = result[1];
+			var team = result[2];
 			displayPositionTeam(position, team)
 
 			for (j=0; j < numIncidents; j++) {
-				var status = result[3][j];
-				var details = result[4][j];
-				var link = result[5][j];
+				status = result[3][j];
+				details = result[4][j];
+				link = result[5][j];
 
 				displayResults(status, details, link)
 			}		
