@@ -116,15 +116,9 @@ function findPlayerData(playerName, data_incidents, data_roster) {
 $(document).ready(function(){
 
     $("#playerInput").submit(function(event){
-
-		// clear data display elements
-    	$("#name").empty();
-    	$("#positionteam").empty();
-
-    	$("#status").empty();
-		$("#status").removeClass();
-    	$("#details").empty();
-    	$("#links").empty();
+		
+		// remove any existing results
+		$(".results").remove() 
 
 		// load incident and player team data
 		var incidents_json = (function() {
@@ -141,65 +135,72 @@ $(document).ready(function(){
 			return incidents_json;
 	    })();
 	    
-	    var playerTeams_json = (function() {
-			var playerTeams_json = null;
+	    var roster_json = (function() {
+			var roster_json = null;
 			$.ajax({
 				'async': false,
 				'global': false,
-				'url': "playerTeams.json",
+				'url': "roster.json",
 				'dataType': "json",
 				'success': function (data) {
-					playerTeams_json = data;
+					roster_json = data;
 				}
 			});
-			return playerTeams_json;
+			return roster_json;
 	    })();
 
 		// process query based on player name
         var playerName = $("#playerInputBox").val();
         playerName = playerName.trim();
+        $("#results_div").append("<h2 id='name' class='results'>" + playerName + "</p>")
+        
 		var result = findPlayerData(playerName, incidents_json, playerTeams_json);
 
 		// display data
-		$("#results_div").css("background","#000099")
-		$("#results_div").css("padding","30px 15 40 15")
-		$("#name").css("margin", "")
-		$("#positionteam").css("margin-top", "21px")
-		$("#positionteam").css("margin-bottom", "42px")
-		$("#status_span").css("margin-top", "20px")
-		$("#status_span").css("margin-bottom", "10px")
-		$("#details").css("margin-top", "21px")
-		$("#details").css("margin-bottom", "42px")
-		$("#links").css("margin-top", "21px")
-		
-		$("#name").append(playerName);
-		
 		if (result[0] == "not in both") {
-			$("#status").addClass("label label-default");
-			$("#status").append("Not in database");
-			$("#details").append("We haven't had time to research this player yet -- stay tuned for updates.");
+			// no position and team
+			position = 'not in database';
+			team = "not active";
+			$("#results_div").append("<p id='positionteam' class='results'>Position: " + result[1] + "<br>Team: " + team + "</p>")
+
+			// no status, no details
+			$("#results_div").append("<h3 id='status_span' class='results'><span id='status' class='results label label-default'>Not in database</span></h3>")
+			$("#results_div").append("<p id='details' class='results'>We haven't had time to research this player yet -- stay tuned for updates.</p>");
 
 		} else if (result[0] == "not in incidents") { 
-			$("#status").addClass("label label-default");
-			$("#status").append("Not in database");
-			$("#details").append("We haven't had time to research this player yet -- stay tuned for updates.");		
-			$("#positionteam").append("Position: " + result[1] + "<br>" + "Team: " + result[2]);
+			// position and team
+			var position = result[1];
+			var team = result[2];
+			$("#results_div").append("<p id='positionteam' class='results'>Position: " + position + "<br>Team: " + team + "</p>")
+			
+			// no status, no details
+			$("#results_div").append("<h3 id='status_span' class='results'><span id='status' class='results label label-default'>Not in database</span></h3>")
+			$("#results_div").append("<p id='details' class='results'>We haven't had time to research this player yet -- stay tuned for updates.</p>");
 
 		} else if (result[0] == "not in roster") { 
-		
-			$("#positionteam").append("Position: " + result[1] + "<br>" + "Team: not active");
-		
-			$("#status").append(result[2]);
+
+			// position and team
+			position = result[1];
+			team = "not active";
+			$("#results_div").append("<p id='positionteam' class='results'>Position: " + position + "<br>Team: " + team + "</p>")
+			
+			// status
+			status = result[2];
+			$("#results_div").append("<h3 id='status_span' class='results'><span id='status' class='results'>Not in database</span></h3>")
+
 			// color-code status			
-			if (result[2] == "Arrested, not charged" || result[2] == "Accused, not charged" || result[2].indexOf("settled") != -1) {
+			if (status == "Arrested, not charged" || status == "Accused, not charged" || status.indexOf("settled") != -1) {
 				$("#status").addClass("label label-warning"); 
-			} else if (result[2] == "Pleaded guilty" || result[2] == "Publicly admitted" || result[2] == 'Found guilty') {
+			} else if (status == "Pleaded guilty" || status == "Publicly admitted" || status == 'Found guilty') {
 				$("#status").addClass("label label-danger"); 
 			}
 			
-			$("#details").append(result[3]);		
+			// details
+			details = result[3];
+			$("#results_div").append("<p id='details' class='results'>" + details + "</p>");
 			
-			$("#links").append("Source(s): ");
+			// sources
+			$("#results_div").append("<p id='links' class='results'>Source(s): </p>");
 			// add links
 			if (result[4].includes("npr")) {
 				$("#links").append("<a href='" + result[4] + "'>NPR</a>");
@@ -214,10 +215,17 @@ $(document).ready(function(){
 			}
 
 		} else {
-
-			$("#positionteam").append("Position: " + result[1] + "<br>" + "Team: " + result[2]);
+			// position and team
+			var position = result[1];
+			var team = result[2];
+			$("#results_div").append("<p id='positionteam' class='results'>Position: " + position + "<br>Team: " + team + "</p>")
 		
-			if (result[3] == "No records found") {
+			// status
+			var status = result[3];
+			$("#results_div").append("<h3 id='status_span' class='results'><span id='status' class='results'>" + status + "</span></h3>")
+
+			// color-code status
+			if (status == "No records found") {
 				$("#status").addClass("label label-success");
 				$("#status").append(result[3]);
 				$("#links").append("We thoroughly searched and couldn't find any relevant records online.");
@@ -225,30 +233,30 @@ $(document).ready(function(){
 			} else {
 
 				// color-code status			
-				if (result[3] == "Arrested, not charged" || result[3] == "Accused, not charged" || result[3].indexOf("settled") != -1) {
+				if (status == "Arrested, not charged" || status == "Accused, not charged" || status.indexOf("settled") != -1) {
 					$("#status").addClass("label label-warning"); 
-				} else if (result[3] == "Pleaded guilty" || result[3] == "Publicly admitted" || result[3] == 'Found guilty') {
+				} else if (status == "Pleaded guilty" || status == "Publicly admitted" || status == 'Found guilty') {
 					$("#status").addClass("label label-danger"); 
 				}	
-
-				// add status
-				$("#status").append(result[3]);
 				
 				// add details
-				$("#details").append(result[4]);
+				var details = result[4];
+				$("#results_div").append("<p id='details' class='results'>" + details + "</p>");
 				
-				$("#links").append("Source(s): ");
+				// add sources
+				var links = result[5];
+				$("#results_div").append("<p id='links' class='results'>Source(s): </p>");
 				// add links
-				if (result[5].includes("npr")) {
-					$("#links").append("<a href='" + result[5] + "'>NPR</a>");
-				} else if (result[5].includes("espn")) {
-					$("#links").append("<a href='" + result[5] + "'>ESPN</a>");
-				} else if (result[5].includes("sbnation")) {
-					$("#links").append("<a href='" + result[5] + "'>SBNation</a>");
-				} else if (result[5].includes("usatoday")) {
-					$("#links").append("<a href='" + result[5] + "'>USA Today</a>");
+				if (links.includes("npr")) {
+					$("#links").append("<a href='" + links + "'>NPR</a>");
+				} else if (links.includes("espn")) {
+					$("#links").append("<a href='" + links + "'>ESPN</a>");
+				} else if (links.includes("sbnation")) {
+					$("#links").append("<a href='" + links + "'>SBNation</a>");
+				} else if (links.includes("usatoday")) {
+					$("#links").append("<a href='" + links + "'>USA Today</a>");
 				} else {
-					$("#links").append("<a href=" + result[5] + "'>" + result[5] + "</a>");
+					$("#links").append("<a href=" + links + "'>" + links + "</a>");
 				}
 				
 			}
