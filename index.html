@@ -149,7 +149,7 @@ $(document).ready(function(){
         playerName = playerName.trim();
         $("#results_div").append("<h2 id='name' class='results'>" + playerName + "</p>")
         
-		var result = findPlayerData(playerName, incidents_json, playerTeams_json);
+		var result = findPlayerData(playerName, incidents_json, roster_json);
 
 		// display data
 		if (result[0] == "not in both") {
