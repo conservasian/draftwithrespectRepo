@@ -148,6 +148,7 @@ $(document).ready(function(){
         var playerName = $("#playerInputBox").val();
         playerName = playerName.trim();
         $("#results_div").append("<h2 id='name' class='results'>" + playerName + "</p>")
+        $("#results_div").css("padding", "48px 0px 40px 0px")
         
 		var result = findPlayerData(playerName, incidents_json, roster_json);
 
