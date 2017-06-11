@@ -83,11 +83,13 @@ function findPlayerData(playerName, data_incidents, data_roster) {
 	
 	for (i in data_incidents.incidents) {
 
-	    index_incident.push(i);
+		if (data_incidents.incidents[i].Name == playerName) {
+			index_incident.push(i);
 
-	    status_incident.push(data_incidents.incidents[i].Status);
-	    details_incident.push(data_incidents.incidents[i].Details);
-   	    link_incident.push(data_incidents.incidents[i].Link);	       
+			status_incident.push(data_incidents.incidents[i].Status);
+			details_incident.push(data_incidents.incidents[i].Details);
+			link_incident.push(data_incidents.incidents[i].Link);	       
+		}
     }
 
 	// find player name in player team data    
