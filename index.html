@@ -240,14 +240,18 @@ $(document).ready(function(){
 			displayResults(position, team, status, details, link)
 
 		} else {
-			var position = result[1];
-			var team = result[2];
-			var status = result[3];
-			var details = result[4];
-			var link = result[5];
-			
-			displayResults(position, team, status, details, link)
-			
+		
+			var numIncidents = status.length;
+
+			for (j=0; j < numIncidents; j++) {
+				var position = result[1][j];
+				var team = result[2][j];
+				var status = result[3][j];
+				var details = result[4][j];
+				var link = result[5][j];
+
+				displayResults(position, team, status, details, link)
+			}		
         }
         event.preventDefault();
     });
