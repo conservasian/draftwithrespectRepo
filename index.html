@@ -76,11 +76,17 @@ $.get("names.json", function(data){
 function findPlayerData(playerName, data_incidents, data_roster) {
 	
 	// find player name in incident data
-	var names_incidents = []; 			
+	var names_incidents = []; 		
+		
+	var index_incident = [];
 	for (i in data_incidents.incidents) {
-	    names_incidents.push(data_incidents.incidents[i].Name)
+
+	    index_incident.push(i);
+
+	    status_incident.push(data_incidents.incidents[i].Status);
+	    details_incident.push(data_incidents.incidents[i].Details);
+   	    links_incident.push(data_incidents.incidents[i].Link);	       
     }
-    var index_incident = names_incidents.indexOf(playerName);
     
     var num_incidents = names_incidents.reduce(function(n, val) {
 	    return n + (val === playerName);
@@ -94,16 +100,62 @@ function findPlayerData(playerName, data_incidents, data_roster) {
     var index_roster = names_roster.indexOf(playerName);
     
     // output data
-    if (index_incident == -1 && index_roster == -1) {
+    if (index_incident.length == 0 && index_roster == -1) {
     	return "not in both"; }
-    else if (index_incident == -1 && index_roster != -1) {
+    else if (index_incident.length == 0 && index_roster != -1) {
     	return ["not in incidents", data_roster.name_pos_team[index_roster].Position, data_roster.name_pos_team[index_roster].Team];
-    } else if (index_incident != -1 && index_roster == -1) {
-    	return ["not in roster", data_incidents.incidents[index_incident].Position, data_incidents.incidents[index_incident].Status, data_incidents.incidents[index_incident].Details, data_incidents.incidents[index_incident].Link, num_incidents];
+    } else if (index_incident.length > 0 && index_roster == -1) {
+    	return ["not in roster", data_incidents.incidents[index_incident].Position, status_incident, details_incident, link_incident];
     } else {
-		return ["found in both databases", data_roster.name_pos_team[index_roster].Position, data_roster.name_pos_team[index_roster].Team, data_incidents.incidents[index_incident].Status, data_incidents.incidents[index_incident].Details, data_incidents.incidents[index_incident].Link, num_incidents];
+		return ["found in both databases", data_roster.name_pos_team[index_roster].Position, data_roster.name_pos_team[index_roster].Team, , status_incident, details_incident, link_incident];
 	}
-	console.log(index_incident)
+}
+</script>
+
+<script>
+function displayResults(position, team, status, details, links) {
+	
+	// position and team	
+	$("#results_div").append("<p id='positionteam' class='results'>Position: " + position + "<br>Team: " + team + "</p>")
+		
+	// status
+	$("#results_div").append("<h3 id='status_span' class='results'><span id='status' class='results'>" + status + "</span></h3>")
+
+	// if good guy
+	if (status == "No records found") {
+		// color-code green
+		$("#status").addClass("label label-success");
+		
+		// add links
+		$("#results_div").append("<p id='links' class='results'>We thoroughly searched and couldn't find any relevant records online.</p>");
+		
+	} else {
+
+		// color-code status			
+		if (status == "Arrested, not charged" || status == "Accused, not charged" || status.indexOf("settled") != -1) {
+			$("#status").addClass("label label-warning"); 
+		} else if (status == "Pleaded guilty" || status == "Publicly admitted" || status == 'Found guilty') {
+			$("#status").addClass("label label-danger"); 
+		}	
+		
+		// add details
+		$("#results_div").append("<p id='details' class='results'>" + details + "</p>");
+		
+		// add sources
+		$("#results_div").append("<p id='links' class='results'>Source(s): </p>");
+		// add links
+		if (links.includes("npr")) {
+			$("#links").append("<a href='" + links + "'>NPR</a>");
+		} else if (links.includes("espn")) {
+			$("#links").append("<a href='" + links + "'>ESPN</a>");
+		} else if (links.includes("sbnation")) {
+			$("#links").append("<a href='" + links + "'>SBNation</a>");
+		} else if (links.includes("usatoday")) {
+			$("#links").append("<a href='" + links + "'>USA Today</a>");
+		} else {
+			$("#links").append("<a href=" + links + "'>" + links + "</a>");
+		}	
+	}
 }
 </script>
 
@@ -175,89 +227,22 @@ $(document).ready(function(){
 
 		} else if (result[0] == "not in roster") { 
 
-			// position and team
-			position = result[1];
-			team = "not active";
-			$("#results_div").append("<p id='positionteam' class='results'>Position: " + position + "<br>Team: " + team + "</p>")
+			var position = result[1];
+			var team = "not active";
+			var status = result[2];
+			var details = result[3];
+			var links = result[4];
 			
-			// status
-			status = result[2];
-			$("#results_div").append("<h3 id='status_span' class='results'><span id='status' class='results'>Not in database</span></h3>")
-
-			// color-code status			
-			if (status == "Arrested, not charged" || status == "Accused, not charged" || status.indexOf("settled") != -1) {
-				$("#status").addClass("label label-warning"); 
-			} else if (status == "Pleaded guilty" || status == "Publicly admitted" || status == 'Found guilty') {
-				$("#status").addClass("label label-danger"); 
-			}
-			
-			// details
-			details = result[3];
-			$("#results_div").append("<p id='details' class='results'>" + details + "</p>");
-			
-			// sources
-			$("#results_div").append("<p id='links' class='results'>Source(s): </p>");
-			// add links
-			if (result[4].includes("npr")) {
-				$("#links").append("<a href='" + result[4] + "'>NPR</a>");
-			} else if (result[4].includes("espn")) {
-				$("#links").append("<a href='" + result[4] + "'>ESPN</a>");
-			} else if (result[4].includes("sbnation")) {
-				$("#links").append("<a href='" + result[4] + "'>SBNation</a>");
-			} else if (result[4].includes("usatoday")) {
-				$("#links").append("<a href='" + result[4] + "'>USA Today</a>");
-			} else {
-				$("#links").append("<a href=" + result[4] + "'>" + result[4] + "</a>");
-			}
+			displayResults(position, team, status, details, links)
 
 		} else {
-			// position and team
 			var position = result[1];
 			var team = result[2];
-			$("#results_div").append("<p id='positionteam' class='results'>Position: " + position + "<br>Team: " + team + "</p>")
-		
-			// status
 			var status = result[3];
-			$("#results_div").append("<h3 id='status_span' class='results'><span id='status' class='results'>" + status + "</span></h3>")
-
-			// if good guy
-			if (status == "No records found") {
-				// color-code green
-				$("#status").addClass("label label-success");
-				
-				// add links
-				$("#results_div").append("<p id='links' class='results'>We thoroughly searched and couldn't find any relevant records online.</p>");
-				
-			} else {
-
-				// color-code status			
-				if (status == "Arrested, not charged" || status == "Accused, not charged" || status.indexOf("settled") != -1) {
-					$("#status").addClass("label label-warning"); 
-				} else if (status == "Pleaded guilty" || status == "Publicly admitted" || status == 'Found guilty') {
-					$("#status").addClass("label label-danger"); 
-				}	
-				
-				// add details
-				var details = result[4];
-				$("#results_div").append("<p id='details' class='results'>" + details + "</p>");
-				
-				// add sources
-				var links = result[5];
-				$("#results_div").append("<p id='links' class='results'>Source(s): </p>");
-				// add links
-				if (links.includes("npr")) {
-					$("#links").append("<a href='" + links + "'>NPR</a>");
-				} else if (links.includes("espn")) {
-					$("#links").append("<a href='" + links + "'>ESPN</a>");
-				} else if (links.includes("sbnation")) {
-					$("#links").append("<a href='" + links + "'>SBNation</a>");
-				} else if (links.includes("usatoday")) {
-					$("#links").append("<a href='" + links + "'>USA Today</a>");
-				} else {
-					$("#links").append("<a href=" + links + "'>" + links + "</a>");
-				}
-				
-			}
+			var details = result[4];
+			var links = result[5];
+			
+			displayResults(position, team, status, details, links)
 			
         }
         event.preventDefault();
