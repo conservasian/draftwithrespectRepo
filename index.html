@@ -79,7 +79,7 @@ function findPlayerData(playerName, data_incidents, data_roster) {
 	var index_incident = [];
 	var status_incident = [];
 	var details_incident = [];
-	var links_incident = [];
+	var link_incident = [];
 	
 	for (i in data_incidents.incidents) {
 
@@ -87,7 +87,7 @@ function findPlayerData(playerName, data_incidents, data_roster) {
 
 	    status_incident.push(data_incidents.incidents[i].Status);
 	    details_incident.push(data_incidents.incidents[i].Details);
-   	    links_incident.push(data_incidents.incidents[i].Link);	       
+   	    link_incident.push(data_incidents.incidents[i].Link);	       
     }
 
 	// find player name in player team data    
@@ -111,7 +111,7 @@ function findPlayerData(playerName, data_incidents, data_roster) {
 </script>
 
 <script>
-function displayResults(position, team, status, details, links) {
+function displayResults(position, team, status, details, link) {
 	
 	// position and team	
 	$("#results_div").append("<p id='positionteam' class='results'>Position: " + position + "<br>Team: " + team + "</p>")
@@ -140,18 +140,18 @@ function displayResults(position, team, status, details, links) {
 		$("#results_div").append("<p id='details' class='results'>" + details + "</p>");
 		
 		// add sources
-		$("#results_div").append("<p id='links' class='results'>Source(s): </p>");
+		$("#results_div").append("<p id='link' class='results'>Source(s): </p>");
 		// add links
-		if (links.includes("npr")) {
-			$("#links").append("<a href='" + links + "'>NPR</a>");
-		} else if (links.includes("espn")) {
-			$("#links").append("<a href='" + links + "'>ESPN</a>");
-		} else if (links.includes("sbnation")) {
-			$("#links").append("<a href='" + links + "'>SBNation</a>");
-		} else if (links.includes("usatoday")) {
-			$("#links").append("<a href='" + links + "'>USA Today</a>");
+		if (link.includes("npr")) {
+			$("#link").append("<a href='" + link + "'>NPR</a>");
+		} else if (link.includes("espn")) {
+			$("#link").append("<a href='" + link + "'>ESPN</a>");
+		} else if (link.includes("sbnation")) {
+			$("#link").append("<a href='" + link + "'>SBNation</a>");
+		} else if (link.includes("usatoday")) {
+			$("#link").append("<a href='" + link + "'>USA Today</a>");
 		} else {
-			$("#links").append("<a href=" + links + "'>" + links + "</a>");
+			$("#link").append("<a href=" + link + "'>" + link + "</a>");
 		}	
 	}
 }
@@ -219,9 +219,9 @@ $(document).ready(function(){
 			var team = result[2];
 			var status = "Not in database";
 			var details = "We haven't had time to research this player yet -- stay tuned for updates.";
-			var links = "";
+			var link = "";
 			
-			displayResults(position, team, status, details, links)
+			displayResults(position, team, status, details, link)
 
 		} else if (result[0] == "not in roster") { 
 
@@ -229,18 +229,18 @@ $(document).ready(function(){
 			var team = "not active";
 			var status = result[2];
 			var details = result[3];
-			var links = result[4];
+			var link = result[4];
 			
-			displayResults(position, team, status, details, links)
+			displayResults(position, team, status, details, link)
 
 		} else {
 			var position = result[1];
 			var team = result[2];
 			var status = result[3];
 			var details = result[4];
-			var links = result[5];
+			var link = result[5];
 			
-			displayResults(position, team, status, details, links)
+			displayResults(position, team, status, details, link)
 			
         }
         event.preventDefault();
