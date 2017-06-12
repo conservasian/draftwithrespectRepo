@@ -76,7 +76,7 @@ $.get("names.json", function(data){
 function findPlayerData(playerName, data_incidents, data_roster) {
 	
 	// find player name in incident data	
-	var index_incident = [];
+	var assaultRelated_incident = [];
 	var status_incident = [];
 	var details_incident = [];
 	var link_incident = [];
@@ -84,8 +84,8 @@ function findPlayerData(playerName, data_incidents, data_roster) {
 	for (i in data_incidents.incidents) {
 
 		if (data_incidents.incidents[i].Name == playerName) {
-			index_incident.push(i);
-
+			
+			assaultRelated_incident.push(data_incidents.incidents[i].AssaultRelated);
 			status_incident.push(data_incidents.incidents[i].Status);
 			details_incident.push(data_incidents.incidents[i].Details);
 			link_incident.push(data_incidents.incidents[i].Link);	       
@@ -153,6 +153,13 @@ function displayResults(status, details, link, j) {
 		// add links
 		$("#results_div").append("<p id='" + link_id + "' class='results'>We thoroughly searched and couldn't find any relevant records online.</p>");
 		
+	} else if (status == "No assault-related records found" || status == "Not in database") {
+		// color-code gray
+		$(status_id_ht).addClass("label label-default");
+		
+		// add details
+		$("#results_div").append("<p id='" + details_id + "' class='results'>" + details + "</p>");
+	
 	} else {
 
 		// color-code status			
@@ -230,14 +237,15 @@ $(document).ready(function(){
 
 		// display data
 		if (result[0] == "not in both") {
-			// no position and team
-			position = 'not in database';
-			team = "not active";
-			$("#results_div").append("<p id='positionteam' class='results'>Position: " + result[1] + "<br>Team: " + team + "</p>")
 
-			// no status, no details
-			$("#results_div").append("<h3 id='status_span' class='results'><span id='status' class='results label label-default'>Not in database</span></h3>")
-			$("#results_div").append("<p id='details' class='results'>We haven't had time to research this player yet -- stay tuned for updates.</p>");
+			var position = 'not in database';
+			var team = 'not active';
+			var status = "Not in database";
+			var details = "We haven't had time to research this player yet -- stay tuned for updates.";
+			var link = "";
+			
+			displayPositionTeam(position, team)
+			displayResults(status, details, link)
 
 		} else if (result[0] == "not in incidents") { 
 
