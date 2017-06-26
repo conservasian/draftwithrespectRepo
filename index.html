@@ -177,7 +177,7 @@ function displayResults(status, details, link, j) {
 			$(status_id_ht).addClass("label label-warning"); 
 		} else if (status == "Pleaded guilty" || status == "Publicly admitted" || status == 'Found guilty' || status == 'Plea deal') {
 			$(status_id_ht).addClass("label label-danger"); 
-		} else if (status.indexOf("Wrongfully accused") || status.indexOf("not guilty")) {
+		} else if (status.indexOf("Wrongfully accused") != -1 || status.indexOf("not guilty") != -1) {
 			$(status_id_ht).addClass("label label-success"); 
 		}	
 		
