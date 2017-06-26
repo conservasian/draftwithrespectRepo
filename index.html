@@ -155,7 +155,7 @@ function displayResults(status, details, link, j) {
 	// status
 	$("#results_div").append("<h3 class='results'><span id='" + status_id + "' class='results'>" + status + "</span></h3>")
 
-	// if good guy
+	// if no records found
 	if (status == "No records found") {
 		// color-code green
 		$(status_id_ht).addClass("label label-success");
@@ -175,8 +175,10 @@ function displayResults(status, details, link, j) {
 		// color-code status			
 		if (status == "Arrested, not charged" || status == "Accused, not charged" || status.indexOf("settled") != -1) {
 			$(status_id_ht).addClass("label label-warning"); 
-		} else if (status == "Pleaded guilty" || status == "Publicly admitted" || status == 'Found guilty') {
+		} else if (status == "Pleaded guilty" || status == "Publicly admitted" || status == 'Found guilty' || status == 'Plea deal') {
 			$(status_id_ht).addClass("label label-danger"); 
+		} else if (status.indexOf("Wrongfully accused") || status.indexOf("not guilty")) {
+			$(status_id_ht).addClass("label label-success"); 
 		}	
 		
 		// add details
