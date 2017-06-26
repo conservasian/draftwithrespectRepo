@@ -29,7 +29,7 @@
         <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
 	  </li>
       <li class="active">
-		  <a href="#jumbotron5">About Us</a>
+		  <a href="/index.html#jumbotron4">About Us</a>
 	  </li>
 	  <li class="active">
 		  <a href="/howtohelp.html">How to Help</a>
@@ -49,6 +49,272 @@
     <h3>Support victims; listen to what they have to say</h3>
     More than half of victims do not report to police for fear of repercussions.
 </div>
+
+<div id="jumbotron1" class="jumbotron text-center">
+    <h1>#draftwithrespect</h1>
+    <p>A resource for the fans that want the best players, on the field and off the field</p>
+	<form class="form-inline" id="playerInput">
+	  	<div class="form-group ui-widget">
+    	<label for="playerInputBox">Search by name:</label>
+   		<input type="text" class="form-control" id="playerInputBox" placeholder="" data-provide="typeahead">
+	    </div>
+        <button name="submit" type="submit" class="btn btn-default">Search</button>
+	</form>
+</div>
+
+<div id="results_div" class="jumbotron text-center">
+</div>
+
+<div id="jumbotron3" class="jumbotron text-center">
+  <h2>Are you drafting players that are violent towards women?</h2>
+	We made this searchable database to help you draft the best players both on the field and off the field.<br>
+	<br>
+	<h3>It's time to #draftwithrespect.</h3>
+</div>
+<div id="jumbotron4" class="jumbotron text-center">
+      <h2>About Us</h2>
+      <p>Kelsey (an avid Cardinals fan) was drafting her fantasy team but didn't want any players with a history of violence against women. Googling each possible pick in her draft window was too slow and tiresome. So, we made this database to help her and other fantasy league managers #draftwithrespect.</p>  
+</div>
+
+
+<script>
+$.get("names.json", function(data){
+  $("#playerInputBox").typeahead({ source:data });
+},'json');
+</script>
+
+<script>
+function findPlayerData(playerName, data_incidents, data_roster) {
+	
+	// find player name in incident data	
+	var index_incident = []; // for counting number of incidents
+	
+	var assaultRelated_incident = [];
+	var status_incident = [];
+	var details_incident = [];
+	var link_incident = [];
+	
+	for (i in data_incidents.incidents) {
+
+		if (data_incidents.incidents[i].Name == playerName) {
+			index_incident.push(i);
+			
+			assaultRelated_incident.push(data_incidents.incidents[i].AssaultRelated);
+			status_incident.push(data_incidents.incidents[i].Status);
+			details_incident.push(data_incidents.incidents[i].Details);
+			link_incident.push(data_incidents.incidents[i].Link);	       
+		}
+    }
+
+	// find player name in player team data    
+    var names_roster = []; 			
+	for (i in data_roster.name_pos_team) {
+	    names_roster.push(data_roster.name_pos_team[i].Name)
+    }
+    var index_roster = names_roster.indexOf(playerName);
+    
+    // output data
+    if (index_incident.length == 0 && index_roster == -1) {
+    	return "not in both"; }
+    else if (index_incident.length == 0 && index_roster != -1) {
+    	return ["not in incidents", data_roster.name_pos_team[index_roster].Position, data_roster.name_pos_team[index_roster].Team];
+    } else if (index_incident.length > 0 && index_roster == -1) {
+    	return ["not in roster", data_incidents.incidents[index_incident].Position, status_incident, details_incident, link_incident];
+    } else {
+		return ["found in both databases", data_roster.name_pos_team[index_roster].Position, data_roster.name_pos_team[index_roster].Team, status_incident, details_incident, link_incident];
+	}
+}
+</script>
+
+
+<script>
+function displayPositionTeam(position, team) {
+	// position and team	
+	$("#results_div").append("<p id='positionteam' class='results'>Position: " + position + "<br>Team: " + team + "</p>")
+}
+</script>
+
+<script>
+function displayResults(status, details, link, j) {
+
+	console.log(status)	
+	console.log(details)
+	console.log(link)
+		
+	// unique element ids if numIncidents > 1
+	if (j == 0) {
+		var status_id = 'status';
+		var details_id = 'details';
+		var link_id = 'link';
+		var status_id_ht = '#status';
+		var link_id_ht = '#link'
+	} else {
+		var status_id = 'status' + j;
+		var details_id = 'details' + j;
+		var link_id = 'link' + j;
+		var status_id_ht = '#status' + j;
+		var link_id_ht = '#link' + j;
+	}
+		
+	// status
+	$("#results_div").append("<h3 class='results'><span id='" + status_id + "' class='results'>" + status + "</span></h3>")
+
+	// if no records found
+	if (status == "No records found") {
+		// color-code green
+		$(status_id_ht).addClass("label label-success");
+		
+		// add links
+		$("#results_div").append("<p id='" + link_id + "' class='results'>We thoroughly searched and couldn't find any relevant records online.</p>");
+		
+	} else if (status == "No assault-related records found" || status == "Not in database") {
+		// color-code gray
+		$(status_id_ht).addClass("label label-default");
+		
+		// add details
+		$("#results_div").append("<p id='" + details_id + "' class='results'>" + details + "</p>");
+	
+	} else {
+
+		// color-code status			
+		if (status == "Arrested, not charged" || status == "Accused, not charged" || status.indexOf("settled") != -1) {
+			$(status_id_ht).addClass("label label-warning"); 
+		} else if (status == "Pleaded guilty" || status == "Publicly admitted" || status == 'Found guilty' || status.indexOf("Plea deal") != -1) {
+			$(status_id_ht).addClass("label label-danger"); 
+		} else if (status.indexOf("Wrongfully accused") != -1 || status.indexOf("not guilty") != -1) {
+			$(status_id_ht).addClass("label label-success"); 
+		}	
+		
+		// add details
+		$("#results_div").append("<p id='" + details_id + "' class='results'>" + details + "</p>");
+		
+		// add sources
+		$("#results_div").append("<p id='" + link_id + "' class='results'>Source(s): </p>");
+		// add links
+		if (link.includes("npr")) {
+			$(link_id_ht).append("<a href='" + link + "'>NPR</a>");
+		} else if (link.includes("espn")) {
+			$(link_id_ht).append("<a href='" + link + "'>ESPN</a>");
+		} else if (link.includes("sbnation")) {
+			$(link_id_ht).append("<a href='" + link + "'>SBNation</a>");
+		} else if (link.includes("usatoday")) {
+			$(link_id_ht).append("<a href='" + link + "'>USA Today</a>");
+		} else if (link.includes("washingtonpost")) {
+			$(link_id_ht).append("<a href='" + link + "'>Washington Post</a>");
+		} else if (link.includes("cbssports")) {
+			$(link_id_ht).append("<a href='" + link + "'>CBS Sports</a>");
+		} else if (link.includes("seattletimes")) {
+			$(link_id_ht).append("<a href='" + link + "'>Seattle Times</a>");
+		} else if (link.includes("huffingtonpost")) {
+			$(link_id_ht).append("<a href='" + link + "'>Huffington Post</a>");
+		} else {
+			$(link_id_ht).append("<a href='" + link + "'>" + link + "</a>");
+		}	
+	}
+}
+</script>
+
+<script>
+$(document).ready(function(){
+
+    $("#playerInput").submit(function(event){
+		
+		// remove any existing results
+		$(".results").remove() 
+
+		// load incident and player team data
+		var incidents_json = (function() {
+			var incidents_json = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "incidents.json",
+				'dataType': "json",
+				'success': function (data) {
+					incidents_json = data;
+				}
+			});
+			return incidents_json;
+	    })();
+	    
+	    var roster_json = (function() {
+			var roster_json = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "roster.json",
+				'dataType': "json",
+				'success': function (data) {
+					roster_json = data;
+				}
+			});
+			return roster_json;
+	    })();
+
+		// process query based on player name
+        var playerName = $("#playerInputBox").val();
+        playerName = playerName.trim();
+        $("#results_div").append("<h2 id='name' class='results'>" + playerName + "</p>")
+        $("#results_div").css("padding", "48px 0px 40px 0px")
+        
+		var result = findPlayerData(playerName, incidents_json, roster_json);
+
+		// display data
+		if (result[0] == "not in both") {
+
+			var position = 'not in database';
+			var team = 'not active';
+			var status = "Not in database";
+			var details = "We haven't had time to research this player yet -- stay tuned for updates.";
+			var link = "";
+			
+			displayPositionTeam(position, team)
+			displayResults(status, details, link)
+
+		} else if (result[0] == "not in incidents") { 
+
+			var position = result[1];
+			var team = result[2];
+			var status = "Not in database";
+			var details = "We haven't had time to research this player yet -- stay tuned for updates.";
+			var link = "";
+			
+			displayPositionTeam(position, team)
+			displayResults(status, details, link)
+
+		} else if (result[0] == "not in roster") { 
+
+			var position = result[1];
+			var team = "not active";
+			var status = result[2];
+			var details = result[3];
+			var link = result[4];
+			
+			displayPositionTeam(position, team)
+			displayResults(status, details, link)
+
+		} else {
+			
+			var status = result[3];
+			var numIncidents = status.length;
+			console.log(numIncidents);
+
+			var position = result[1];
+			var team = result[2];
+			displayPositionTeam(position, team)
+
+			for (j=0; j < numIncidents; j++) {
+				status = result[3][j];
+				details = result[4][j];
+				link = result[5][j];
+
+				displayResults(status, details, link, j)
+			}		
+        }
+        event.preventDefault();
+    });
+});
+</script>
 
 </body>
 </html>
