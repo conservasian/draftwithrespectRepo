@@ -44,7 +44,6 @@ nfl_links = ["http://www.nfl.com/players/search?category=position&filter=quarter
 			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=4&filter=defensivelineman&conferenceAbbr=null",
 			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=5&filter=defensivelineman&conferenceAbbr=null",
 			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=6&filter=defensivelineman&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=7&filter=defensivelineman&conferenceAbbr=null",
 			
 			"http://www.nfl.com/players/search?category=position&filter=linebacker&conferenceAbbr=null&playerType=current&conference=ALL",
 			"http://www.nfl.com/players/search?category=position&playerType=current&d-447263-p=2&conference=ALL&filter=linebacker&conferenceAbbr=null",

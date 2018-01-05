@@ -1,4 +1,4 @@
-Player Name,Search Date,Position,Team,Assault-related?,Details,Status,NFL response,Team response,Incident Date,Source Date,Link
+Player Name,Search Date,Position,Team (as of May 2017),Assault-related?,Details,Status,NFL response,Team response,Incident Date,Source Date,Link
 Josh Brown,5/20/2017,K,New York Giants (formerly),1,"domestic assault; 'physically, verbally and emotionally abused his wife'",Publicly admitted,1 game suspension + investigation,cut from team 10/25/16,May 2015,2/2/17,http://www.espn.com/nfl/story/_/id/18604215/former-new-york-giants-kicker-josh-brown-admits-domestic-violence-denies-hitting-wife
 Daryl Washington,5/20/2017,LB,Arizona Cardinals,1,assaulting the mother of his child',Pleaded guilty,??,??,May 2013,4/23/2014,https://www.usatoday.com/story/sports/nfl/cardinals/2014/04/23/daryl-washington-arizona-probation-assualt/8057881/
 Aaron Rodgers,6/3/2017,QB,Green Bay Packers,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
@@ -7,7 +7,7 @@ Drew Brees,6/3/2017,QB,New Orleans Saints,0,N/A,No records found,N/A,N/A,N/A,N/A
 Andrew Luck,5/19/2017,QB,Indianapolis Colts,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
 Russell Wilson,6/3/2017,QB,Seattle Seahawks,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
 Matt Ryan,6/3/2017,QB,Atlanta Falcons,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
-Cam Newton,6/3/2017,QB,Carolina Panthers,2,"arrested for stealing laptop, charges dropped",No assault-related records found,N/A,N/A,October 2008,11/15/2015,http://www.al.com/sports/index.ssf/2015/11/cam_newton_refers_to_stolen_la.html
+Cam Newton,6/3/2017,QB,Carolina Panthers,0,"arrested for stealing laptop, charges dropped",No assault-related records found,N/A,N/A,October 2008,11/15/2015,http://www.al.com/sports/index.ssf/2015/11/cam_newton_refers_to_stolen_la.html
 Ben Roethlisberger,6/3/2017,QB,Pittsburgh Steelers,1,"accused of rape, July 2008","Accused, settled",no action taken,??,July 2008,12/8/2015,https://broadly.vice.com/en_us/article/ben-roethlisberger-quarterback-twice-accused-of-sexual-assault
 Ben Roethlisberger,6/3/2017,QB,Pittsburgh Steelers,1,"accused of rape, March 2010","Accused, not charged",4 game suspension,??,March 2010,12/8/2015,https://broadly.vice.com/en_us/article/ben-roethlisberger-quarterback-twice-accused-of-sexual-assault
 Derek Carr,6/3/2017,QB,Oakland Raiders,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
@@ -27,7 +27,7 @@ Carson Wentz,6/11/2017,QB,Philadelphia Eagles,0,N/A,No records found,N/A,N/A,N/A
 Alex Smith,6/11/2017,QB,Kansas City Chiefs,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
 Sam Bradford,6/11/2017,QB,Minnesota Vikings,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
 David Johnson,6/14/2017,RB,Arizona Cardinals,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
-Ezekiel Elliott,5/19/2017,RB,Dallas Cowboys,1,accused of assault of ex-girlfriend,"Accused, not charged",asking questions,no response,7/22/16,1/15/17,http://www.espn.com/nfl/story/_/id/18479727/ezekiel-elliott-dallas-cowboys-responding-additional-questions-nfl-surrounding-assault-accusations
+Ezekiel Elliott,5/19/2017,RB,Dallas Cowboys,1,accused of assaulting ex-girlfriend five times,"Accused, not charged",6 game suspension completed,no response,July 2016,11/19/17,https://www.sbnation.com/2017/11/19/16666714/ezekiel-elliott-nfl-suspension-cowboys-ex
 Le'Veon Bell,6/14/2017,RB,Pittsburgh Steelers,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
 LeSean McCoy,6/14/2017,RB,Buffalo Bills,1,accused of assault of two off-duty police officers,"Accused, not charged",??,??,2/8/2016,4/4/2016,http://www.sbnation.com/nfl/2016/4/4/10955346/lesean-mccoy-arrest-warrant-philadelphia-nfl-bills-assault
 LeSean McCoy,6/14/2017,RB,Philadelphia Eagles,1,accused of assault and battery,"Accused, not charged",??,??,12/18/2012,5/14/2013,http://www.huffingtonpost.com/2013/05/14/lesean-mccoy-sued-assault_n_3274652.html
@@ -37,14 +37,15 @@ DeMarco Murray,6/25/2017,RB,Tennessee Titans,0,N/A,No records found,N/A,N/A,N/A,
 Jordan Howard,6/25/2017,RB,Chicago Bears,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
 Jay Ajayi,6/25/2017,RB,Miami Dolphins,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
 Lamar Miller,6/25/2017,RB,Houston Texans,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
-Todd Gurley,6/25/2017,RB,Los Angeles Rams,1,wrongfully accused of assaulting a man in a bar,"Wrongfully accused, not charged",N/A,N/A,9/28/2014,9/29/2014,https://www.usatoday.com/story/sports/ncaaf/2014/09/29/georgia-star-rb-todd-gurley-wrongfully-accused-of-assault/16454335/
+Todd Gurley,6/25/2017,RB,Los Angeles Rams,0,wrongfully accused of assaulting a man in a bar,"Wrongfully accused, not charged",N/A,N/A,9/28/2014,9/29/2014,https://www.usatoday.com/story/sports/ncaaf/2014/09/29/georgia-star-rb-todd-gurley-wrongfully-accused-of-assault/16454335/
 Isaiah Crowell,6/25/2017,RB,Cleveland Browns,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
 Leonard Fournette,6/25/2017,RB,Jacksonville Jaguars,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
-Carlos Hyde,6/25/2017,RB,San Francisco 49ers,1,wrongfully accused of assaulting a women in a nightclub,"Wrongfully accused, not charged",N/A,three game suspension,7/20/2013,7/30/2013,http://www.cbssports.com/college-football/news/ohio-state-rb-carlos-hyde-will-not-be-charged-for-alleged-assault/
+Carlos Hyde,6/25/2017,RB,San Francisco 49ers,0,wrongfully accused of assaulting a women in a nightclub,"Wrongfully accused, not charged",N/A,three game suspension,7/20/2013,7/30/2013,http://www.cbssports.com/college-football/news/ohio-state-rb-carlos-hyde-will-not-be-charged-for-alleged-assault/
 Mark Ingram,6/25/2017,RB,New Orleans Saints,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
 Eddie Lacy,6/25/2017,RB,Seattle Seahawks,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
 Spencer Ware,6/25/2017,RB,Kansas City Chiefs,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
-Marshawn Lynch,6/25/2017,RB,Oakland Raiders,1,wrongfully accused of assaulting a woman,"Wrongfully accused, not charged",none,none,8/10/2014,10/10/2014,http://www.seattletimes.com/seattle-news/woman-who-accused-marshawn-lynch-of-assault-charged-with-making-false-statement/
+Marshawn Lynch,6/25/2017,RB,Oakland Raiders,0,wrongfully accused of assaulting a woman,"Wrongfully accused, not charged",none,none,8/10/2014,10/10/2014,http://www.seattletimes.com/seattle-news/woman-who-accused-marshawn-lynch-of-assault-charged-with-making-false-statement/
+Marshawn Lynch,1/3/2018,RB,Oakland Raiders,1,accused of sexual assault,"Accused, restraining order, no further charges",N/A,N/A,12/13/2006,1/29/2007,http://www.washingtonpost.com/wp-dyn/content/article/2007/01/29/AR2007012901342.html
 C.J. Anderson,6/25/2017,RB,Denver Broncos,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
 Tevin Coleman,6/25/2017,RB,Atlanta Falcons,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
 Frank Gore,6/25/2017,RB,Indianapolis Colts,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
@@ -57,3 +58,54 @@ Derrick Henry,6/25/2017,RB,Tennessee Titans,0,N/A,No records found,N/A,N/A,N/A,N
 Doug Martin,6/25/2017,RB,Tampa Bay Buccaneers,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
 Joe Mixon,6/25/2017,RB,Cincinnati Bengals,1,assault - punched a woman in the face,"Plea deal, 100 hrs community service",not invited to NFL Scouting Combine,suspended for one year,7/25/14,2/27/17,https://www.washingtonpost.com/news/sports/wp/2017/02/27/joe-mixon-on-assault-thats-not-me-nfl-teams-will-have-to-decide/?utm_term=.7a0a45ec02c0
 Paul Perkins,6/25/2017,RB,New York Giants,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Adrian Peterson,8/28/2017,RB,New Orleans Saints,1,lashing his 4-year-old son with a tree branch,Plea deal,6 game ban; suspension for remainder of 2014 season,N/A,May 2014,11/18/14,https://www.si.com/2014/11/18/adrian-peterson-suspension-appeal-roger-goodell
+Jonathan Stewart,8/28/2017,RB,Carolina Panthers,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Bilal Powell,12/28/2017,RB,New York Jets,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Rob Kelley,12/28/2017,RB,Washington Redskins,0,simple assault and battery,Charges dropped,none,??,7/30/2014,11/10/2016,http://www.espn.com/blog/nfceast/post/_/id/74577/undrafted-redskins-rb-rob-kelley-says-being-in-nfl-still-feels-unreal
+Latavius Murray,12/28/2017,RB,Minnesota Vikings,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Giovani Bernard,12/28/2017,RB,Cincinnati Bengals,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Mike Gillislee,12/28/2017,RB,New England Patriots,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Kenneth Dixon,12/28/2017,RB,Baltimore Ravens,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Duke Johnson,12/28/2017,RB,Cleveland Browns,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Danny Woodhead,12/28/2017,RB,Baltimore Ravens,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Antonio Brown,1/2/2018,WR,Pittsburgh Steelers,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Julio Jones,1/2/2018,WR,Atlanta Falcons,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Odell Beckham,1/2/2018,WR,New York Giants,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Mike Evans,1/2/2018,WR,Tampa Bay Buccaneers,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+A.J. Green,1/2/2018,WR,Cincinnati Bengals,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Jordy Nelson,1/2/2018,WR,Green Bay Packers,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Dez Bryant,1/2/2018,WR,Dallas Cowboys,1,assaulting his mom,"Arrested, charges dropped after good behavior",N/A,N/A,7/16/2012,7/18/2012,http://www.espn.com/dallas/nfl/story/_/id/8173444/dez-bryant-dallas-cowboys-allegedly-assaulted-mom-police-say
+T.Y. Hilton,1/3/2018,WR,Indianapolis Colts,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Michael Thomas,1/3/2018,WR,New Orleans Saints,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Amari Cooper,1/3/2018,WR,Oakland Raiders,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+DeAndre Hopkins,1/3/2018,WR,Houston Texans,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Brandin Cooks,1/3/2018,WR,New England Patriots,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Doug Baldwin,1/3/2018,WR,Seattle Seahawks,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Demaryius Thomas,1/3/2018,WR,Denver Broncos,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Alshon Jeffrey,1/3/2018,WR,Philadelphia Eagles,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Allen Robinson,1/3/2018,WR,Jacksonville Jaguars,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Keenan Allen,1/3/2018,WR,Los Angeles Chargers,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Jarvis Landry,1/3/2018,WR,Miami Dolphins,0,did not intent to touch or strike ex-girlfriend but accidentally did so,Not charged,insufficient evidence,N/A,4/1/2017,10/24/2017,http://www.espn.com/nfl/story/_/id/21139712/nfl-punish-jarvis-landry-miami-dolphins-incident
+Larry Fitzgerald,1/3/2018,WR,Arizona Cardinals,1,assaulting the mother of his son,Ordered to stay away,N/A,N/A,??,12/31/2008,http://www.tmz.com/2008/12/31/nfl-superstar-accused-of-baby-mama-beatdown/
+Sammy Watkins,1/3/2018,WR,Buffalo Bills,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Michael Crabtree,1/3/2018,WR,Oakland Raiders,1,sexually assaulting a woman,"Accused, not charged",N/A,N/A,1/12/2013,1/25/2013,https://www.sbnation.com/nfl/2013/1/19/3893166/michael-crabtree-sexual-assault-49ers
+Golden Tate,1/3/2018,WR,Detroit Lions,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Davante Adams,1/3/2018,WR,Green Bay Packers,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+DeSean Jackson,1/3/2018,WR,Tampa Bay Buccaneers,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Julian Edelman,1/3/2018,WR,New England Patriots,1,sexually assaulting a woman,"Accused, charges dropped",N/A,N/A,11/1/2011,12/15/2011,http://boston.cbslocal.com/2011/12/15/sex-assault-charges-against-julian-edelman-dropped/
+Kelvin Benjamin,1/3/2018,WR,Carolina Panthers,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Brandon Marshall,1/3/2018,WR,New York Giants,1,"assault on a law enforcement officer, refusal to obey, disorderly conduct and resisting an officer",Arrested,N/A,N/A,2004,8/8/2011,http://bleacherreport.com/articles/795744-the-top-troublemakers-in-the-nfl
+Brandon Marshall,1/3/2018,WR,New York Giants,1,domestic violence of girlfriend,Arrested,suspension reduced to one game,N/A,3/26/2007,8/8/2011,http://bleacherreport.com/articles/795744-the-top-troublemakers-in-the-nfl
+Brandon Marshall,1/3/2018,WR,New York Giants,1,disorderly conduct fight with his fiancee,"Arrested, charges dismissed",N/A,N/A,3/1/2009,8/8/2011,http://bleacherreport.com/articles/795744-the-top-troublemakers-in-the-nfl
+Brandon Marshall,1/3/2018,WR,New York Giants,1,punched ex-girlfriend and took purse,Accused,N/A,N/A,3/18/2007,9/18/2014,https://www.si.com/nfl/2014/09/18/brandon-marshall-chicago-bears-domestic-violence-charges
+Brandon Marshall,1/3/2018,WR,New York Giants,1,"punched, pushed, slapped, and threw object at ex-girlfriend","Accused, no charges",N/A,N/A,6/17/2006,9/18/2014,https://www.si.com/nfl/2014/09/18/brandon-marshall-chicago-bears-domestic-violence-charges
+Brandon Marshall,1/3/2018,WR,New York Giants,1,punched and choked ex-girlfriend,Accused,N/A,N/A,6/2017,9/18/2014,https://www.si.com/nfl/2014/09/18/brandon-marshall-chicago-bears-domestic-violence-charges
+Brandon Marshall,1/3/2018,WR,New York Giants,1,domestic violence of wife,"Accused, not charged",N/A,N/A,4/22/2011,9/18/2014,https://www.si.com/nfl/2014/09/18/brandon-marshall-chicago-bears-domestic-violence-charges
+Emmanuel Sanders,1/3/2018,WR,Denver Broncos,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Terrelle Pryor,1/3/2018,WR,Washington Redskins,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Stefon Diggs,1/3/2018,WR,Minnesota Vikings,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Eric Decker,1/3/2018,WR,New York Jets,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Willie Snead,1/3/2018,WR,New Orleans Saints,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Tyreek Hill,1/3/2018,WR,Kansas City Chiefs,1,domestic assault and battery by strangulation,Pleaded guilty,N/A,N/A,2014,1/20/2017,https://www.si.com/nfl/2017/01/10/tyreek-hill-kansas-city-chiefs-domestic-violence
+Donte Moncrief,1/3/2018,WR,Indianapolis Colts,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Randall Cobb,1/3/2018,WR,Green Bay Packers,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
