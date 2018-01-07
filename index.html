@@ -164,7 +164,7 @@ function displayResults(status, details, link, j) {
 	} else {
 
 		// color-code status			
-		if (status == "Arrested, not charged" || status == "Accused, not charged" || status.indexOf("settled") != -1 || status == "Arrested" || status == "Pleaded guilty" || status == "Publicly admitted" || status == 'Found guilty' || status.indexOf("Plea deal") != -1) {
+		if (status == "Arrested, not charged" || status == "Accused, not charged" || status.indexOf("settled") != -1 || status.indexOf("Arrested") != -1 || status == "Pleaded guilty" || status == "Publicly admitted" || status == 'Found guilty' || status.indexOf("Plea deal") != -1) {
 			$(status_id_ht).addClass("label label-danger"); 
 		} else if (status.indexOf("Wrongfully accused") != -1 || status.indexOf("not guilty") != -1) {
 			$(status_id_ht).addClass("label label-success"); 
