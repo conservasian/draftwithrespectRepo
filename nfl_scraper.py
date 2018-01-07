@@ -1,4 +1,4 @@
-# nfl_scraper.py
+# nfl_scraper2.py
 
 import requests
 
@@ -9,62 +9,46 @@ name = []
 status = []
 team = []
 
+pos_initial_links = ["http://www.nfl.com/players/search?category=position&filter=quarterback&conferenceAbbr=null&playerType=current&conference=ALL",
+					"http://www.nfl.com/players/search?category=position&filter=runningback&conferenceAbbr=null&playerType=current&conference=ALL",
+					"http://www.nfl.com/players/search?category=position&filter=widereceiver&conferenceAbbr=null&playerType=current&conference=ALL",
+					"http://www.nfl.com/players/search?category=position&filter=tightend&conferenceAbbr=null&playerType=current&conference=ALL",
+					"http://www.nfl.com/players/search?category=position&filter=offensiveline&conferenceAbbr=null&playerType=current&conference=ALL",
+					"http://www.nfl.com/players/search?category=position&filter=defensivelineman&conferenceAbbr=null&playerType=current&conference=ALL",
+					"http://www.nfl.com/players/search?category=position&filter=linebacker&conferenceAbbr=null&playerType=current&conference=ALL",
+					"http://www.nfl.com/players/search?category=position&filter=defensiveback&conferenceAbbr=null&playerType=current&conference=ALL",
+					"http://www.nfl.com/players/search?category=position&filter=kicker&conferenceAbbr=null&playerType=current&conference=ALL",
+					"http://www.nfl.com/players/search?category=position&filter=punter&conferenceAbbr=null&playerType=current&conference=ALL"]
 
-nfl_links = ["http://www.nfl.com/players/search?category=position&filter=quarterback&conferenceAbbr=null&playerType=current&conference=ALL",
-			"http://www.nfl.com/players/search?category=position&playerType=current&d-447263-p=2&conference=ALL&filter=quarterback&conferenceAbbr=null",
+pos_abbreviation = ["QB", "RB", "WR", "TE", "OL", "DL", "LB", "DB", "K", "P"]
+
+
+##### functions #####
+
+def getNumberPosLinks(initial_link):
+	
+	page = requests.get(initial_link)
+	soup = BeautifulSoup(page.content, 'html.parser')
+	
+	# look above table where it looks like "1 | 2 | next"
+	nav_span = soup.find_all('span', class_='linkNavigation')
+	
+	if len(nav_span) == 0:
+		return 1
+		
+	else:
+	
+		# pull first hit (there is a navigation at top and bottom of table)
+		nav_span_top = nav_span[0]
+	
+		# count number of links (in example, "2" and "next" will be links)
+		num_links = len(nav_span_top.find_all('a'))
+	
+		num_pages_total = num_links
+	
+		return num_pages_total
 			
-			"http://www.nfl.com/players/search?category=position&filter=runningback&conferenceAbbr=null&playerType=current&conference=ALL",
-			"http://www.nfl.com/players/search?category=position&playerType=current&d-447263-p=2&conference=ALL&filter=runningback&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=3&filter=runningback&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=4&filter=runningback&conferenceAbbr=null",
-			
-			"http://www.nfl.com/players/search?category=position&filter=widereceiver&conferenceAbbr=null&playerType=current&conference=ALL",
-			"http://www.nfl.com/players/search?category=position&playerType=current&d-447263-p=2&conference=ALL&filter=widereceiver&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=3&filter=widereceiver&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=4&filter=widereceiver&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=5&filter=widereceiver&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=6&filter=widereceiver&conferenceAbbr=null",
-			
-			"http://www.nfl.com/players/search?category=position&filter=tightend&conferenceAbbr=null&playerType=current&conference=ALL",
-			"http://www.nfl.com/players/search?category=position&playerType=current&d-447263-p=2&conference=ALL&filter=tightend&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=3&filter=tightend&conferenceAbbr=null",
-			
-			"http://www.nfl.com/players/search?category=position&filter=offensiveline&conferenceAbbr=null&playerType=current&conference=ALL",
-			"http://www.nfl.com/players/search?category=position&playerType=current&d-447263-p=2&conference=ALL&filter=offensiveline&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=3&filter=offensiveline&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=4&filter=offensiveline&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=5&filter=offensiveline&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=6&filter=offensiveline&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=7&filter=offensiveline&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=8&filter=offensiveline&conferenceAbbr=null",
-			
-			"http://www.nfl.com/players/search?category=position&filter=defensivelineman&conferenceAbbr=null&playerType=current&conference=ALL",
-			"http://www.nfl.com/players/search?category=position&playerType=current&d-447263-p=2&conference=ALL&filter=defensivelineman&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=3&filter=defensivelineman&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=4&filter=defensivelineman&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=5&filter=defensivelineman&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=6&filter=defensivelineman&conferenceAbbr=null",
-			
-			"http://www.nfl.com/players/search?category=position&filter=linebacker&conferenceAbbr=null&playerType=current&conference=ALL",
-			"http://www.nfl.com/players/search?category=position&playerType=current&d-447263-p=2&conference=ALL&filter=linebacker&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=3&filter=linebacker&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=4&filter=linebacker&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=5&filter=linebacker&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=6&filter=linebacker&conferenceAbbr=null",
-			
-			"http://www.nfl.com/players/search?category=position&filter=defensiveback&conferenceAbbr=null&playerType=current&conference=ALL",
-			"http://www.nfl.com/players/search?category=position&playerType=current&d-447263-p=2&conference=ALL&filter=defensiveback&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=3&filter=defensiveback&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=4&filter=defensiveback&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=5&filter=defensiveback&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=6&filter=defensiveback&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=7&filter=defensiveback&conferenceAbbr=null",
-			"http://www.nfl.com/players/search?category=position&playerType=current&conference=ALL&d-447263-p=8&filter=defensiveback&conferenceAbbr=null",
-			
-			"http://www.nfl.com/players/search?category=position&filter=kicker&conferenceAbbr=null&playerType=current&conference=ALL",
-			
-			"http://www.nfl.com/players/search?category=position&filter=punter&conferenceAbbr=null&playerType=current&conference=ALL"]
-			
+
 
 def getPlayerData(link):
 	
@@ -101,9 +85,33 @@ def getPlayerData(link):
 	return pos, name, status, team
 
 
+
+###### script ######
+
+# determine number of links for each position
+nfl_links_all = []
+for h in range(len(pos_initial_links)):
+	
+	print pos_abbreviation[h]
+	
+	this_initial_link = pos_initial_links[h]
+	
+	# append initial link to list of all links
+	nfl_links_all.append(this_initial_link)
+	
+	# determine number of links for each position	
+	num_pages_total = getNumberPosLinks(this_initial_link)
+
+	# append additional links if more than 1 page
+	if (num_pages_total > 1):
+		for g in range(2, num_pages_total+1):
+			nfl_links_all.append(this_initial_link + "&d-447263-p=" + str(g))
+
+print "Total pages to scrape: " + str(len(nfl_links_all))
+
 # extract data from every NFL player roster link
-for j in range(len(nfl_links)):
-	pos, name, status, team = getPlayerData(nfl_links[j])
+for j in range(len(nfl_links_all)):
+	pos, name, status, team = getPlayerData(nfl_links_all[j])
 	print j
 
 # for bad apples who are not currently playing, index.html can find position, defaults team to "not active"
