@@ -1,8 +1,11 @@
 # nfl_scraper2.py
+# Patrick Ye
 
+# import libraries
 import requests
-
 from bs4 import BeautifulSoup
+
+# initialize variables
 
 pos = []
 name = []
@@ -92,7 +95,7 @@ def getPlayerData(link):
 nfl_links_all = []
 for h in range(len(pos_initial_links)):
 	
-	print pos_abbreviation[h]
+	print "looking up number of " + pos_abbreviation[h] + " pages"
 	
 	this_initial_link = pos_initial_links[h]
 	
@@ -133,6 +136,17 @@ for k in range(len(name)):
 
 with open('playerTeams.json', 'w') as f:
      json.dump(data, f)
-     
+
+# add team defenses under "name" variable
+team_defenses = ["ARI defense (Cardinals)", "ATL defense (Falcons)", "BAL defense (Ravens)", "BUF defense (Bills)", "CAR defense (Panthers)", 
+			  "CHI defense (Bears)", "CIN defense (Bengals)", "CLE defense (Browns)", "DAL defense (Cowboys)", "DEN defense (Broncos)", 
+			  "DET defense (Lions)", "GB defense (Packers)", "HOU defense (Texans)", "IND defense (Colts)", "JAX defense (Jaguars)", 
+			  "KC defense (Chiefs)", "LAC defense (Chargers)", "LAR defense (Rams)", "MIA defense (Dolphins)", "MIN defense (Vikings)", 
+			  "NE defense (Patriots)", "NOR defense (Saints)", "NYG defense (Giants)", "NYJ defense (Jets)", "OAK defense (Raiders)", 
+			  "PHI defense (Eagles)", "PIT defense (Steelers)", "SF defense (49ers)", "SEA defense (Seahawks)", "TB defense (Buccaneers)", 
+			  "TEN defense (Titans)", "WAS defense (Redskins)"]
+			  
+name_list = name + team_defenses
+
 with open('names.json', 'w') as f:
-     json.dump(name, f)
+     json.dump(name_list, f)
