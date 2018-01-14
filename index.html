@@ -239,65 +239,78 @@ $(document).ready(function(){
 	    })();
 
 		// process query based on player name
-        var playerName = $("#playerInputBox").val();
-        playerName = playerName.trim();
-        $("#results_div").append("<h2 id='name' class='results'>" + playerName + "</p>")
+        var query = $("#playerInputBox").val();
+        query = query.trim();
+        $("#results_div").append("<h2 id='name' class='results'>" + query + "</p>")
         $("#results_div").css("padding", "48px 0px 40px 0px")
         
-		var result = findPlayerData(playerName, incidents_json, roster_json);
+        // if the query is a team defense
+        if (query.indexOf("defense") != -1) {
 
-		// display data
-		if (result[0] == "not in both") {
-
-			var position = 'not in database';
-			var team = 'not active';
 			var status = "Not in database";
 			var details = "We haven't had time to research this player yet -- stay tuned for updates.";
 			var link = "";
+        	
+			displayResults(status, details, link)        	
+        	
+        } else { // if the query is a player name
+        	var playerName = query;
+        	var result = findPlayerData(playerName, incidents_json, roster_json);
+        	
+        	// display data
+			if (result[0] == "not in both") {
+
+				var position = 'not in database';
+				var team = 'not active';
+				var status = "Not in database";
+				var details = "We haven't had time to research this player yet -- stay tuned for updates.";
+				var link = "";
 			
-			displayPositionTeam(position, team)
-			displayResults(status, details, link)
+				displayPositionTeam(position, team)
+				displayResults(status, details, link)
 
-		} else if (result[0] == "not in incidents") { 
+			} else if (result[0] == "not in incidents") { 
 
-			var position = result[1];
-			var team = result[2];
-			var status = "Not in database";
-			var details = "We haven't had time to research this player yet -- stay tuned for updates.";
-			var link = "";
+				var position = result[1];
+				var team = result[2];
+				var status = "Not in database";
+				var details = "We haven't had time to research this player yet -- stay tuned for updates.";
+				var link = "";
 			
-			displayPositionTeam(position, team)
-			displayResults(status, details, link)
+				displayPositionTeam(position, team)
+				displayResults(status, details, link)
 
-		} else if (result[0] == "not in roster") { 
+			} else if (result[0] == "not in roster") { 
 
-			var position = result[1];
-			var team = "not active";
-			var status = result[2];
-			var details = result[3];
-			var link = result[4];
+				var position = result[1];
+				var team = "not active";
+				var status = result[2];
+				var details = result[3];
+				var link = result[4];
 			
-			displayPositionTeam(position, team)
-			displayResults(status, details, link)
+				displayPositionTeam(position, team)
+				displayResults(status, details, link)
 
-		} else {
+			} else {
 			
-			var status = result[3];
-			var numIncidents = status.length;
-			console.log(numIncidents);
+				var status = result[3];
+				var numIncidents = status.length;
+				console.log(numIncidents);
 
-			var position = result[1];
-			var team = result[2];
-			displayPositionTeam(position, team)
+				var position = result[1];
+				var team = result[2];
+				displayPositionTeam(position, team)
 
-			for (j=0; j < numIncidents; j++) {
-				status = result[3][j];
-				details = result[4][j];
-				link = result[5][j];
+				for (j=0; j < numIncidents; j++) {
+					status = result[3][j];
+					details = result[4][j];
+					link = result[5][j];
 
-				displayResults(status, details, link, j)
-			}		
-        }
+					displayResults(status, details, link, j)
+				}		
+			}
+		}
+		
         event.preventDefault();
     });
 });
