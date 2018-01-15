@@ -89,9 +89,15 @@ function findDefenseData(teamAbbrev, data_defense) {
 		if (t == teamAbbrev) {
 			console.log('team defense found')
 			
-			console.log(data_defense.team_defenses[t].Name)
+			console.log(data_defense.team_defenses[t][0].Name)
+
+			var numDefensivePlayerRecords = data_defense.team_defenses[t].length;
 			
-			$("#results_div").append("<p id='defense_summary' class='results'>" + data_defense.team_defenses[t].length + "</p>");
+			if (numDefensivePlayerRecords == 1) {
+				$("#results_div").append("<p id='defense_summary' class='results'>We have found " + numDefensivePlayerRecords + " defensive player with significant records.</p>");
+			} else {
+				$("#results_div").append("<p id='defense_summary' class='results'>We have found " + numDefensivePlayerRecords + " defensive players with significant records.</p>");
+			}
 			
 		}
 	}
