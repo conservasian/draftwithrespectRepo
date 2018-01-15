@@ -86,6 +86,8 @@ $.get("names.json", function(data){
 function findDefenseData(teamAbbrev, data_defense) {
 	
 	for (t in data_defense.team_defenses) {
+		console.log(t)
+		console.log(data_defense.team_defenses[t])
 		if (data_defense.team_defenses[t] == teamAbbrev) {
 			console.log('team defense found')
 		}
