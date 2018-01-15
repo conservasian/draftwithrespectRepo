@@ -89,9 +89,9 @@ function findDefenseData(teamAbbrev, data_defense) {
 		if (t == teamAbbrev) {
 			console.log('team defense found')
 			
-			console.log(data_defense.team_defenses[t])
+			console.log(data_defense.team_defenses[t].Name)
 			
-			$("#results_div").append("<p id='defense_summary' class='results'>" + len(data_defense.team_defenses[t]) + "</p>");
+			$("#results_div").append("<p id='defense_summary' class='results'>" + data_defense.team_defenses[t].length + "</p>");
 			
 		}
 	}
