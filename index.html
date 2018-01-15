@@ -112,7 +112,7 @@ function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 					var details = data_defense.team_defenses[t][0].Details
 					var link = data_defense.team_defenses[t][0].Link
 					
-					$("#results_div").append("<p id='positionteam' class='results'>Name: " + name + "<br>Position: " + position + "</p>")
+					$("#results_div").append("<p id='positionteam' class='results'><b>" + name + "(" + position + ")</b></p>")
 					displayResults(status, details, link)        	
 				}
 			}
