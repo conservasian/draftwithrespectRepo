@@ -87,8 +87,8 @@ function findDefenseData(teamAbbrev, data_defense) {
 	
 	for (t in data_defense.team_defenses) {
 		console.log(t)
-		console.log(data_defense.team_defenses[t])
-		if (data_defense.team_defenses[t] == teamAbbrev) {
+		
+		if (t == teamAbbrev) {
 			console.log('team defense found')
 		}
 	}
@@ -107,7 +107,6 @@ function findPlayerData(playerName, data_incidents, data_roster) {
 	var link_incident = [];
 	
 	for (i in data_incidents.incidents) {
-
 		if (data_incidents.incidents[i].Name == playerName) {
 			index_incident.push(i);
 			
