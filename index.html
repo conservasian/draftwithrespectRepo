@@ -87,18 +87,36 @@ function findDefenseData(teamAbbrev, data_defense) {
 	
 	for (t in data_defense.team_defenses) {
 		if (t == teamAbbrev) {
-			console.log('team defense found')
 			
-			console.log(data_defense.team_defenses[t][0].Name)
-
+			// first display count of hits summary sentence
 			var numDefensivePlayerRecords = data_defense.team_defenses[t].length;
 			
-			if (numDefensivePlayerRecords == 1) {
+			if (numDefensivePlayerRecords == 0) {
+				$("#results_div").append("<p id='defense_summary' class='results'>We have not found any defensive players with significant records.</p>");
+			} else if (numDefensivePlayerRecords == 1) {
 				$("#results_div").append("<p id='defense_summary' class='results'>We have found " + numDefensivePlayerRecords + " defensive player with significant records.</p>");
 			} else {
 				$("#results_div").append("<p id='defense_summary' class='results'>We have found " + numDefensivePlayerRecords + " defensive players with significant records.</p>");
 			}
 			
+			// if there are hits, display data
+			if (numDefensivePlayerRecords > 0) {
+			
+				// display name, position, status, details, link
+				
+				for (y = 0; y < numDefensivePlayerRecords; y++) {
+				
+					var name = data_defense.team_defenses[t][0].Name
+					var position = data_defense.team_defenses[t][0].Position
+					var status = data_defense.team_defenses[t][0].Status
+					var details = data_defense.team_defenses[t][0].Details
+					var link = data_defense.team_defenses[t][0].Link
+					
+					$("#results_div").append("<p id='positionteam' class='results'>Name: " + name + "<br>Position: " + position + "</p>")
+					displayResults(status, details, link)        	
+				}
+			}
+					
 		}
 	}
 }
@@ -300,13 +318,7 @@ $(document).ready(function(){
 			var team_abbrev = query.substring(0, idx_space);
 			console.log(team_abbrev)
 
-			findDefenseData(team_abbrev, defense_json);
-
-			var status = "Not in database";
-			var details = "We haven't had time to research this team defense yet -- stay tuned for updates.";
-			var link = "";
-        	
-			displayResults(status, details, link)        	
+			findAndDisplayDefenseData(team_abbrev, defense_json);
         
         // if the query is a player name	
         } else { 
