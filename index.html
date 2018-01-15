@@ -83,7 +83,7 @@ $.get("names.json", function(data){
 </script>
 
 <script>
-function findDefenseData(teamAbbrev, data_defense) {
+function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 	
 	for (t in data_defense.team_defenses) {
 		if (t == teamAbbrev) {
