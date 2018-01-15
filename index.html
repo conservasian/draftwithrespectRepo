@@ -83,6 +83,17 @@ $.get("names.json", function(data){
 </script>
 
 <script>
+function findDefenseData(teamAbbrev, data_defense) {
+	
+	for (t in data_defense.team_defenses) {
+		if (data_defense.team_defenses[t] == teamAbbrev) {
+			console.log('team defense found')
+		}
+	}
+}
+</script>
+
+<script>
 function findPlayerData(playerName, data_incidents, data_roster) {
 	
 	// find player name in incident data	
@@ -276,6 +287,8 @@ $(document).ready(function(){
 			var idx_space = query.indexOf(" ");
 			var team_abbrev = query.substring(0, idx_space);
 			console.log(team_abbrev)
+
+			findDefenseData(team_abbrev, defense_json);
 
 			var status = "Not in database";
 			var details = "We haven't had time to research this team defense yet -- stay tuned for updates.";
