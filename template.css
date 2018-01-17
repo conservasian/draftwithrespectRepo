@@ -9,6 +9,9 @@ body {background: #442673;
   background-attachment: fixed;
 }
 
+/* Thank you, ScottA */
+/* https://stackoverflow.com/questions/18094134/fixed-gradient-background-with-css */
+
 .jumbotron {
 	background: inherit;
 	color: white;
