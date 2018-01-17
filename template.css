@@ -10,7 +10,7 @@
 }
 
 .jumbotron {
-/*	background: #532f8c; */
+	background: inherit;
 	color: white;
 	padding-bottom: 40px
 }
@@ -48,19 +48,19 @@
 #results_div {
 	margin-bottom: 0px;
 	padding: 0px 0px 0px 0px; /* so the start bg is not blue */
-/*	background: #000099*/
+	background: inherit;
 }
 #jumbotron3 {
 	margin-bottom: 0px
 }
 #jumbotron4 {
 	margin-bottom: 0px;
-/*	background: #000099*/
+	background: inherit
 }
 #jumbotron5 {
 	margin-bottom: 0px
 }
 #jumbotron6 {
 	margin-bottom: 0px;
-/*	background: #000099*/
+	background: inherit;
 }
