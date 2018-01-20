@@ -374,6 +374,11 @@ $(document).ready(function(){
 
 			var idx_space = query.indexOf(" ");
 			var team_abbrev = query.substring(0, idx_space);
+			
+			if (team_abbrev == 'LAR') {
+				team_abbrev = 'LA';
+			}
+			
 			console.log(team_abbrev)
 
 			findAndDisplayDefenseData(team_abbrev, defense_json);
