@@ -95,6 +95,45 @@ $.get("names.json", function(data){
 </script>
 
 <script>
+function addLink(link, linkNum, link_id_ht) {
+
+	if (linkNum == 2) {
+		$(link_id_ht).append(", ");
+	}
+
+	if (link.includes("npr")) {
+		$(link_id_ht).append("<a href='" + link + "'>NPR</a>");
+	} else if (link.includes("tmz")) {
+		$(link_id_ht).append("<a href='" + link + "'>TMZ</a>");
+	} else if (link.includes("espn")) {
+		$(link_id_ht).append("<a href='" + link + "'>ESPN</a>");
+	} else if (link.includes("sfgate")) {
+		$(link_id_ht).append("<a href='" + link + "'>SFGate</a>");
+	} else if (link.includes("sbnation")) {
+		$(link_id_ht).append("<a href='" + link + "'>SBNation</a>");
+	} else if (link.includes("usatoday")) {
+		$(link_id_ht).append("<a href='" + link + "'>USA Today</a>");
+	} else if (link.includes("washingtonpost")) {
+		$(link_id_ht).append("<a href='" + link + "'>Washington Post</a>");
+	} else if (link.includes("cbssports")) {
+		$(link_id_ht).append("<a href='" + link + "'>CBS Sports</a>");
+	} else if (link.includes("bleacherreport")) {
+		$(link_id_ht).append("<a href='" + link + "'>Bleacher Report</a>");
+	} else if (link.includes("denverpost")) {
+		$(link_id_ht).append("<a href='" + link + "'>Denver Post</a>");
+	} else if (link.includes("seattletimes")) {
+		$(link_id_ht).append("<a href='" + link + "'>Seattle Times</a>");
+	} else if (link.includes("huffingtonpost")) {
+		$(link_id_ht).append("<a href='" + link + "'>Huffington Post</a>");
+	} else if (link.includes("si.com")) {
+		$(link_id_ht).append("<a href='" + link + "'>Sports Illustrated</a>");
+	} else {
+		$(link_id_ht).append("<a href='" + link + "'>" + link + "</a>");
+	}
+}
+</script>
+
+<script>
 function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 	
 	for (t in data_defense.team_defenses) {
@@ -125,7 +164,7 @@ function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 					var link = data_defense.team_defenses[t][0].Link
 					
 					$("#results_div").append("<p id='positionteam' class='results'><b>" + name + " (" + position + ")</b></p>")
-					displayResults(status, details, link)        	
+					displayResults(status, details, link, numDefensivePlayerRecords-1)        	
 				}
 			}
 					
@@ -181,43 +220,6 @@ function findPlayerData(playerName, data_incidents, data_roster) {
 function displayPositionTeam(position, team) {
 	// position and team	
 	$("#results_div").append("<p id='positionteam' class='results'>Position: " + position + "<br>Team: " + team + "</p>")
-}
-</script>
-
-<script>
-function addLink(link, linkNum, link_id_ht) {
-
-	if (linkNum == 2) {
-		$(link_id_ht).append(", ");
-	}
-
-	if (link.includes("npr")) {
-		$(link_id_ht).append("<a href='" + link + "'>NPR</a>");
-	} else if (link.includes("tmz")) {
-		$(link_id_ht).append("<a href='" + link + "'>TMZ</a>");
-	} else if (link.includes("espn")) {
-		$(link_id_ht).append("<a href='" + link + "'>ESPN</a>");
-	} else if (link.includes("sfgate")) {
-		$(link_id_ht).append("<a href='" + link + "'>SFGate</a>");
-	} else if (link.includes("sbnation")) {
-		$(link_id_ht).append("<a href='" + link + "'>SBNation</a>");
-	} else if (link.includes("usatoday")) {
-		$(link_id_ht).append("<a href='" + link + "'>USA Today</a>");
-	} else if (link.includes("washingtonpost")) {
-		$(link_id_ht).append("<a href='" + link + "'>Washington Post</a>");
-	} else if (link.includes("cbssports")) {
-		$(link_id_ht).append("<a href='" + link + "'>CBS Sports</a>");
-	} else if (link.includes("bleacherreport")) {
-		$(link_id_ht).append("<a href='" + link + "'>Bleacher Report</a>");
-	} else if (link.includes("seattletimes")) {
-		$(link_id_ht).append("<a href='" + link + "'>Seattle Times</a>");
-	} else if (link.includes("huffingtonpost")) {
-		$(link_id_ht).append("<a href='" + link + "'>Huffington Post</a>");
-	} else if (link.includes("si.com")) {
-		$(link_id_ht).append("<a href='" + link + "'>Sports Illustrated</a>");
-	} else {
-		$(link_id_ht).append("<a href='" + link + "'>" + link + "</a>");
-	}
 }
 </script>
 
