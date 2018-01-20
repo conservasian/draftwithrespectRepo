@@ -172,6 +172,38 @@ function displayPositionTeam(position, team) {
 </script>
 
 <script>
+function addLinks(link, linkNum) {
+if (link.includes("npr")) {
+		$(link_id_ht).append("<a href='" + link + "'>NPR</a>");
+	} else if (link.includes("tmz")) {
+		$(link_id_ht).append("<a href='" + link + "'>TMZ</a>");
+	} else if (link.includes("espn")) {
+		$(link_id_ht).append("<a href='" + link + "'>ESPN</a>");
+	} else if (link.includes("sfgate")) {
+		$(link_id_ht).append("<a href='" + link + "'>SFGate</a>");
+	} else if (link.includes("sbnation")) {
+		$(link_id_ht).append("<a href='" + link + "'>SBNation</a>");
+	} else if (link.includes("usatoday")) {
+		$(link_id_ht).append("<a href='" + link + "'>USA Today</a>");
+	} else if (link.includes("washingtonpost")) {
+		$(link_id_ht).append("<a href='" + link + "'>Washington Post</a>");
+	} else if (link.includes("cbssports")) {
+		$(link_id_ht).append("<a href='" + link + "'>CBS Sports</a>");
+	} else if (link.includes("bleacherreport")) {
+		$(link_id_ht).append("<a href='" + link + "'>Bleacher Report</a>");
+	} else if (link.includes("seattletimes")) {
+		$(link_id_ht).append("<a href='" + link + "'>Seattle Times</a>");
+	} else if (link.includes("huffingtonpost")) {
+		$(link_id_ht).append("<a href='" + link + "'>Huffington Post</a>");
+	} else if (link.includes("si.com")) {
+		$(link_id_ht).append("<a href='" + link + "'>Sports Illustrated</a>");
+	} else {
+		$(link_id_ht).append("<a href='" + link + "'>" + link + "</a>");
+	}
+}
+</script>
+
+<script>
 function displayResults(status, details, link, j) {
 
 	console.log(status)	
@@ -225,29 +257,14 @@ function displayResults(status, details, link, j) {
 		
 		// add sources
 		$("#results_div").append("<p id='" + link_id + "' class='results'>Source(s): </p>");
+
 		// add links
-		if (link.includes("npr")) {
-			$(link_id_ht).append("<a href='" + link + "'>NPR</a>");
-		} else if (link.includes("tmz")) {
-			$(link_id_ht).append("<a href='" + link + "'>TMZ</a>");
-		} else if (link.includes("espn")) {
-			$(link_id_ht).append("<a href='" + link + "'>ESPN</a>");
-		} else if (link.includes("sbnation")) {
-			$(link_id_ht).append("<a href='" + link + "'>SBNation</a>");
-		} else if (link.includes("usatoday")) {
-			$(link_id_ht).append("<a href='" + link + "'>USA Today</a>");
-		} else if (link.includes("washingtonpost")) {
-			$(link_id_ht).append("<a href='" + link + "'>Washington Post</a>");
-		} else if (link.includes("cbssports")) {
-			$(link_id_ht).append("<a href='" + link + "'>CBS Sports</a>");
-		} else if (link.includes("seattletimes")) {
-			$(link_id_ht).append("<a href='" + link + "'>Seattle Times</a>");
-		} else if (link.includes("huffingtonpost")) {
-			$(link_id_ht).append("<a href='" + link + "'>Huffington Post</a>");
-		} else if (link.includes("si.com")) {
-			$(link_id_ht).append("<a href='" + link + "'>Sports Illustrated</a>");
-		} else {
-			$(link_id_ht).append("<a href='" + link + "'>" + link + "</a>");
+		var splitLinks = link.split(',');
+		if (splitLinks.length == 1) {
+			addLink(link, 1);
+		} else if (splitLinks.length == 2) {
+			addLink(splitLinks[0], 1)
+			addLink(splitLinks[1], 2)
 		}	
 	}
 }
