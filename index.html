@@ -172,7 +172,7 @@ function displayPositionTeam(position, team) {
 </script>
 
 <script>
-function addLink(link, linkNum) {
+function addLink(link, linkNum, link_id_ht) {
 if (link.includes("npr")) {
 		$(link_id_ht).append("<a href='" + link + "'>NPR</a>");
 	} else if (link.includes("tmz")) {
@@ -261,10 +261,10 @@ function displayResults(status, details, link, j) {
 		// add links
 		var splitLinks = link.split(',');
 		if (splitLinks.length == 1) {
-			addLink(link, 1);
+			addLink(link, 1, link_id_ht);
 		} else if (splitLinks.length == 2) {
-			addLink(splitLinks[0], 1)
-			addLink(splitLinks[1], 2)
+			addLink(splitLinks[0], 1, link_id_ht)
+			addLink(splitLinks[1], 2, link_id_ht)
 		}	
 	}
 }
