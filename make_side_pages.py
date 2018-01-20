@@ -1,4 +1,4 @@
-# make_thoughts_page.py
+# make_side_pages.py
 # Patrick Ye
 
 F = open("index.html", "r")
@@ -19,7 +19,30 @@ thoughts = """
 """
       
 
+how_to_help = """
+
+<div id=\"how_to_help\" class=\"jumbotron text-center\">
+      <h2>How can I help?</h2>
+      <br>
+    <h3>Question whether you can support players with a record of violence.</h3>
+    Would you feel comfortable earning fantasy points from someone who has abused victims?<br>
+    <br>
+    <h3>Speak up when violence happens</h3>
+    Whether it's a player on your team or someone you know<br>
+    <br>
+    <h3>Support victims; listen to what they have to say</h3>
+    More than half of victims do not report to police for fear of repercussions.
+</div>
+"""
+
+
 H = G[0:idx_start+6] + thoughts + G[idx_start+7:]
+
+L = G[0:idx_start+6] + how_to_help + G[idx_start+7:]
+
 
 J = open("thoughts.html", "w")
 J.write(H)
+
+K = open("howtohelp.html", "w")
+K.write(L)

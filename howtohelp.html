@@ -29,15 +29,18 @@
         <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
 	  </li>
       <li class="active">
-		  <a href="/index.html#jumbotron4">About Us</a>
+		  <a href="#jumbotron4">About Us</a>
 	  </li>
 	  <li class="active">
 		  <a href="/howtohelp.html">How to Help</a>
 	  </li>
+	  <li class="active">
+		  <a href="/thoughts.html">Thoughts about this site</a>
+	  </li>
   </div>
 </nav>
 
-<div id="jumbotron4" class="jumbotron text-center">
+<div id="how_to_help" class="jumbotron text-center">
       <h2>How can I help?</h2>
       <br>
     <h3>Question whether you can support players with a record of violence.</h3>
@@ -55,8 +58,8 @@
     <p>A resource for the fans that want the best players, on the field and off the field</p>
 	<form class="form-inline" id="playerInput">
 	  	<div class="form-group ui-widget">
-    	<label for="playerInputBox">Search by name:</label>
-   		<input type="text" class="form-control" id="playerInputBox" placeholder="" data-provide="typeahead">
+    	<label for="playerInputBox">Search by name or team defense:</label>
+   		<input type="text" class="form-control" id="playerInputBox" data-provide="typeahead">
 	    </div>
         <button name="submit" type="submit" class="btn btn-default">Search</button>
 	</form>
@@ -75,12 +78,60 @@
       <h2>About Us</h2>
       <p>Kelsey (an avid Cardinals fan) was drafting her fantasy team but didn't want any players with a history of violence against women. Googling each possible pick in her draft window was too slow and tiresome. So, we made this database to help her and other fantasy league managers #draftwithrespect.</p>  
 </div>
+<div id="missing_info" class="jumbotron text-center">
+	<h2>Someone missing?</h2>
+	<p>Help add to our database <a href="https://docs.google.com/forms/d/e/1FAIpQLScafV97qq8MYCZzOu3xJqq2kc9fjByxfAtuwucEP4uk2T1eIw/viewform?usp=sf_link">here</a>.
+</div>
+<div id="jumbotron5" class="jumbotron text-center">
+      <h2>How This Was Made</h2>
+      <p>At least two Google searches were performed for each player, e.g. "joe schmo domestic violence" and "joe schmo assault." The top 10 results were scanned for anything significant from a reputable source. Additional searching was done if a hit was found.</p>  
+</div>
 
 
 <script>
 $.get("names.json", function(data){
   $("#playerInputBox").typeahead({ source:data });
 },'json');
+</script>
+
+<script>
+function findAndDisplayDefenseData(teamAbbrev, data_defense) {
+	
+	for (t in data_defense.team_defenses) {
+		if (t == teamAbbrev) {
+			
+			// first display count of hits summary sentence
+			var numDefensivePlayerRecords = data_defense.team_defenses[t].length;
+			
+			if (numDefensivePlayerRecords == 0) {
+				$("#results_div").append("<p id='defense_summary' class='results'>We have not found any defensive players with significant records.</p>");
+			} else if (numDefensivePlayerRecords == 1) {
+				$("#results_div").append("<p id='defense_summary' class='results'>We have found " + numDefensivePlayerRecords + " defensive player with significant records.</p>");
+			} else {
+				$("#results_div").append("<p id='defense_summary' class='results'>We have found " + numDefensivePlayerRecords + " defensive players with significant records.</p>");
+			}
+			
+			// if there are hits, display data
+			if (numDefensivePlayerRecords > 0) {
+			
+				// display name, position, status, details, link
+				
+				for (y = 0; y < numDefensivePlayerRecords; y++) {
+				
+					var name = data_defense.team_defenses[t][0].Name
+					var position = data_defense.team_defenses[t][0].Position
+					var status = data_defense.team_defenses[t][0].Status
+					var details = data_defense.team_defenses[t][0].Details
+					var link = data_defense.team_defenses[t][0].Link
+					
+					$("#results_div").append("<p id='positionteam' class='results'><b>" + name + " (" + position + ")</b></p>")
+					displayResults(status, details, link)        	
+				}
+			}
+					
+		}
+	}
+}
 </script>
 
 <script>
@@ -95,7 +146,6 @@ function findPlayerData(playerName, data_incidents, data_roster) {
 	var link_incident = [];
 	
 	for (i in data_incidents.incidents) {
-
 		if (data_incidents.incidents[i].Name == playerName) {
 			index_incident.push(i);
 			
@@ -152,7 +202,7 @@ function displayResults(status, details, link, j) {
 		var status_id = 'status' + j;
 		var details_id = 'details' + j;
 		var link_id = 'link' + j;
-		var status_id_ht = '#status' + j;
+		var status_id_ht = '#status' + j; // ht means hashtag
 		var link_id_ht = '#link' + j;
 	}
 		
@@ -177,12 +227,10 @@ function displayResults(status, details, link, j) {
 	} else {
 
 		// color-code status			
-		if (status == "Arrested, not charged" || status == "Accused, not charged" || status.indexOf("settled") != -1) {
-			$(status_id_ht).addClass("label label-warning"); 
-		} else if (status == "Pleaded guilty" || status == "Publicly admitted" || status == 'Found guilty' || status.indexOf("Plea deal") != -1) {
-			$(status_id_ht).addClass("label label-danger"); 
-		} else if (status.indexOf("Wrongfully accused") != -1 || status.indexOf("not guilty") != -1) {
+		if (status.indexOf("Wrongfully accused") != -1 || status.indexOf("not guilty") != -1) {
 			$(status_id_ht).addClass("label label-success"); 
+		} else if (status.indexOf("Accused") != -1 || status.indexOf("settled") != -1 || status.indexOf("Arrested") != -1 || status == "Pleaded guilty" || status == "Publicly admitted" || status == 'Found guilty' || status.indexOf("Plea deal") != -1) {
+			$(status_id_ht).addClass("label label-danger"); 
 		}	
 		
 		// add details
@@ -193,6 +241,8 @@ function displayResults(status, details, link, j) {
 		// add links
 		if (link.includes("npr")) {
 			$(link_id_ht).append("<a href='" + link + "'>NPR</a>");
+		} else if (link.includes("tmz")) {
+			$(link_id_ht).append("<a href='" + link + "'>TMZ</a>");
 		} else if (link.includes("espn")) {
 			$(link_id_ht).append("<a href='" + link + "'>ESPN</a>");
 		} else if (link.includes("sbnation")) {
@@ -207,6 +257,8 @@ function displayResults(status, details, link, j) {
 			$(link_id_ht).append("<a href='" + link + "'>Seattle Times</a>");
 		} else if (link.includes("huffingtonpost")) {
 			$(link_id_ht).append("<a href='" + link + "'>Huffington Post</a>");
+		} else if (link.includes("si.com")) {
+			$(link_id_ht).append("<a href='" + link + "'>Sports Illustrated</a>");
 		} else {
 			$(link_id_ht).append("<a href='" + link + "'>" + link + "</a>");
 		}	
@@ -215,8 +267,32 @@ function displayResults(status, details, link, j) {
 </script>
 
 <script>
+function randomizePlaceholder() {
+	
+	var randNum = Math.random();
+	
+	if (randNum < 0.2) {
+		var placeholderStr = "Ben Roethlisberger";
+	} else if (randNum < 0.4) {
+		var placeholderStr = "SEA defense (Seahawks)";
+	} else if (randNum < 0.6) {
+		var placeholderStr = "Ezekiel Elliott";
+	} else if (randNum < 0.8) {
+		var placeholderStr = "Tyreek Hill";
+	} else {
+		var placeholderStr = "Joe Mixon";
+	}
+	placeholderStr = "e.g. " + placeholderStr;
+
+	$("#playerInputBox").attr("placeholder", placeholderStr);
+}	
+</script>
+
+<script>
 $(document).ready(function(){
 
+	randomizePlaceholder()
+	
     $("#playerInput").submit(function(event){
 		
 		// remove any existing results
@@ -242,7 +318,7 @@ $(document).ready(function(){
 			$.ajax({
 				'async': false,
 				'global': false,
-				'url': "roster.json",
+				'url': "playerTeams.json",
 				'dataType': "json",
 				'success': function (data) {
 					roster_json = data;
@@ -250,71 +326,102 @@ $(document).ready(function(){
 			});
 			return roster_json;
 	    })();
+	    
+	    var defense_json = (function() {
+			var defense_json = null;
+			$.ajax({
+				'async': false,
+				'global': false,
+				'url': "team_defenses.json",
+				'dataType': "json",
+				'success': function (data) {
+					defense_json = data;
+				}
+			});
+			return defense_json;
+	    })();
 
 		// process query based on player name
-        var playerName = $("#playerInputBox").val();
-        playerName = playerName.trim();
-        $("#results_div").append("<h2 id='name' class='results'>" + playerName + "</p>")
+        var query = $("#playerInputBox").val();
+        query = query.trim();
+        
+        // display query
+        $("#results_div").append("<h2 id='name' class='results'>" + query + "</p>")
         $("#results_div").css("padding", "48px 0px 40px 0px")
         
-		var result = findPlayerData(playerName, incidents_json, roster_json);
+        // if the query is a team defense
+        if (query.indexOf("defense") != -1) {
 
-		// display data
-		if (result[0] == "not in both") {
+			var idx_space = query.indexOf(" ");
+			var team_abbrev = query.substring(0, idx_space);
+			console.log(team_abbrev)
 
-			var position = 'not in database';
-			var team = 'not active';
-			var status = "Not in database";
-			var details = "We haven't had time to research this player yet -- stay tuned for updates.";
-			var link = "";
+			findAndDisplayDefenseData(team_abbrev, defense_json);
+        
+        // if the query is a player name	
+        } else { 
+        	var playerName = query;
+        	var result = findPlayerData(playerName, incidents_json, roster_json);
+        	
+        	// display data
+			if (result[0] == "not in both") {
+
+				var position = 'not in database';
+				var team = 'not active';
+				var status = "Not in database";
+				var details = "We haven't had time to research this player yet -- stay tuned for updates.";
+				var link = "";
 			
-			displayPositionTeam(position, team)
-			displayResults(status, details, link)
+				displayPositionTeam(position, team)
+				displayResults(status, details, link)
 
-		} else if (result[0] == "not in incidents") { 
+			} else if (result[0] == "not in incidents") { 
 
-			var position = result[1];
-			var team = result[2];
-			var status = "Not in database";
-			var details = "We haven't had time to research this player yet -- stay tuned for updates.";
-			var link = "";
+				var position = result[1];
+				var team = result[2];
+				var status = "Not in database";
+				var details = "We haven't had time to research this player yet -- stay tuned for updates.";
+				var link = "";
 			
-			displayPositionTeam(position, team)
-			displayResults(status, details, link)
+				displayPositionTeam(position, team)
+				displayResults(status, details, link)
 
-		} else if (result[0] == "not in roster") { 
+			} else if (result[0] == "not in roster") { 
 
-			var position = result[1];
-			var team = "not active";
-			var status = result[2];
-			var details = result[3];
-			var link = result[4];
+				var position = result[1];
+				var team = "not active";
+				var status = result[2];
+				var details = result[3];
+				var link = result[4];
 			
-			displayPositionTeam(position, team)
-			displayResults(status, details, link)
+				displayPositionTeam(position, team)
+				displayResults(status, details, link)
 
-		} else {
+			} else {
 			
-			var status = result[3];
-			var numIncidents = status.length;
-			console.log(numIncidents);
+				var status = result[3];
+				var numIncidents = status.length;
+				console.log(numIncidents);
 
-			var position = result[1];
-			var team = result[2];
-			displayPositionTeam(position, team)
+				var position = result[1];
+				var team = result[2];
+				displayPositionTeam(position, team)
 
-			for (j=0; j < numIncidents; j++) {
-				status = result[3][j];
-				details = result[4][j];
-				link = result[5][j];
+				for (j=0; j < numIncidents; j++) {
+					status = result[3][j];
+					details = result[4][j];
+					link = result[5][j];
 
-				displayResults(status, details, link, j)
-			}		
-        }
+					displayResults(status, details, link, j)
+				}		
+			}
+		}
+		
         event.preventDefault();
     });
 });
 </script>
+
 
 </body>
 </html>
