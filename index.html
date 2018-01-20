@@ -173,7 +173,12 @@ function displayPositionTeam(position, team) {
 
 <script>
 function addLink(link, linkNum, link_id_ht) {
-if (link.includes("npr")) {
+
+	if (linkNum == 2) {
+		$(link_id_ht).append(", ");
+	}
+
+	if (link.includes("npr")) {
 		$(link_id_ht).append("<a href='" + link + "'>NPR</a>");
 	} else if (link.includes("tmz")) {
 		$(link_id_ht).append("<a href='" + link + "'>TMZ</a>");
