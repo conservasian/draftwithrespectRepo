@@ -312,7 +312,7 @@ $(document).ready(function(){
 	if (url_split.length == 2) {
 		var query_url = url_split[1];
 		var query_url_name = query_url.split('=')[1];
-		query = query_url_name.replace('+', ' ');
+		query = query_url_name.replace(/+/g, ' ');
 		
 		// remove any existing results
 		$(".results").remove() 
@@ -445,7 +445,7 @@ $(document).ready(function(){
         var query_entered = $("#playerInputBox").val();
         query_entered = query_entered.trim();
         
-        query_entered = query_entered.replace(' ', '+')
+        query_entered = query_entered.replace(/ /g, '+')
         
         console.log(query_entered)
 		
