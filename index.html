@@ -446,6 +446,8 @@ $(document).ready(function(){
         query_entered = query_entered.trim();
         
         query_entered.replace(' ', '+')
+        
+        console.log(query_entered)
 		
 		window.location.href = "?query="+query_entered;
 
