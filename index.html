@@ -18,14 +18,6 @@
   ga('send', 'pageview');
 </script>
 
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-6461602549697485",
-    enable_page_level_ads: true
-  });
-</script>
-
 
 </head>
 
@@ -314,11 +306,17 @@ $(document).ready(function(){
 
 	randomizePlaceholder()
 	
-    $("#playerInput").submit(function(event){
+	var url = window.location.href;
+	var url_split = url.split('?');
+	
+	if (url_split.length == 2) {
+		var query_url = url_split[1];
+		var query_url_name = query.split('=')[1];
+		query = query_url_name.replace('+', ' ');
 		
 		// remove any existing results
 		$(".results").remove() 
-
+		
 		// load incident and player team data
 		var incidents_json = (function() {
 			var incidents_json = null;
@@ -361,10 +359,6 @@ $(document).ready(function(){
 			});
 			return defense_json;
 	    })();
-
-		// process query based on player name
-        var query = $("#playerInputBox").val();
-        query = query.trim();
         
         // display query
         $("#results_div").append("<h2 id='name' class='results'>" + query + "</p>")
@@ -442,6 +436,20 @@ $(document).ready(function(){
 				}		
 			}
 		}
+	}
+	
+	
+    $("#playerInput").submit(function(event){
+		
+		// process query based on player name
+        var query_entered = $("#playerInputBox").val();
+        query_entered = query_entered.trim();
+        
+        query_entered.replace(' ', '+')
+		
+		window.location.href = "?query="+query_entered;
+
+		
 		
         event.preventDefault();
     });
