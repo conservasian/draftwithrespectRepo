@@ -311,7 +311,7 @@ $(document).ready(function(){
 	
 	if (url_split.length == 2) {
 		var query_url = url_split[1];
-		var query_url_name = query.split('=')[1];
+		var query_url_name = query_url.split('=')[1];
 		query = query_url_name.replace('+', ' ');
 		
 		// remove any existing results
@@ -449,8 +449,6 @@ $(document).ready(function(){
 		
 		window.location.href = "?query="+query_entered;
 
-		
-		
         event.preventDefault();
     });
 });
