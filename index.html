@@ -383,6 +383,8 @@ $(document).ready(function(){
         	var playerName = query;
         	var result = findPlayerData(playerName, incidents_json, roster_json);
         	
+        	console.log(result[0])
+        	
         	// display data
 			if (result[0] == "not in both") {
 
