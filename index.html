@@ -383,11 +383,8 @@ $(document).ready(function(){
         	var playerName = query;
         	var result = findPlayerData(playerName, incidents_json, roster_json);
         	
-        	console.log(result)
-        	console.log(result[0])
-        	
         	// display data
-			if (result[0] == "not in both") {
+			if (result == "not in both") {
 
 				var position = 'not in database';
 				var team = 'not active';
