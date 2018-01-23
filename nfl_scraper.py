@@ -71,19 +71,24 @@ def getPlayerData(link):
 
 		td_list = player.find_all('td')
 
-		pos.append(td_list[0].get_text())
-		status.append(td_list[3].get_text())
-		team.append(td_list[12].get_text())
+		this_status = td_list[3].get_text()
+		
+		# exclude players who are CUT or NWT (not with team)
+		if (this_status != 'CUT') & (this_status != 'NWT'):
 
-		# use "firstName lastName" format		
-		nameLastFirst = td_list[2].get_text()
-		numNameParts = len(nameLastFirst.rsplit(', '))
-		if (numNameParts == 2):
-			[lastName, firstName] = nameLastFirst.rsplit(', ')
-			name.append(firstName + " " + lastName)
-		elif (numNameParts == 3):
-			[lastName, firstName, suffix] = nameLastFirst.rsplit(', ')
-			name.append(firstName + " " + lastName + " " + suffix)
+			pos.append(td_list[0].get_text())
+			status.append(td_list[3].get_text())
+			team.append(td_list[12].get_text())
+
+			# use "firstName lastName" format		
+			nameLastFirst = td_list[2].get_text()
+			numNameParts = len(nameLastFirst.rsplit(', '))
+			if (numNameParts == 2):
+				[lastName, firstName] = nameLastFirst.rsplit(', ')
+				name.append(firstName + " " + lastName)
+			elif (numNameParts == 3):
+				[lastName, firstName, suffix] = nameLastFirst.rsplit(', ')
+				name.append(firstName + " " + lastName + " " + suffix)
 
 	return pos, name, status, team
 
@@ -127,16 +132,13 @@ data = {}
 data["name_pos_team"] = []
 
 for k in range(len(name)):
-	
-	# exclude players who are cut, on the development team, or not with team
-	if (status[k] != 'CUT') & (status[k] != 'DEV') & (status[k] != 'NWT'):
 
-		data["name_pos_team"].append({
-			"Name":name[k],
-			"Position":pos[k],
-			"Team":team[k],
-			"Status":status[k],
-		})
+	data["name_pos_team"].append({
+		"Name":name[k],
+		"Position":pos[k],
+		"Team":team[k],
+		"Status":status[k],
+	})
 
 with open('playerTeams.json', 'w') as f:
      json.dump(data, f)
