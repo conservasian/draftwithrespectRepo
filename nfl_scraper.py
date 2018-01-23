@@ -127,12 +127,16 @@ data = {}
 data["name_pos_team"] = []
 
 for k in range(len(name)):
-    data["name_pos_team"].append({
-    	"Name":name[k],
-		"Position":pos[k],
-		"Team":team[k],
-		"Status":status[k],
-    })
+	
+	# exclude players who are cut, on the development team, or not with team
+	if (status[k] != 'CUT') & (status[k] != 'DEV') & (status[k] != 'NWT'):
+
+		data["name_pos_team"].append({
+			"Name":name[k],
+			"Position":pos[k],
+			"Team":team[k],
+			"Status":status[k],
+		})
 
 with open('playerTeams.json', 'w') as f:
      json.dump(data, f)
