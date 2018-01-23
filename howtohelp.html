@@ -119,6 +119,8 @@ function addLink(link, linkNum, link_id_ht) {
 		$(link_id_ht).append("<a href='" + link + "'>CBS Sports</a>");
 	} else if (link.includes("bleacherreport")) {
 		$(link_id_ht).append("<a href='" + link + "'>Bleacher Report</a>");
+	} else if (link.includes("tulsaworld")) {
+		$(link_id_ht).append("<a href='" + link + "'>Tulsa World</a>");
 	} else if (link.includes("denverpost")) {
 		$(link_id_ht).append("<a href='" + link + "'>Denver Post</a>");
 	} else if (link.includes("seattletimes")) {
@@ -204,8 +206,8 @@ function findPlayerData(playerName, data_incidents, data_roster) {
     
     // output data
     if (index_incident.length == 0 && index_roster == -1) {
-    	return "not in both"; }
-    else if (index_incident.length == 0 && index_roster != -1) {
+    	return "not in both";
+    } else if (index_incident.length == 0 && index_roster != -1) {
     	return ["not in incidents", data_roster.name_pos_team[index_roster].Position, data_roster.name_pos_team[index_roster].Team];
     } else if (index_incident.length > 0 && index_roster == -1) {
     	return ["not in roster", data_incidents.incidents[index_incident].Position, status_incident, details_incident, link_incident];
@@ -317,11 +319,17 @@ $(document).ready(function(){
 
 	randomizePlaceholder()
 	
-    $("#playerInput").submit(function(event){
+	var url = window.location.href;
+	var url_split = url.split('?');
+	
+	if (url_split.length == 2) {
+		var query_url = url_split[1];
+		var query_url_name = query_url.split('=')[1];
+		query = query_url_name.replace(/\+/g, ' ');
 		
 		// remove any existing results
 		$(".results").remove() 
-
+		
 		// load incident and player team data
 		var incidents_json = (function() {
 			var incidents_json = null;
@@ -364,10 +372,6 @@ $(document).ready(function(){
 			});
 			return defense_json;
 	    })();
-
-		// process query based on player name
-        var query = $("#playerInputBox").val();
-        query = query.trim();
         
         // display query
         $("#results_div").append("<h2 id='name' class='results'>" + query + "</p>")
@@ -393,7 +397,7 @@ $(document).ready(function(){
         	var result = findPlayerData(playerName, incidents_json, roster_json);
         	
         	// display data
-			if (result[0] == "not in both") {
+			if (result == "not in both") {
 
 				var position = 'not in database';
 				var team = 'not active';
@@ -445,7 +449,21 @@ $(document).ready(function(){
 				}		
 			}
 		}
+	}
+	
+	
+    $("#playerInput").submit(function(event){
 		
+		// process query based on player name
+        var query_entered = $("#playerInputBox").val();
+        query_entered = query_entered.trim();
+        
+        query_entered = query_entered.replace(/ /g, '+')
+        
+        console.log(query_entered)
+		
+		window.location.href = "?query="+query_entered;
+
         event.preventDefault();
     });
 });

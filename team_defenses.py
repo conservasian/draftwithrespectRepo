@@ -28,7 +28,7 @@ with open('incidents.json', 'r') as g:
 	
 
 
-## make list of non-cut defensive players in the incidents database
+## make list of defensive players in the incidents database
 df_names = []
 df_teams = []
 df_positions = []
@@ -50,30 +50,24 @@ for i in range(len(incidents["incidents"])):
 		this_player_position = roster_position[roster_idx]
 		if (this_player_position == "DT") | (this_player_position == "DE") | (this_player_position == "NT") | ("LB" in this_player_position) | (this_player_position == "DB") | (this_player_position == "CB") | (this_player_position == "SS") | (this_player_position == "FS") | (this_player_position == "SAF"):
 		
-				
-			# screen out cut players
-			this_player_status = roster_status[roster_idx]
-		
-			if (this_player_status != 'CUT'):
-		
-				df_names.append(this_player_name)
+			df_names.append(this_player_name)
 
-				this_player_team = roster_teams[roster_idx]
-				df_teams.append(this_player_team)
-				
-				df_positions.append(this_player_position)
-				
-				this_player_status = incidents["incidents"][i]["Status"]
-				df_statuses.append(this_player_status)
-				
-				this_player_assaultRelated = incidents["incidents"][i]["AssaultRelated"]
-				df_assaultRelated.append(this_player_assaultRelated)
-				
-				this_player_details = incidents["incidents"][i]["Details"]
-				df_details.append(this_player_details)
-				
-				this_player_links = incidents["incidents"][i]["Link"]
-				df_links.append(this_player_links)
+			this_player_team = roster_teams[roster_idx]
+			df_teams.append(this_player_team)
+			
+			df_positions.append(this_player_position)
+			
+			this_player_status = incidents["incidents"][i]["Status"]
+			df_statuses.append(this_player_status)
+			
+			this_player_assaultRelated = incidents["incidents"][i]["AssaultRelated"]
+			df_assaultRelated.append(this_player_assaultRelated)
+			
+			this_player_details = incidents["incidents"][i]["Details"]
+			df_details.append(this_player_details)
+			
+			this_player_links = incidents["incidents"][i]["Link"]
+			df_links.append(this_player_links)
 
 
 ## now sort out list of defensive players with incidents by team
