@@ -4,6 +4,7 @@
 import json
 
 ## make list of all active players (all draftable offensive players)
+# start with only players I've looked up
 # eventually add defensive teams
 
 with open('playerTeams.json', 'r') as f:
@@ -21,7 +22,8 @@ for r in range(len(roster["name_pos_team"])):
 	this_position = roster["name_pos_team"][r]["Position"]
 	
 	# keep only offensive players
-	if (this_position == 'QB') | (this_position == 'RB') | (this_position == 'WR') | (this_position == 'TE') | (this_position == 'K'):
+#	if (this_position == 'QB') | (this_position == 'RB') | (this_position == 'WR') | (this_position == 'TE') | (this_position == 'K'):
+	if (this_position == 'QB'):
 	
 		draftable_names.append(roster["name_pos_team"][r]["Name"])
 		draftable_teams.append(roster["name_pos_team"][r]["Team"])
