@@ -65,7 +65,7 @@ idx_start = G.index('</nav>')
 # create table
 table_html = """
  
-<div id=\'jumbotron6\' class=\'jumbotron text-center\'>
+<div id=\'table_div\' class=\'span10 offset1 text-center\'>
 	<h2>Active QBs</h2>
 	<table class=\'table\'>
 """
