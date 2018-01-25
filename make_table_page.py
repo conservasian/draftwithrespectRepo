@@ -80,7 +80,7 @@ for k in range(half):
 	
 	table_html += """
 	<tr>
-		<td><a href=draftwithrespect.com/"""
+		<td><a href=draftwithrespect.com/?query="""
 	
 	table_html += name_noSpace1
 	table_html += ">"
@@ -96,7 +96,7 @@ for k in range(half):
 		table_html += '	<td>'	
 		table_html += '</td>'
 	else:			
-		table_html += '	<td><a href=draftwithrespect.com/'
+		table_html += '	<td><a href=draftwithrespect.com/?query='
 		table_html += name_noSpace2
 		table_html += ">"	
 		table_html += all_QB_names_sorted[k+half]
