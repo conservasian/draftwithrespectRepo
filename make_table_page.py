@@ -76,23 +76,31 @@ half = int(math.ceil(len_all_QB / 2))
 
 for k in range(half):
 	
+	name_noSpace1 = all_QB_names_sorted[k].replace(' ', '+')
 	
 	table_html += """
 	<tr>
-		<td>"""
+		<td><a href=draftwithrespect.com/"""
+	
+	table_html += name_noSpace1
+	table_html += ">"
 	
 	table_html += all_QB_names_sorted[k]
-	table_html += """</td>
+	table_html += """</a></td>
 	"""	
 	
+	name_noSpace2 = all_QB_names_sorted[k+half].replace(' ', '+')
+		
 	# in case odd number
 	if (k == half-1) & (len_all_QB % 2 == 1):
 		table_html += '	<td>'	
 		table_html += '</td>'
 	else:			
-		table_html += '	<td>'	
+		table_html += '	<td><a href=draftwithrespect.com/'
+		table_html += name_noSpace2
+		table_html += ">"	
 		table_html += all_QB_names_sorted[k+half]
-		table_html += '</td>'
+		table_html += '</a></td>'
 
 	table_html += """
 	</tr>"""
