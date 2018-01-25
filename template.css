@@ -80,6 +80,7 @@ a:hover {
 	width: 60%;
 	margin-left: 20%;
 	border: none;
+	border-top: none;
 }
 
 .td {
