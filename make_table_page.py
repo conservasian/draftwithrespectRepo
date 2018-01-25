@@ -75,16 +75,20 @@ numCols = 3
 len_all_QB = len(all_QB_lastNames_sorted)
 Nrows = int(math.ceil(float(len_all_QB)/float(numCols)))
 
-print len_all_QB
-print Nrows
 
 for k in range(Nrows):
 	
 	name_noSpace1 = all_QB_names_sorted[k].replace(' ', '+')
 	
-	table_html += """
-	<tr>
-		<td><a href=/?query="""
+	if (all_QB_color_sorted[k]):
+		table_html += """
+		<tr>
+			<td><a class='incident' href=/?query="""
+	
+	else:
+		table_html += """
+		<tr>
+			<td><a href=/?query="""
 	
 	table_html += name_noSpace1
 	table_html += ">"
@@ -103,7 +107,10 @@ for k in range(Nrows):
 			table_html += '</td>'
 		else:			
 			name_noSpaceX = all_QB_names_sorted[k+col*Nrows].replace(' ', '+')
-			table_html += '<td><a href=/?query='
+			if (all_QB_color_sorted[k+col*Nrows]):
+				table_html += """<td><a class='incident' href=/?query="""
+			else:
+				table_html += '<td><a href=/?query='
 			table_html += name_noSpaceX
 			table_html += ">"	
 			table_html += all_QB_names_sorted[k+col*Nrows]

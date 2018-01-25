@@ -20,6 +20,14 @@ a:hover {
 	color: lightgray;
 }
 
+a.incident {
+	color: yellow;
+}
+
+a.incident:hover {
+	color: yellow;
+}
+
 .jumbotron {
 	background: inherit;
 	color: white;
