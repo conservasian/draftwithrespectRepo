@@ -65,9 +65,10 @@ idx_start = G.index('</nav>')
 # create table
 table_html = """
  
-<div id=\'table_div\' class=\'span10 offset1 text-center\'>
+<div id=\'table_div\' class=\'jumbotron text-center\'>
 	<h2>Active QBs</h2>
 	<table class=\'table\'>
+	<tbody>
 """
 
 len_all_QB = len(all_QB_lastNames_sorted)
@@ -99,6 +100,7 @@ for k in range(half):
 	
 	
 table_html += """
+	</tbody>
 	</table>
 </div> 
 """
