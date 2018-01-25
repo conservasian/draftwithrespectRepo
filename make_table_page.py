@@ -2,61 +2,110 @@
 # Patrick Ye
 
 import json
+import math
 
 ## make list of all active players (all draftable offensive players)
 # start with only players I've looked up
 # eventually add defensive teams
 
-with open('playerTeams.json', 'r') as f:
-	roster = json.load(f)
-
-	
-# make parallel lists of names, teams, and status
-draftable_names = []
-draftable_teams = []
-draftable_status = []
-draftable_position = []
-
-for r in range(len(roster["name_pos_team"])):
-
-	this_position = roster["name_pos_team"][r]["Position"]
-	
-	# keep only offensive players
-#	if (this_position == 'QB') | (this_position == 'RB') | (this_position == 'WR') | (this_position == 'TE') | (this_position == 'K'):
-	if (this_position == 'QB'):
-	
-		draftable_names.append(roster["name_pos_team"][r]["Name"])
-		draftable_teams.append(roster["name_pos_team"][r]["Team"])
-		draftable_status.append(roster["name_pos_team"][r]["Status"])
-		draftable_position.append(roster["name_pos_team"][r]["Position"])
-
-# default assign each player to gray (-1, no information)
-draftable_color = [-1]*len(draftable_names)
-
-
-## for each quarterback in the incidents database, update green or red
 
 # load incidents (incidents.json)
 with open('incidents.json', 'r') as g:
 	incidents = json.load(g)
 
 
+all_QB_names = []
+all_QB_color = []
+all_QB_lastNames = []
+
+# for each quarterback in the incidents database, update green or red
+# NOTE: does not account for multiple conflicting incidents
 for i in range(len(incidents["incidents"])):
 	
-	this_player_name = incidents["incidents"][i]["Name"]
+	this_player_position = incidents["incidents"][i]["Position"]
 	
-	if (this_player_name in draftable_names):
-
-		index_draftable = draftable_names.index(this_player_name)
+	if (this_player_position == 'QB'):
 	
-		this_player_status = incidents["incidents"][i]["Status"]
+		this_player_name = incidents["incidents"][i]["Name"]	
 		
-		if (this_player_status == 'No records found'):
-			draftable_color[index_draftable] = 0
+		if (this_player_name in all_QB_names):
+			idx_name = all_QB_names.index(this_player_name)
+
+			this_inc_status = incidents["incidents"][i]["AssaultRelated"]
+			current_status = all_QB_color[idx_name]
+	
+			if (this_inc_status):
+				all_QB_color[idx_name] == 1
+				# no change if 'no records found'
 			
-		else:
-			draftable_color[index_draftable] = 1
-
 		
-print draftable_names[0:39]
-print draftable_color[0:39]
+		else:
+			all_QB_names.append(this_player_name)
+		
+			all_QB_lastNames.append(this_player_name.split(' ')[1])
+
+			this_player_status = int(incidents["incidents"][i]["AssaultRelated"])
+
+			all_QB_color.append(this_player_status)
+
+
+all_QB_lastNames_sorted, all_QB_names_sorted = zip(*sorted(zip(all_QB_lastNames, all_QB_names)))
+all_QB_lastNames_sorted, all_QB_color_sorted = zip(*sorted(zip(all_QB_lastNames, all_QB_color)))
+
+
+
+## now add table to page
+
+# open index.html
+F = open("index.html", "r")
+G = F.read()
+idx_start = G.index('</nav>')
+
+
+# create table
+table_html = """
+ 
+<div id=\'jumbotron6\' class=\'jumbotron text-center\'>
+	<h2>Active QBs</h2>
+	<table class=\'table\'>
+"""
+
+len_all_QB = len(all_QB_lastNames_sorted)
+half = int(math.ceil(len_all_QB / 2))
+
+for k in range(half):
+	
+	
+	table_html += """
+	<tr>
+		<td>"""
+	
+	table_html += all_QB_names_sorted[k]
+	table_html += """</td>
+	"""	
+	
+	# in case odd number
+	if (k == half-1) & (len_all_QB % 2 == 1):
+		table_html += '	<td>'	
+		table_html += '</td>'
+	else:			
+		table_html += '	<td>'	
+		table_html += all_QB_names_sorted[k+half]
+		table_html += '</td>'
+
+	table_html += """
+	</tr>"""
+	
+	
+	
+table_html += """
+	</table>
+</div> 
+"""
+
+
+## add table to index.html template
+H = G[0:idx_start+6] + table_html + G[idx_start+7:]
+
+J = open("table.html", "w")
+J.write(H)
