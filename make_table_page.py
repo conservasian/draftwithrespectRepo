@@ -71,10 +71,14 @@ table_html = """
 	<tbody>
 """
 
+numCols = 3
 len_all_QB = len(all_QB_lastNames_sorted)
-half = int(math.ceil(len_all_QB / 2))
+Nrows = int(math.ceil(float(len_all_QB)/float(numCols)))
 
-for k in range(half):
+print len_all_QB
+print Nrows
+
+for k in range(Nrows):
 	
 	name_noSpace1 = all_QB_names_sorted[k].replace(' ', '+')
 	
@@ -89,21 +93,25 @@ for k in range(half):
 	table_html += """</a></td>
 	"""	
 	
-	name_noSpace2 = all_QB_names_sorted[k+half].replace(' ', '+')
-		
-	# in case odd number
-	if (k == half-1) & (len_all_QB % 2 == 1):
-		table_html += '	<td>'	
-		table_html += '</td>'
-	else:			
-		table_html += '	<td><a href=/?query='
-		table_html += name_noSpace2
-		table_html += ">"	
-		table_html += all_QB_names_sorted[k+half]
-		table_html += '</a></td>'
+	# in case uneven division, leave last column extra cells blank 
+	mod = len_all_QB % numCols
+	
+	for col in range(1, numCols):
+	
+		if (k+col*Nrows >= len_all_QB):
+			table_html += '<td>'	
+			table_html += '</td>'
+		else:			
+			name_noSpaceX = all_QB_names_sorted[k+col*Nrows].replace(' ', '+')
+			table_html += '<td><a href=/?query='
+			table_html += name_noSpaceX
+			table_html += ">"	
+			table_html += all_QB_names_sorted[k+col*Nrows]
+			table_html += """</a></td>
+			"""
 
-	table_html += """
-	</tr>"""
+		if (col == numCols - 1):
+			table_html += "</tr>"
 	
 	
 	
