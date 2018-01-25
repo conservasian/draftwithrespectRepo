@@ -79,6 +79,9 @@ a:hover {
 .table {
 	width: 60%;
 	margin-left: 20%;
+}
+
+.table>tbody>tr>td {
 	border-top: none;
 }
 
