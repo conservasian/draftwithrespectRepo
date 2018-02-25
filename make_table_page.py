@@ -163,16 +163,11 @@ for p in range(len(positions)):
 				table_html += "</tr>"
 	
 
-
-
-
-#### finalize table.html ####	
-	
-table_html += """
-	</tbody>
-	</table>
-</div> 
-"""
+	table_html += """
+		</tbody>
+		</table>
+	</div> 
+	"""
 
 
 ## add table to index.html template
