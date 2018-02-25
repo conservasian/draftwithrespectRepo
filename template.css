@@ -21,11 +21,11 @@ a:hover {
 }
 
 a.incident {
-	color: yellow;
+	color: rgb(255, 255, 130);
 }
 
 a.incident:hover {
-	color: yellow;
+	color: rgb(255, 255, 130);
 }
 
 .jumbotron {

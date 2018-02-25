@@ -23,7 +23,7 @@ with open('incidents.json', 'r') as g:
 
 
 # specify positions
-positions = ['QB', 'RB']
+positions = ['QB', 'RB', 'WR', 'TE', 'K']
 
 
 # open index.html
