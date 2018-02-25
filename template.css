@@ -13,11 +13,11 @@ body {background: #382060;
 /* https://stackoverflow.com/questions/18094134/fixed-gradient-background-with-css */
 
 a {
-	color: lightgray;
+	color: cornflowerblue;
 }
 
 a:hover {
-	color: lightgray;
+	color: cornflowerblue;
 }
 
 a.incident {
