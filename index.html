@@ -151,11 +151,11 @@ function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 				
 				for (y = 0; y < numDefensivePlayerRecords; y++) {
 				
-					var name = data_defense.team_defenses[t][0].Name
-					var position = data_defense.team_defenses[t][0].Position
-					var status = data_defense.team_defenses[t][0].Status
-					var details = data_defense.team_defenses[t][0].Details
-					var link = data_defense.team_defenses[t][0].Link
+					var name = data_defense.team_defenses[t][y].Name
+					var position = data_defense.team_defenses[t][y].Position
+					var status = data_defense.team_defenses[t][y].Status
+					var details = data_defense.team_defenses[t][y].Details
+					var link = data_defense.team_defenses[t][y].Link
 					
 					$("#results_div").append("<p id='positionteam' class='results'><b>" + name + " (" + position + ")</b></p>")
 					displayResults(status, details, link, numDefensivePlayerRecords-1)        	
