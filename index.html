@@ -149,14 +149,8 @@ function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 			// if there are hits, display data
 			if (numDefensiveIncidents > 0) {
 			
-				// calculate unique number of defensive players
-				var allDefNames = data_defense.team_defenses[t].Name;
-				console.log(allDefNames);
-				var uniqueDefNames = Array.from(new Set(allDefNames));
-				console.log(uniqueDefNames);
-			
 				// display name, position, status, details, link
-				
+				var allDefNames = []				
 				for (y = 0; y < numDefensiveIncidents; y++) {
 				
 					var name = data_defense.team_defenses[t][y].Name
@@ -165,9 +159,17 @@ function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 					var details = data_defense.team_defenses[t][y].Details
 					var link = data_defense.team_defenses[t][y].Link
 					
+					allDefNames[y] = name
+					
 					$("#results_div").append("<p id='positionteam' class='results'><b>" + name + " (" + position + ")</b></p>")
 					displayResults(status, details, link, y)        	
 				}
+				
+				// calculate unique number of defensive players
+				console.log(allDefNames);
+				var uniqueDefNames = Array.from(new Set(allDefNames));
+				console.log(uniqueDefNames);
+				
 			}
 					
 		}
