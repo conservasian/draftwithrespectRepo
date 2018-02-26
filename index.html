@@ -142,8 +142,6 @@ function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 				$("#results_div").append("<p id='defense_summary' class='results'>We have not found any defensive players with significant records.</p>");
 			} else if (numDefensiveIncidents == 1) {
 				$("#results_div").append("<p id='defense_summary' class='results'>We have found " + numDefensiveIncidents + " defensive player with significant records.</p>");
-			} else {
-				$("#results_div").append("<p id='defense_summary' class='results'>We have found " + numDefensiveIncidents + " defensive players with significant records.</p>");
 			}
 			
 			// if there are hits, display data
@@ -166,9 +164,11 @@ function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 				}
 				
 				// calculate unique number of defensive players
-				console.log(allDefNames);
 				var uniqueDefNames = Array.from(new Set(allDefNames));
-				console.log(uniqueDefNames);
+				if (uniqueDefNames.length > 1) {
+					$("#results_div").append("<p id='defense_summary' class='results'>We have found " + uniqueDefNames.length + " defensive players with significant records.</p>");
+				}
+
 				
 			}
 					
