@@ -149,7 +149,7 @@ function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 				var allDefNames = []	
 				for (z = 0; z < numDefensiveIncidents; z++) {
 					var name = data_defense.team_defenses[t][z].Name;
-					allDefNames[y] = name;
+					allDefNames[z] = name;
 				}
 				var uniqueDefNames = Array.from(new Set(allDefNames));
 				if (uniqueDefNames.length == 1) { 
