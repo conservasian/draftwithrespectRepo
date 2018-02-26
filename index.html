@@ -140,10 +140,10 @@ function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 			
 			if (numDefensiveIncidents == 0) {
 				$("#results_div").append("<p id='defense_summary' class='results'>We have not found any defensive players with significant records.</p>");
-			} else if (numDefensivePlayerRecords == 1) {
-				$("#results_div").append("<p id='defense_summary' class='results'>We have found " + numDefensivePlayerRecords + " defensive player with significant records.</p>");
+			} else if (numDefensiveIncidents == 1) {
+				$("#results_div").append("<p id='defense_summary' class='results'>We have found " + numDefensiveIncidents + " defensive player with significant records.</p>");
 			} else {
-				$("#results_div").append("<p id='defense_summary' class='results'>We have found " + numDefensivePlayerRecords + " defensive players with significant records.</p>");
+				$("#results_div").append("<p id='defense_summary' class='results'>We have found " + numDefensiveIncidents + " defensive players with significant records.</p>");
 			}
 			
 			// if there are hits, display data
