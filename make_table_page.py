@@ -17,9 +17,18 @@ import math
 # start the html file
 
 
-# load data (incidents.json)
+# load incident data (incidents.json)
 with open('incidents.json', 'r') as g:
 	incidents = json.load(g)
+	
+
+# load active player roster	
+with open('playerTeams.json', 'r') as f:
+	roster = json.load(f)
+
+roster_names = []
+for r in range(len(roster["name_pos_team"])):
+	roster_names.append(roster["name_pos_team"][r]["Name"])
 
 
 # specify positions
@@ -59,26 +68,30 @@ for p in range(len(positions)):
 		if (this_player_position == positions[p]):
 	
 			this_player_name = incidents["incidents"][i]["Name"]	
-		
-			if (this_player_name in all_XX_names):
-				idx_name = all_XX_names.index(this_player_name)
+			
+			# only include active players for the table
+			if (this_player_name in roster_names):
+			
+				# if the incident player is already in the database, update color if necessary
+				if (this_player_name in all_XX_names):
+					idx_name = all_XX_names.index(this_player_name)
 
-				this_inc_status = incidents["incidents"][i]["AssaultRelated"]
-				current_status = all_XX_color[idx_name]
+					this_inc_status = incidents["incidents"][i]["AssaultRelated"]
+					current_status = all_XX_color[idx_name]
 	
-				if (this_inc_status):
-					all_XX_color[idx_name] == 1
-					# no change if 'no records found'
+					if (this_inc_status):
+						all_XX_color[idx_name] == 1
+						# no change if 'no records found'
 			
 		
-			else:
-				all_XX_names.append(this_player_name)
+				else:
+					all_XX_names.append(this_player_name)
 		
-				all_XX_lastNames.append(this_player_name.split(' ')[1])
+					all_XX_lastNames.append(this_player_name.split(' ')[1])
 
-				this_player_status = int(incidents["incidents"][i]["AssaultRelated"])
+					this_player_status = int(incidents["incidents"][i]["AssaultRelated"])
 
-				all_XX_color.append(this_player_status)
+					all_XX_color.append(this_player_status)
 
 
 	all_XX_lastNames_sorted, all_XX_names_sorted = zip(*sorted(zip(all_XX_lastNames, all_XX_names)))
