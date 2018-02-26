@@ -140,15 +140,24 @@ function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 			
 			if (numDefensiveIncidents == 0) {
 				$("#results_div").append("<p id='defense_summary' class='results'>We have not found any defensive players with significant records.</p>");
-			} else if (numDefensiveIncidents == 1) {
-				$("#results_div").append("<p id='defense_summary' class='results'>We have found " + numDefensiveIncidents + " defensive player with significant records.</p>");
-			}
+			} 
 			
 			// if there are hits, display data
 			if (numDefensiveIncidents > 0) {
 			
+				// calculate unique number of defensive players
+				var allDefNames = []	
+				for (z = 0; z < numDefensiveIncidents; z==) {
+					allDefNames[y] = name
+				}
+				var uniqueDefNames = Array.from(new Set(allDefNames));
+				if (uniqueDefNames.length == 1) { 
+					$("#results_div").append("<p id='defense_summary' class='results'>We have found 1 defensive player with significant records.</p>");
+				} else if (uniqueDefNames.length > 1) {
+					$("#results_div").append("<p id='defense_summary' class='results'>We have found " + uniqueDefNames.length + " defensive players with significant records.</p>");
+				}
+			
 				// display name, position, status, details, link
-				var allDefNames = []				
 				for (y = 0; y < numDefensiveIncidents; y++) {
 				
 					var name = data_defense.team_defenses[t][y].Name
@@ -157,19 +166,11 @@ function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 					var details = data_defense.team_defenses[t][y].Details
 					var link = data_defense.team_defenses[t][y].Link
 					
-					allDefNames[y] = name
-					
 					$("#results_div").append("<p id='positionteam' class='results'><b>" + name + " (" + position + ")</b></p>")
 					displayResults(status, details, link, y)        	
 				}
 				
-				// calculate unique number of defensive players
-				var uniqueDefNames = Array.from(new Set(allDefNames));
-				if (uniqueDefNames.length > 1) {
-					$("#results_div").append("<p id='defense_summary' class='results'>We have found " + uniqueDefNames.length + " defensive players with significant records.</p>");
-				}
 
-				
 			}
 					
 		}
