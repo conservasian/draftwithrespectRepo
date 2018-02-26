@@ -148,7 +148,8 @@ function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 				// calculate unique number of defensive players
 				var allDefNames = []	
 				for (z = 0; z < numDefensiveIncidents; z==) {
-					allDefNames[y] = name
+					var name = data_defense.team_defenses[t][y].Name;
+					allDefNames[y] = name;
 				}
 				var uniqueDefNames = Array.from(new Set(allDefNames));
 				if (uniqueDefNames.length == 1) { 
@@ -160,14 +161,14 @@ function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 				// display name, position, status, details, link
 				for (y = 0; y < numDefensiveIncidents; y++) {
 				
-					var name = data_defense.team_defenses[t][y].Name
-					var position = data_defense.team_defenses[t][y].Position
-					var status = data_defense.team_defenses[t][y].Status
-					var details = data_defense.team_defenses[t][y].Details
-					var link = data_defense.team_defenses[t][y].Link
+					var name = data_defense.team_defenses[t][y].Name;
+					var position = data_defense.team_defenses[t][y].Position;
+					var status = data_defense.team_defenses[t][y].Status;
+					var details = data_defense.team_defenses[t][y].Details;
+					var link = data_defense.team_defenses[t][y].Link;
 					
 					$("#results_div").append("<p id='positionteam' class='results'><b>" + name + " (" + position + ")</b></p>")
-					displayResults(status, details, link, y)        	
+					displayResults(status, details, link, y);
 				}
 				
 
