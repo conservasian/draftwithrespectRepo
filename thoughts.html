@@ -114,10 +114,14 @@ function addLink(link, linkNum, link_id_ht) {
 		$(link_id_ht).append("<a href='" + link + "'>BuzzFeed</a>");
 	} else if (link.includes("usatoday")) {
 		$(link_id_ht).append("<a href='" + link + "'>USA Today</a>");
-	} else if (link.includes("washingtonpost")) {
-		$(link_id_ht).append("<a href='" + link + "'>Washington Post</a>");
 	} else if (link.includes("cbssports")) {
 		$(link_id_ht).append("<a href='" + link + "'>CBS Sports</a>");
+	} else if (link.includes("baltimoresun")) {
+		$(link_id_ht).append("<a href='" + link + "'>Baltimore Sun</a>");
+	} else if (link.includes("bostonglobe")) {
+		$(link_id_ht).append("<a href='" + link + "'>Boston Globe</a>");
+	} else if (link.includes("washingtonpost")) {
+		$(link_id_ht).append("<a href='" + link + "'>Washington Post</a>");
 	} else if (link.includes("bleacherreport")) {
 		$(link_id_ht).append("<a href='" + link + "'>Bleacher Report</a>");
 	} else if (link.includes("tulsaworld")) {
@@ -143,32 +147,42 @@ function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 		if (t == teamAbbrev) {
 			
 			// first display count of hits summary sentence
-			var numDefensivePlayerRecords = data_defense.team_defenses[t].length;
+			var numDefensiveIncidents = data_defense.team_defenses[t].length;
 			
-			if (numDefensivePlayerRecords == 0) {
+			if (numDefensiveIncidents == 0) {
 				$("#results_div").append("<p id='defense_summary' class='results'>We have not found any defensive players with significant records.</p>");
-			} else if (numDefensivePlayerRecords == 1) {
-				$("#results_div").append("<p id='defense_summary' class='results'>We have found " + numDefensivePlayerRecords + " defensive player with significant records.</p>");
-			} else {
-				$("#results_div").append("<p id='defense_summary' class='results'>We have found " + numDefensivePlayerRecords + " defensive players with significant records.</p>");
-			}
+			} 
 			
 			// if there are hits, display data
-			if (numDefensivePlayerRecords > 0) {
+			if (numDefensiveIncidents > 0) {
+			
+				// calculate unique number of defensive players
+				var allDefNames = []	
+				for (z = 0; z < numDefensiveIncidents; z++) {
+					var name = data_defense.team_defenses[t][z].Name;
+					allDefNames[z] = name;
+				}
+				var uniqueDefNames = Array.from(new Set(allDefNames));
+				if (uniqueDefNames.length == 1) { 
+					$("#results_div").append("<p id='defense_summary' class='results'>We have found 1 defensive player with significant records.</p>");
+				} else if (uniqueDefNames.length > 1) {
+					$("#results_div").append("<p id='defense_summary' class='results'>We have found " + uniqueDefNames.length + " defensive players with significant records.</p>");
+				}
 			
 				// display name, position, status, details, link
+				for (y = 0; y < numDefensiveIncidents; y++) {
 				
-				for (y = 0; y < numDefensivePlayerRecords; y++) {
-				
-					var name = data_defense.team_defenses[t][0].Name
-					var position = data_defense.team_defenses[t][0].Position
-					var status = data_defense.team_defenses[t][0].Status
-					var details = data_defense.team_defenses[t][0].Details
-					var link = data_defense.team_defenses[t][0].Link
+					var name = data_defense.team_defenses[t][y].Name;
+					var position = data_defense.team_defenses[t][y].Position;
+					var status = data_defense.team_defenses[t][y].Status;
+					var details = data_defense.team_defenses[t][y].Details;
+					var link = data_defense.team_defenses[t][y].Link;
 					
 					$("#results_div").append("<p id='positionteam' class='results'><b>" + name + " (" + position + ")</b></p>")
-					displayResults(status, details, link, numDefensivePlayerRecords-1)        	
+					displayResults(status, details, link, y);
 				}
+				
+
 			}
 					
 		}
