@@ -137,31 +137,48 @@ function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 	for (t in data_defense.team_defenses) {
 		if (t == teamAbbrev) {
 			
-			// first display count of hits summary sentence
-			var numDefensiveIncidents = data_defense.team_defenses[t].length;
+			// report number of defensive players with incidents and without
 			
-			if (numDefensiveIncidents == 0) {
-				$("#results_div").append("<p id='defense_summary' class='results'>We have not found any defensive players with significant records.</p>");
-			} 
+			// first get number of listed incidents (may not be 1:1 with number of players)
+			var numDefResults = data_defense.team_defenses[t].length;
 			
-			// if there are hits, display data
-			if (numDefensiveIncidents > 0) {
-			
-				// calculate unique number of defensive players
-				var allDefNames = []	
-				for (z = 0; z < numDefensiveIncidents; z++) {
-					var name = data_defense.team_defenses[t][z].Name;
-					allDefNames[z] = name;
+			// calculate number of positive incidents, generate array of players
+			var numDefIncidents = 0;
+			var allDefNames = []	
+			for (z = 0; z < numDefResults; z++) {
+				if (data_defense.team_defenses[t][z].AssaultRelated == '0') {
+					numDefIncidents += 1;
 				}
-				var uniqueDefNames = Array.from(new Set(allDefNames));
-				if (uniqueDefNames.length == 1) { 
-					$("#results_div").append("<p id='defense_summary' class='results'>We have found 1 defensive player with significant records.</p>");
-				} else if (uniqueDefNames.length > 1) {
-					$("#results_div").append("<p id='defense_summary' class='results'>We have found " + uniqueDefNames.length + " defensive players with significant records.</p>");
-				}
+				
+				// calculate number of unique defensive players in incidents
+				var name = data_defense.team_defenses[t][z].Name;
+				allDefNames[z] = name;
+			}
+			var uniqueDefNames = Array.from(new Set(allDefNames));			
+			var numDefPlayersUnique = uniqueDefNames.length;
+			
+			// calculate number of unique players with positive incidents, and without
+			// assumes players without incident are listed only once
+			var numDefPlayersDuplicateIncidents = numDefResults - numDefPlayersUnique;
+			var numDefPlayersWithIncident = numDefIncidents - numDefPlayersDuplicateIncidents;
+			var numDefPlayersNoIncident = numDefPlayersUnique - numDefPlayersWithIncident;
+			
+			// display count of players with and without incidents
+			if (numDefPlayersUnique == 0) {
+				$("#results_div").append("<p id='defense_summary' class='results'>We have not looked up any defensive players on this team. Stay tuned!</p>");
+			} else if (numDefPlayersWithIncident == 0) {
+				$("#results_div").append("<p id='defense_summary' class='results'>We found no defensive players on this team with significant records but we did find " + numDefPlayersNoIncident + " without significant records.</p>");
+			} else if (numDefPlayersWithIncident == 1) {
+				$("#results_div").append("<p id='defense_summary' class='results'>We found 1 defensive player on this team with significant records and " + numDefPlayersNoIncident + " players without significant records.</p>");
+			} else {
+				$("#results_div").append("<p id='defense_summary' class='results'>We found " + numDefPlayersWithIncident + " defensive players on this team with significant records and " + numDefPlayersNoIncident + " players without significant records.</p>");	
+			}
+			
+			// display all incident data
+			if (numDefResults > 0) {
 			
 				// display name, position, status, details, link
-				for (y = 0; y < numDefensiveIncidents; y++) {
+				for (y = 0; y < numDefResults; y++) {
 				
 					var name = data_defense.team_defenses[t][y].Name;
 					var position = data_defense.team_defenses[t][y].Position;
