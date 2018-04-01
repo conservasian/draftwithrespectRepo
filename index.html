@@ -146,7 +146,7 @@ function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 			var numDefIncidents = 0;
 			var allDefNames = []	
 			for (z = 0; z < numDefResults; z++) {
-				if (data_defense.team_defenses[t][z].AssaultRelated == '0') {
+				if (data_defense.team_defenses[t][z].AssaultRelated == '1') {
 					numDefIncidents += 1;
 				}
 				
