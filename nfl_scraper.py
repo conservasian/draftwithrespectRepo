@@ -100,7 +100,7 @@ def getPlayerData(link):
 nfl_links_all = []
 for h in range(len(pos_initial_links)):
 	
-	print "looking up number of " + pos_abbreviation[h] + " pages"
+	print("looking up number of " + pos_abbreviation[h] + " pages")
 	
 	this_initial_link = pos_initial_links[h]
 	
@@ -115,12 +115,12 @@ for h in range(len(pos_initial_links)):
 		for g in range(2, num_pages_total+1):
 			nfl_links_all.append(this_initial_link + "&d-447263-p=" + str(g))
 
-print "Total pages to scrape: " + str(len(nfl_links_all))
+print("Total pages to scrape: " + str(len(nfl_links_all)))
 
 # extract data from every NFL player roster link
 for j in range(len(nfl_links_all)):
 	pos, name, status, team = getPlayerData(nfl_links_all[j])
-	print j
+	print(j)
 
 # for bad apples who are not currently playing, index.html can find position, defaults team to "not active"
 
