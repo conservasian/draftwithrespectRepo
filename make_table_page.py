@@ -23,7 +23,7 @@ with open('incidents.json', 'r') as g:
 	
 
 # load active player roster	
-with open('playerTeams.json', 'r') as f:
+with open('roster.json', 'r') as f:
 	roster = json.load(f)
 
 roster_names = []

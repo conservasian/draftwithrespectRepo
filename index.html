@@ -150,7 +150,7 @@ function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 			
 			// calculate number of positive incidents, generate array of players
 			var numDefIncidents = 0;
-			var allDefNamePos = []	
+			var allDefNamePos = [];
 			for (z = 0; z < numDefResults; z++) {
 				if (data_defense.team_defenses[t][z].AssaultRelated == '1') {
 					numDefIncidents += 1;
