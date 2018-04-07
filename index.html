@@ -160,7 +160,7 @@ function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 				var namePos = data_defense.team_defenses[t][z].NamePos;
 				allDefNamePos[z] = namePos;
 			}
-			var uniqueDefNames = Array.from(new Set(allDefNames));			
+			var uniqueDefNames = Array.from(new Set(allDefNamePos));			
 			var numDefPlayersUnique = uniqueDefNames.length;
 			
 			// calculate number of unique players with positive incidents, and without
