@@ -229,7 +229,7 @@ function findPlayerData(namePos, data_incidents, data_roster) {
 	for (i in data_roster.name_pos_team) {
 	    names_roster.push(data_roster.name_pos_team[i].NamePos)
     }
-    var index_roster = names_roster.indexOf(playerName);
+    var index_roster = names_roster.indexOf(namePos);
     
     // output data
     if (index_incident.length == 0 && index_roster == -1) {
