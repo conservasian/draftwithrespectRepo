@@ -138,9 +138,10 @@ for k in range(len(name)):
 		"Position":pos[k],
 		"Team":team[k],
 		"Status":status[k],
+		"NamePos":name[k] + ' (' + pos[k] + ')',
 	})
 
-with open('playerTeams.json', 'w') as f:
+with open('roster.json', 'w') as f:
      json.dump(data, f)
 
 # add team defenses under "name" variable
@@ -152,7 +153,16 @@ team_defenses = ["ARI defense (Cardinals)", "ATL defense (Falcons)", "BAL defens
 			  "PHI defense (Eagles)", "PIT defense (Steelers)", "SF defense (49ers)", "SEA defense (Seahawks)", "TB defense (Buccaneers)", 
 			  "TEN defense (Titans)", "WAS defense (Redskins)"]
 			  
-name_list = name + team_defenses
-
+name_plusDef = name + team_defenses
 with open('names.json', 'w') as f:
-     json.dump(name_list, f)
+     json.dump(name_plusDef, f)
+     
+     
+# make unique list combining name and position (since there are two Brandon Marshalls)
+namePos = []
+for n in range(len(name)):
+	namePos.append(name[n] + ' (' + pos[n] + ')')
+
+namePos_plusDef = namePos + team_defenses
+with open('namePos.json', 'w') as f:
+     json.dump(namePos_plusDef, f)

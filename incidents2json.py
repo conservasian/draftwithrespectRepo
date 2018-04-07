@@ -30,6 +30,7 @@ for k in range(1, len(playerName)):
     data["incidents"].append({
     	"Name":playerName[k],
     	"Position":position[k],
+    	"NamePos":playerName[k] + ' (' + position[k] + ')',
     	"AssaultRelated":assaultRelated[k],
 		"Status":status[k],
 		"Details":details[k],
