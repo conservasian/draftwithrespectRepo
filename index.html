@@ -150,15 +150,15 @@ function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 			
 			// calculate number of positive incidents, generate array of players
 			var numDefIncidents = 0;
-			var allDefNames = []	
+			var allDefNamePos = []	
 			for (z = 0; z < numDefResults; z++) {
 				if (data_defense.team_defenses[t][z].AssaultRelated == '1') {
 					numDefIncidents += 1;
 				}
 				
 				// calculate number of unique defensive players in incidents
-				var name = data_defense.team_defenses[t][z].Name;
-				allDefNames[z] = name;
+				var namePos = data_defense.team_defenses[t][z].NamePos;
+				allDefNamePos[z] = namePos;
 			}
 			var uniqueDefNames = Array.from(new Set(allDefNames));			
 			var numDefPlayersUnique = uniqueDefNames.length;
@@ -188,11 +188,12 @@ function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 				
 					var name = data_defense.team_defenses[t][y].Name;
 					var position = data_defense.team_defenses[t][y].Position;
+					var namePos = data_defense.team_defenses[t][y].NamePos;
 					var status = data_defense.team_defenses[t][y].Status;
 					var details = data_defense.team_defenses[t][y].Details;
 					var link = data_defense.team_defenses[t][y].Link;
 					
-					$("#results_div").append("<p id='positionteam' class='results'><b>" + name + " (" + position + ")</b></p>")
+					$("#results_div").append("<p id='positionteam' class='results'><b>" + namePos</b></p>")
 					displayResults(status, details, link, y);
 				}
 				

@@ -3,22 +3,24 @@
 
 import json
 
-## load roster (playerTeams.json)
-with open('playerTeams.json', 'r') as f:
+## load roster
+with open('roster.json', 'r') as f:
 	roster = json.load(f)
 
 	
-## make parallel lists of names, teams, and status
+## make parallel lists of names, positions, teams, and status
 roster_names = []
 roster_teams = []
 roster_status = []
 roster_position = []
+roster_namePos = []
 
 for r in range(len(roster["name_pos_team"])):
 	roster_names.append(roster["name_pos_team"][r]["Name"])
 	roster_teams.append(roster["name_pos_team"][r]["Team"])
 	roster_status.append(roster["name_pos_team"][r]["Status"])
 	roster_position.append(roster["name_pos_team"][r]["Position"])
+	roster_namePos.append(roster["name_pos_team"][r]["NamePos"])
 
 
 
@@ -32,6 +34,7 @@ with open('incidents.json', 'r') as g:
 df_names = []
 df_teams = []
 df_positions = []
+df_namePos = []
 df_statuses = []
 df_assaultRelated = []
 df_details = []
@@ -56,6 +59,8 @@ for i in range(len(incidents["incidents"])):
 			df_teams.append(this_player_team)
 			
 			df_positions.append(this_player_position)
+			
+			df_namePos.append(this_player_name + ' (' + this_player_position + ')')
 			
 			this_player_status = incidents["incidents"][i]["Status"]
 			df_statuses.append(this_player_status)
@@ -91,6 +96,7 @@ for k in range(len(team_abbrev)):
 		
 			this_df_name = df_names[m]
 			this_df_position = df_positions[m]
+			this_df_namePos = df_namePos[m]
 			this_df_status = df_statuses[m]
 			this_df_assaultRelated = df_assaultRelated[m]
 			this_df_details = df_details[m]
@@ -100,6 +106,7 @@ for k in range(len(team_abbrev)):
 			data["team_defenses"][this_team_abbrev].append({
 				"Name":this_df_name,
 				"Position":this_df_position,
+				"NamePos":this_df_namePos,
 				"Team":this_df_team,
 				"Status":this_df_status,
 				"AssaultRelated":this_df_assaultRelated,
