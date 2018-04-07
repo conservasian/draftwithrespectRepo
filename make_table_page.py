@@ -27,8 +27,10 @@ with open('roster.json', 'r') as f:
 	roster = json.load(f)
 
 roster_names = []
+roster_namePos = []
 for r in range(len(roster["name_pos_team"])):
 	roster_names.append(roster["name_pos_team"][r]["Name"])
+	roster_namePos.append(roster["name_pos_team"][r]["NamePos"])
 
 
 # specify positions
@@ -56,6 +58,7 @@ for p in range(len(positions)):
 
 	# initialize 
 	all_XX_names = []
+	all_XX_namePos = []
 	all_XX_color = []
 	all_XX_lastNames = []
 
@@ -67,33 +70,35 @@ for p in range(len(positions)):
 	
 		if (this_player_position == positions[p]):
 	
-			this_player_name = incidents["incidents"][i]["Name"]	
+			this_player_namePos = incidents["incidents"][i]["NamePos"]	
 			
 			# only include active players for the table
-			if (this_player_name in roster_names):
+			if (this_player_namePos in roster_namePos):
 			
 				# if the incident player is already in the database, update color if necessary
-				if (this_player_name in all_XX_names):
-					idx_name = all_XX_names.index(this_player_name)
+				if (this_player_namePos in all_XX_namePos):
+					idx_namePos = all_XX_namePos.index(this_player_namePos)
 
 					this_inc_status = incidents["incidents"][i]["AssaultRelated"]
-					current_status = all_XX_color[idx_name]
+					current_status = all_XX_color[idx_namePos]
 	
 					if (this_inc_status):
-						all_XX_color[idx_name] == 1
+						all_XX_color[idx_namePos] == 1
 						# no change if 'no records found'
 			
 		
 				else:
-					all_XX_names.append(this_player_name)
-		
+					all_XX_namePos.append(this_player_namePos)
+					
+					this_player_name = incidents["incidents"][i]["Name"]
+					all_XX_names.append(this_player_name)		
 					all_XX_lastNames.append(this_player_name.split(' ')[1])
 
 					this_player_status = int(incidents["incidents"][i]["AssaultRelated"])
 
 					all_XX_color.append(this_player_status)
 
-
+	all_XX_lastNames_sorted, all_XX_namePos_sorted = zip(*sorted(zip(all_XX_lastNames, all_XX_namePos)))
 	all_XX_lastNames_sorted, all_XX_names_sorted = zip(*sorted(zip(all_XX_lastNames, all_XX_names)))
 	all_XX_lastNames_sorted, all_XX_color_sorted = zip(*sorted(zip(all_XX_lastNames, all_XX_color)))
 
@@ -131,7 +136,7 @@ for p in range(len(positions)):
 	for k in range(Nrows):
 		
 		# first write html for column one	
-		name_noSpace1 = all_XX_names_sorted[k].replace(' ', '+')
+		namePos_noSpace1 = all_XX_namePos_sorted[k].replace(' ', '+')
 	
 		if (all_XX_color_sorted[k]):
 			table_html += """
@@ -143,7 +148,7 @@ for p in range(len(positions)):
 			<tr>
 				<td><a href=/?query="""
 	
-		table_html += name_noSpace1
+		table_html += namePos_noSpace1
 		table_html += ">"
 	
 		table_html += all_XX_names_sorted[k]
@@ -161,12 +166,12 @@ for p in range(len(positions)):
 				table_html += """</td>
 				"""
 			else:			
-				name_noSpaceX = all_XX_names_sorted[k+col*Nrows].replace(' ', '+')
+				namePos_noSpaceX = all_XX_names_sorted[k+col*Nrows].replace(' ', '+')
 				if (all_XX_color_sorted[k+col*Nrows]):
 					table_html += """<td><a class='incident' href=/?query="""
 				else:
 					table_html += '<td><a href=/?query='
-				table_html += name_noSpaceX
+				table_html += namePos_noSpaceX
 				table_html += ">"	
 				table_html += all_XX_names_sorted[k+col*Nrows]
 				table_html += """</a></td>
