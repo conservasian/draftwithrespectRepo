@@ -166,7 +166,7 @@ for p in range(len(positions)):
 				table_html += """</td>
 				"""
 			else:			
-				namePos_noSpaceX = all_XX_names_sorted[k+col*Nrows].replace(' ', '+')
+				namePos_noSpaceX = all_XX_namePos_sorted[k+col*Nrows].replace(' ', '+')
 				if (all_XX_color_sorted[k+col*Nrows]):
 					table_html += """<td><a class='incident' href=/?query="""
 				else:

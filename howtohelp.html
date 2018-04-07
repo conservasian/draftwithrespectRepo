@@ -92,7 +92,7 @@
 
 
 <script>
-$.get("names.json", function(data){
+$.get("namePos.json", function(data){
   $("#playerInputBox").typeahead({ source:data });
 },'json');
 </script>
@@ -130,6 +130,8 @@ function addLink(link, linkNum, link_id_ht) {
 		$(link_id_ht).append("<a href='" + link + "'>Tulsa World</a>");
 	} else if (link.includes("denverpost")) {
 		$(link_id_ht).append("<a href='" + link + "'>Denver Post</a>");
+	} else if (link.includes("seattletimes")) {
+		$(link_id_ht).append("<a href='" + link + "'>Seattle Times</a>");
 	} else if (link.includes("baltimoresun")) {
 		$(link_id_ht).append("<a href='" + link + "'>Baltimore Sun</a>");
 	} else if (link.includes("washingtonpost")) {
@@ -138,8 +140,6 @@ function addLink(link, linkNum, link_id_ht) {
 		$(link_id_ht).append("<a href='" + link + "'>Bleacher Report</a>");
 	} else if (link.includes("iowastatedaily")) {
 		$(link_id_ht).append("<a href='" + link + "'>Iowa State Daily</a>");
-	} else if (link.includes("seattletimes")) {
-		$(link_id_ht).append("<a href='" + link + "'>Seattle Times</a>");
 	} else if (link.includes("huffingtonpost")) {
 		$(link_id_ht).append("<a href='" + link + "'>Huffington Post</a>");
 	} else if (link.includes("si.com")) {
@@ -163,17 +163,17 @@ function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 			
 			// calculate number of positive incidents, generate array of players
 			var numDefIncidents = 0;
-			var allDefNames = []	
+			var allDefNamePos = [];
 			for (z = 0; z < numDefResults; z++) {
 				if (data_defense.team_defenses[t][z].AssaultRelated == '1') {
 					numDefIncidents += 1;
 				}
 				
 				// calculate number of unique defensive players in incidents
-				var name = data_defense.team_defenses[t][z].Name;
-				allDefNames[z] = name;
+				var namePos = data_defense.team_defenses[t][z].NamePos;
+				allDefNamePos[z] = namePos;
 			}
-			var uniqueDefNames = Array.from(new Set(allDefNames));			
+			var uniqueDefNames = Array.from(new Set(allDefNamePos));			
 			var numDefPlayersUnique = uniqueDefNames.length;
 			
 			// calculate number of unique players with positive incidents, and without
@@ -201,11 +201,12 @@ function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 				
 					var name = data_defense.team_defenses[t][y].Name;
 					var position = data_defense.team_defenses[t][y].Position;
+					var namePos = data_defense.team_defenses[t][y].NamePos;
 					var status = data_defense.team_defenses[t][y].Status;
 					var details = data_defense.team_defenses[t][y].Details;
 					var link = data_defense.team_defenses[t][y].Link;
 					
-					$("#results_div").append("<p id='positionteam' class='results'><b>" + name + " (" + position + ")</b></p>")
+					$("#results_div").append("<p id='positionteam' class='results'><b>" + namePos + "</b></p>")
 					displayResults(status, details, link, y);
 				}
 				
@@ -218,20 +219,18 @@ function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 </script>
 
 <script>
-function findPlayerData(playerName, data_incidents, data_roster) {
+function findPlayerData(namePos, data_incidents, data_roster) {
 	
-	// find player name in incident data	
+	// store data if query matches anything in the incident database
 	var index_incident = []; // for counting number of incidents
-	
 	var assaultRelated_incident = [];
 	var status_incident = [];
 	var details_incident = [];
 	var link_incident = [];
 	
 	for (i in data_incidents.incidents) {
-		if (data_incidents.incidents[i].Name == playerName) {
+		if (data_incidents.incidents[i].NamePos == namePos) {
 			index_incident.push(i);
-			
 			assaultRelated_incident.push(data_incidents.incidents[i].AssaultRelated);
 			status_incident.push(data_incidents.incidents[i].Status);
 			details_incident.push(data_incidents.incidents[i].Details);
@@ -239,12 +238,12 @@ function findPlayerData(playerName, data_incidents, data_roster) {
 		}
     }
 
-	// find player name in player team data    
+	// find player name in player team data, load all data into javascript variables
     var names_roster = []; 			
 	for (i in data_roster.name_pos_team) {
-	    names_roster.push(data_roster.name_pos_team[i].Name)
+	    names_roster.push(data_roster.name_pos_team[i].NamePos)
     }
-    var index_roster = names_roster.indexOf(playerName);
+    var index_roster = names_roster.indexOf(namePos);
     
     // output data
     if (index_incident.length == 0 && index_roster == -1) {
@@ -340,15 +339,15 @@ function randomizePlaceholder() {
 	var randNum = Math.random();
 	
 	if (randNum < 0.2) {
-		var placeholderStr = "Ben Roethlisberger";
+		var placeholderStr = "Ben Roethlisberger (QB)";
 	} else if (randNum < 0.4) {
 		var placeholderStr = "SEA defense (Seahawks)";
 	} else if (randNum < 0.6) {
-		var placeholderStr = "Ezekiel Elliott";
+		var placeholderStr = "Ezekiel Elliott (RB)";
 	} else if (randNum < 0.8) {
-		var placeholderStr = "Tyreek Hill";
+		var placeholderStr = "Tyreek Hill (WR)";
 	} else {
-		var placeholderStr = "Joe Mixon";
+		var placeholderStr = "Joe Mixon (RB)";
 	}
 	placeholderStr = "e.g. " + placeholderStr;
 
@@ -392,7 +391,7 @@ $(document).ready(function(){
 			$.ajax({
 				'async': false,
 				'global': false,
-				'url': "playerTeams.json",
+				'url': "roster.json",
 				'dataType': "json",
 				'success': function (data) {
 					roster_json = data;
@@ -435,8 +434,8 @@ $(document).ready(function(){
         
         // if the query is a player name	
         } else { 
-        	var playerName = query;
-        	var result = findPlayerData(playerName, incidents_json, roster_json);
+        	var namePos = query;
+        	var result = findPlayerData(namePos, incidents_json, roster_json);
         	
         	// display data
 			if (result == "not in both") {
