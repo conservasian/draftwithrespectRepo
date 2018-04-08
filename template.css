@@ -17,6 +17,10 @@ a {
 	text-decoration: underline;
 }
 
+a:hover {
+	color: #d9ccee;
+}
+
 a.incident {
 	color: rgb(255, 255, 130);
 }
