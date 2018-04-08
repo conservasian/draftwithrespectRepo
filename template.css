@@ -14,7 +14,6 @@ body {background: #382060;
 
 a {
 	color: #d9ccee;
-	text-decoration: underline;
 }
 
 a:hover {
@@ -22,11 +21,13 @@ a:hover {
 }
 
 a.incident {
-	color: rgb(255, 255, 130);
+	color: #d9ccee;
+	text-decoration: underline;
 }
 
 a.incident:hover {
-	color: rgb(255, 255, 130);
+	color: #d9ccee;
+	text-decoration: underline;
 }
 
 .jumbotron {

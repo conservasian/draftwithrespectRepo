@@ -91,48 +91,50 @@ function addLink(link, linkNum, link_id_ht) {
 		$(link_id_ht).append(", ");
 	}
 
+	$(link_id_ht).append("<a class='incident' href='");
+
 	if (link.includes("npr")) {
-		$(link_id_ht).append("<a href='" + link + "'>NPR</a>");
+		$(link_id_ht).append(link + "'>NPR</a>");
 	} else if (link.includes("tmz")) {
-		$(link_id_ht).append("<a href='" + link + "'>TMZ</a>");
+		$(link_id_ht).append(link + "'>TMZ</a>");
 	} else if (link.includes("vice")) {
-		$(link_id_ht).append("<a href='" + link + "'>Vice</a>");
+		$(link_id_ht).append(link + "'>Vice</a>");
 	} else if (link.includes("espn")) {
-		$(link_id_ht).append("<a href='" + link + "'>ESPN</a>");
+		$(link_id_ht).append(link + "'>ESPN</a>");
 	} else if (link.includes("sfgate")) {
-		$(link_id_ht).append("<a href='" + link + "'>SFGate</a>");
+		$(link_id_ht).append(link + "'>SFGate</a>");
 	} else if (link.includes("sbnation")) {
-		$(link_id_ht).append("<a href='" + link + "'>SBNation</a>");
+		$(link_id_ht).append(link + "'>SBNation</a>");
 	} else if (link.includes("buzzfeed")) {
-		$(link_id_ht).append("<a href='" + link + "'>BuzzFeed</a>");
+		$(link_id_ht).append(link + "'>BuzzFeed</a>");
 	} else if (link.includes("usatoday")) {
-		$(link_id_ht).append("<a href='" + link + "'>USA Today</a>");
+		$(link_id_ht).append(link + "'>USA Today</a>");
 	} else if (link.includes("cbssports")) {
-		$(link_id_ht).append("<a href='" + link + "'>CBS Sports</a>");
+		$(link_id_ht).append(link + "'>CBS Sports</a>");
 	} else if (link.includes("dallasnews")) {
-		$(link_id_ht).append("<a href='" + link + "'>Dallas News</a>");
+		$(link_id_ht).append(link + "'>Dallas News</a>");
 	} else if (link.includes("bostonglobe")) {
-		$(link_id_ht).append("<a href='" + link + "'>Boston Globe</a>");
+		$(link_id_ht).append(link + "'>Boston Globe</a>");
 	} else if (link.includes("tulsaworld")) {
-		$(link_id_ht).append("<a href='" + link + "'>Tulsa World</a>");
+		$(link_id_ht).append(link + "'>Tulsa World</a>");
 	} else if (link.includes("denverpost")) {
-		$(link_id_ht).append("<a href='" + link + "'>Denver Post</a>");
+		$(link_id_ht).append(link + "'>Denver Post</a>");
 	} else if (link.includes("seattletimes")) {
-		$(link_id_ht).append("<a href='" + link + "'>Seattle Times</a>");
+		$(link_id_ht).append(link + "'>Seattle Times</a>");
 	} else if (link.includes("baltimoresun")) {
-		$(link_id_ht).append("<a href='" + link + "'>Baltimore Sun</a>");
+		$(link_id_ht).append(link + "'>Baltimore Sun</a>");
 	} else if (link.includes("washingtonpost")) {
-		$(link_id_ht).append("<a href='" + link + "'>Washington Post</a>");
+		$(link_id_ht).append(link + "'>Washington Post</a>");
 	} else if (link.includes("bleacherreport")) {
-		$(link_id_ht).append("<a href='" + link + "'>Bleacher Report</a>");
+		$(link_id_ht).append(link + "'>Bleacher Report</a>");
 	} else if (link.includes("iowastatedaily")) {
-		$(link_id_ht).append("<a href='" + link + "'>Iowa State Daily</a>");
+		$(link_id_ht).append(link + "'>Iowa State Daily</a>");
 	} else if (link.includes("huffingtonpost")) {
-		$(link_id_ht).append("<a href='" + link + "'>Huffington Post</a>");
+		$(link_id_ht).append(link + "'>Huffington Post</a>");
 	} else if (link.includes("si.com")) {
-		$(link_id_ht).append("<a href='" + link + "'>Sports Illustrated</a>");
+		$(link_id_ht).append(link + "'>Sports Illustrated</a>");
 	} else {
-		$(link_id_ht).append("<a href='" + link + "'>" + link + "</a>");
+		$(link_id_ht).append(link + "'>" + link + "</a>");
 	}
 }
 </script>
