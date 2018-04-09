@@ -65,7 +65,7 @@ team_defenses = ["ARI defense (Cardinals)", "ATL defense (Falcons)", "BAL defens
 
 table_html += """
 	<div id=\'table_div\' class=\'jumbotron text-center\'>
-	<table id=\'table_defense\' class=\'tablesorter\' \'table\'>
+	<table id=\'table_defense\' class=\'tablesorter table\'>
 	<thead>
 	<tr>
 		<td>Team defense</td>
