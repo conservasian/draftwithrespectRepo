@@ -42,17 +42,18 @@ df_links = []
 
 for i in range(len(incidents["incidents"])):
 	
-	this_player_name = incidents["incidents"][i]["Name"]
+	this_player_namePos = incidents["incidents"][i]["NamePos"]
 	
 	# find this player's name in the roster of names
-	if (this_player_name in roster_names):
-		roster_idx = roster_names.index(this_player_name)
+	if (this_player_namePos in roster_namePos):
+		roster_idx = roster_namePos.index(this_player_namePos)
 		
 		
 		# screen by position for only defensive players
 		this_player_position = roster_position[roster_idx]
 		if (this_player_position == "DT") | (this_player_position == "DE") | (this_player_position == "NT") | ("LB" in this_player_position) | (this_player_position == "DB") | (this_player_position == "CB") | (this_player_position == "SS") | (this_player_position == "FS") | (this_player_position == "SAF"):
 		
+			this_player_name = incidents["incidents"][i]["Name"]
 			df_names.append(this_player_name)
 
 			this_player_team = roster_teams[roster_idx]

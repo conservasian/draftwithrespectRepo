@@ -65,13 +65,15 @@ team_defenses = ["ARI defense (Cardinals)", "ATL defense (Falcons)", "BAL defens
 
 table_html += """
 	<div id=\'table_div\' class=\'jumbotron text-center\'>
-	<table class=\'table\'>
-	<tbody>
+	<table class='tablesorter' class=\'table\'>
+	<thead>
 	<tr>
 		<td>Team defense</td>
 		<td># of players with incidents</td>
 		<td># of players looked up</td>
 	</tr>
+	</thead>
+	<tbody>
 """
 
 for i in range(32):
