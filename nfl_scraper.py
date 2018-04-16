@@ -163,6 +163,18 @@ namePos = []
 for n in range(len(name)):
 	namePos.append(name[n] + ' (' + pos[n] + ')')
 
-namePos_plusDef = namePos + team_defenses
+
+# include any results for now retired players from incidents.json 
+with open('incidents.json', 'r') as g:
+	incidents = json.load(g)
+
+namePos_inc = []
+for i in range(len(incidents["incidents"])):
+	namePos_inc.append(incidents["incidents"][i]["NamePos"])
+	
+# uniquefy namePos from actie roster and namePos from incidents
+namePos_all = list(set(namePos + namePos_inc))
+
+namePos_plusDef = namePos_all + team_defenses
 with open('namePos.json', 'w') as f:
      json.dump(namePos_plusDef, f)
