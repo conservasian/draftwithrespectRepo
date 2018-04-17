@@ -172,7 +172,7 @@ namePos_inc = []
 for i in range(len(incidents["incidents"])):
 	namePos_inc.append(incidents["incidents"][i]["NamePos"])
 	
-# uniquefy namePos from actie roster and namePos from incidents
+# uniquefy namePos from active roster and namePos from incidents
 namePos_all = list(set(namePos + namePos_inc))
 
 namePos_plusDef = namePos_all + team_defenses
