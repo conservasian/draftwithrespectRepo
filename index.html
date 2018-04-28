@@ -282,14 +282,14 @@ function displayResults(status, details, link, j) {
 	$("#results_div").append("<h3 class='results'><span id='" + status_id + "' class='results'>" + status + "</span></h3>")
 
 	// if no records found
-	if (status == "No records found") {
+	if (status == "No records found" || status == "No records of assault on women found") {
 		// color-code green
 		$(status_id_ht).addClass("label label-success");
 		
 		// add links
 		$("#results_div").append("<p id='" + link_id + "' class='results'>We thoroughly searched and couldn't find any relevant records online.</p>");
 		
-	} else if (status == "No assault-related records found" || status == "Not in database") {
+	} else if (status.indexOf("Wrongfully accused") != -1 || status.indexOf("not guilty") != -1 || status == "Not in database") {
 		// color-code gray
 		$(status_id_ht).addClass("label label-default");
 		
@@ -298,12 +298,13 @@ function displayResults(status, details, link, j) {
 	
 	} else {
 
-		// color-code status			
-		if (status.indexOf("Wrongfully accused") != -1 || status.indexOf("not guilty") != -1) {
-			$(status_id_ht).addClass("label label-success"); 
-		} else if (status.indexOf("Accused") != -1 || status.indexOf("settled") != -1 || status.indexOf("Arrested") != -1 || status == "Pleaded guilty" || status == "Publicly admitted" || status == 'Found guilty' || status.indexOf("Plea deal") != -1) {
-			$(status_id_ht).addClass("label label-danger"); 
-		}	
+		// color-code status
+		$(status_id_ht).addClass("label label-danger"); 			
+		// if (status.indexOf("Wrongfully accused") != -1 || status.indexOf("not guilty") != -1) {
+// 			$(status_id_ht).addClass("label label-success"); 
+// 		} else if (status.indexOf("Accused") != -1 || status.indexOf("settled") != -1 || status.indexOf("Arrested") != -1 || status == "Pleaded guilty" || status == "Publicly admitted" || status == 'Found guilty' || status.indexOf("Plea deal") != -1) {
+// 			$(status_id_ht).addClass("label label-danger"); 
+// 		}	
 		
 		// add details
 		$("#results_div").append("<p id='" + details_id + "' class='results'>" + details + "</p>");
