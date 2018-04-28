@@ -20,15 +20,24 @@ a:hover {
 	color: #d9ccee;
 }
 
-a.incident {
+a.incidentSource {
 	color: #d9ccee;
 	text-decoration: underline;
 }
 
-a.incident:hover {
+a.incidentSource:hover {
 	color: #d9ccee;
 	text-decoration: underline;
 }
+
+a.withIncident {
+	color: indianred;
+}
+
+a.withIncident:hover {
+	color: indianred;
+}
+
 
 .jumbotron {
 	background: inherit;
