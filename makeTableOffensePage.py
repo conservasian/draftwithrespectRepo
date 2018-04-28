@@ -191,5 +191,5 @@ for p in range(len(positions)):
 ## add table to index.html template
 H = G[0:idx_start+6] + table_html + G[idx_start+7:]
 
-J = open("table.html", "w")
+J = open("table_offensivePlayers.html", "w")
 J.write(H)
