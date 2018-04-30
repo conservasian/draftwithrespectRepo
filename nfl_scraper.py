@@ -73,8 +73,8 @@ def getPlayerData(link):
 
 		this_status = td_list[3].get_text()
 		
-		# exclude players who are CUT or NWT (not with team)
-		if (this_status != 'CUT') & (this_status != 'NWT'):
+		# exclude players who are CUT, NWT (not with team), or UFA (unsigned free agent)
+		if (this_status != 'CUT') & (this_status != 'NWT') & (this_status != 'UFA'):
 
 			pos.append(td_list[0].get_text())
 			status.append(td_list[3].get_text())
