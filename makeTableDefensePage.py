@@ -90,7 +90,13 @@ for i in range(32):
 	table_html += this_team_defense
 	table_html += """</a></td>
 		<td>"""
-	table_html += str(numUniquePlayersWithIncidents[i])
+	
+	if str(numUniquePlayersWithIncidents[i]) > 0:
+		table_html += "<font color='red'>"
+		table_html += str(numUniquePlayersWithIncidents[i])
+		table_html += "</font>"
+	else:
+		table_html += str(numUniquePlayersWithIncidents[i])
 	table_html += """</td>
 		<td>"""
 	table_html += str(numUniquePlayersTotal[i])
