@@ -91,7 +91,7 @@ for i in range(32):
 	table_html += """</a></td>
 		<td>"""
 	
-	if str(numUniquePlayersWithIncidents[i]) > 0:
+	if numUniquePlayersWithIncidents[i] > 0:
 		table_html += "<font color='red'>"
 		table_html += str(numUniquePlayersWithIncidents[i])
 		table_html += "</font>"
