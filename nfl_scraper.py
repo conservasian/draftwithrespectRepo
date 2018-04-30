@@ -1,5 +1,11 @@
-# nfl_scraper2.py
+# nfl_scraper.py
 # Patrick Ye
+#
+# - scrapes nfl.com/players page for player information
+# - outputs the following json files
+# -- roster.json (active players only), includes name, position, namePos, team, status
+# -- names.json, all the active players names plus team defenses, used to populate typeahead
+# -- namePos.json, a list of namePos for active players, looked-up players, and team defenses
 
 # import libraries
 import requests
