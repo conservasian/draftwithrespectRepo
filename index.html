@@ -358,7 +358,7 @@ $(document).ready(function(){
 		var query_url = url_split[1];
 		var query_url_name = query_url.split('=')[1];
 		query = query_url_name.replace(/\+/g, ' ');
-		query = query_url_name.replace("%27", "'");
+		query = query.replace("%27", "'");
 		
 		// remove any existing results
 		$(".results").remove() 
