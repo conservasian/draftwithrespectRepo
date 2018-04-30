@@ -453,6 +453,8 @@ $(document).ready(function(){
 				var position = result[1];
 				var team = "not active";
 				displayPositionTeam(position, team)
+				
+				var status = result[2];
 				var numIncidents = status.length;
 				for (j=0; j < numIncidents; j++) {
 					status = result[2][j];
@@ -462,12 +464,12 @@ $(document).ready(function(){
 				}
 
 			} else {			
-				var status = result[3];
-				var numIncidents = status.length;
-
 				var position = result[1];
 				var team = result[2];
 				displayPositionTeam(position, team)
+				
+				var status = result[3];
+				var numIncidents = status.length;
 				for (j=0; j < numIncidents; j++) {
 					status = result[3][j];
 					details = result[4][j];
