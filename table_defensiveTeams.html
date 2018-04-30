@@ -108,8 +108,8 @@
 	</tr>
 	<tr>
 		<td><a href=/?query=DET+defense+(Lions)>DET defense (Lions)</a></td>
-		<td>0</td>
-		<td>0</td>
+		<td><font color='red'>1</font></td>
+		<td>12</td>
 	</tr>
 	<tr>
 		<td><a href=/?query=GB+defense+(Packers)>GB defense (Packers)</a></td>
@@ -532,6 +532,7 @@ $(document).ready(function(){
 		var query_url = url_split[1];
 		var query_url_name = query_url.split('=')[1];
 		query = query_url_name.replace(/\+/g, ' ');
+		query = query.replace("%27", "'");
 		
 		// remove any existing results
 		$(".results").remove() 
@@ -580,6 +581,7 @@ $(document).ready(function(){
 	    })();
         
         // display query
+        console.log(query)
         $("#results_div").append("<h2 id='name' class='results'>" + query + "</p>")
         $("#results_div").css("padding", "48px 0px 40px 0px")
         
