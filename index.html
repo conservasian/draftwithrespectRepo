@@ -430,7 +430,6 @@ $(document).ready(function(){
         	
         	// display data
 			if (result == "not in both") {
-
 				var position = 'not in database';
 				var team = 'not active';
 				var status = "Not in database";
@@ -441,7 +440,6 @@ $(document).ready(function(){
 				displayResults(status, details, link)
 
 			} else if (result[0] == "not in incidents") { 
-
 				var position = result[1];
 				var team = result[2];
 				var status = "Not in database";
@@ -452,31 +450,28 @@ $(document).ready(function(){
 				displayResults(status, details, link)
 
 			} else if (result[0] == "not in roster") { 
-
 				var position = result[1];
 				var team = "not active";
-				var status = result[2];
-				var details = result[3];
-				var link = result[4];
-			
 				displayPositionTeam(position, team)
-				displayResults(status, details, link)
+				var numIncidents = status.length;
+				for (j=0; j < numIncidents; j++) {
+					status = result[2][j];
+					details = result[3][j];
+					link = result[4][j];
+					displayResults(status, details, link, j)
+				}
 
-			} else {
-			
+			} else {			
 				var status = result[3];
 				var numIncidents = status.length;
-				console.log(numIncidents);
 
 				var position = result[1];
 				var team = result[2];
 				displayPositionTeam(position, team)
-
 				for (j=0; j < numIncidents; j++) {
 					status = result[3][j];
 					details = result[4][j];
 					link = result[5][j];
-
 					displayResults(status, details, link, j)
 				}		
 			}
