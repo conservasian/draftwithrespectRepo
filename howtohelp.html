@@ -371,6 +371,7 @@ $(document).ready(function(){
 		var query_url = url_split[1];
 		var query_url_name = query_url.split('=')[1];
 		query = query_url_name.replace(/\+/g, ' ');
+		query = query.replace("%27", "'");
 		
 		// remove any existing results
 		$(".results").remove() 
@@ -419,6 +420,7 @@ $(document).ready(function(){
 	    })();
         
         // display query
+        console.log(query)
         $("#results_div").append("<h2 id='name' class='results'>" + query + "</p>")
         $("#results_div").css("padding", "48px 0px 40px 0px")
         
@@ -430,6 +432,8 @@ $(document).ready(function(){
 			
 			if (team_abbrev == 'LAR') {
 				team_abbrev = 'LA';
+			} else if (team_abbrev == 'NOR') {
+				team_abbrev = 'NO';
 			}
 			
 			console.log(team_abbrev)
