@@ -78,7 +78,7 @@ for i in range(len(incidents["incidents"])):
 
 ## now sort out list of defensive players with incidents by team
 
-team_abbrev = ['ARI', 'ATL', 'BAL', 'BUF', 'CAR', 'CHI', 'CIN', 'CLE', 'DAL', 'DEN', 'DET', 'GB', 'HOU', 'IND', 'JAX', 'KC', 'LAC', 'LA', 'MIA', 'MIN', 'NE', 'NOR', 'NYG', 'NYJ', 'OAK', 'PHI', 'PIT', 'SF', 'SEA', 'TB', 'TEN', 'WAS']
+team_abbrev = ['ARI', 'ATL', 'BAL', 'BUF', 'CAR', 'CHI', 'CIN', 'CLE', 'DAL', 'DEN', 'DET', 'GB', 'HOU', 'IND', 'JAX', 'KC', 'LAC', 'LA', 'MIA', 'MIN', 'NE', 'NO', 'NYG', 'NYJ', 'OAK', 'PHI', 'PIT', 'SF', 'SEA', 'TB', 'TEN', 'WAS']
 
 data = {}
 data["team_defenses"] = {}

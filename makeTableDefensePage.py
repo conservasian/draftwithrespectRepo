@@ -23,7 +23,7 @@ with open('team_defenses.json', 'r') as f:
 # - number of unique players with incidents
 # - total number of unique players researched
 
-team_abbrev = ['ARI', 'ATL', 'BAL', 'BUF', 'CAR', 'CHI', 'CIN', 'CLE', 'DAL', 'DEN', 'DET', 'GB', 'HOU', 'IND', 'JAX', 'KC', 'LAC', 'LA', 'MIA', 'MIN', 'NE', 'NOR', 'NYG', 'NYJ', 'OAK', 'PHI', 'PIT', 'SF', 'SEA', 'TB', 'TEN', 'WAS']
+team_abbrev = ['ARI', 'ATL', 'BAL', 'BUF', 'CAR', 'CHI', 'CIN', 'CLE', 'DAL', 'DEN', 'DET', 'GB', 'HOU', 'IND', 'JAX', 'KC', 'LAC', 'LA', 'MIA', 'MIN', 'NE', 'NO', 'NYG', 'NYJ', 'OAK', 'PHI', 'PIT', 'SF', 'SEA', 'TB', 'TEN', 'WAS']
 numUniquePlayersWithIncidents = []
 numUniquePlayersTotal = []
 
