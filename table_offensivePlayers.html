@@ -379,37 +379,37 @@
 			<tr>
 				<td><a href=/?query=Dwayne+Allen+(TE)>Dwayne Allen</a></td>
 				<td><a href=/?query=Evan+Engram+(TE)>Evan Engram</a></td>
-				<td><a href=/?query=O.J.+Howard+(TE)>O.J. Howard</a></td>
+				<td><a href=/?query=Travis+Kelce+(TE)>Travis Kelce</a></td>
 				</tr>
 			<tr>
 				<td><a href=/?query=Cameron+Brate+(TE)>Cameron Brate</a></td>
 				<td><a href=/?query=Zach+Ertz+(TE)>Zach Ertz</a></td>
-				<td><a href=/?query=Travis+Kelce+(TE)>Travis Kelce</a></td>
-				</tr>
-			<tr>
-				<td><a href=/?query=Jared+Cook+(TE)>Jared Cook</a></td>
-				<td><a href=/?query=Coby+Fleener+(TE)>Coby Fleener</a></td>
 				<td><a href=/?query=Greg+Olsen+(TE)>Greg Olsen</a></td>
 				</tr>
 			<tr>
-				<td><a href=/?query=Vernon+Davis+(TE)>Vernon Davis</a></td>
+				<td><a href=/?query=Jared+Cook+(TE)>Jared Cook</a></td>
 				<td><a href=/?query=Jimmy+Graham+(TE)>Jimmy Graham</a></td>
 				<td><a href=/?query=Jordan+Reed+(TE)>Jordan Reed</a></td>
 				</tr>
 			<tr>
-				<td><a href=/?query=Jack+Doyle+(TE)>Jack Doyle</a></td>
+				<td><a href=/?query=Vernon+Davis+(TE)>Vernon Davis</a></td>
 				<td><a href=/?query=Rob+Gronkowski+(TE)>Rob Gronkowski</a></td>
 				<td><a href=/?query=Kyle+Rudolph+(TE)>Kyle Rudolph</a></td>
 				</tr>
 			<tr>
-				<td><a href=/?query=Eric+Ebron+(TE)>Eric Ebron</a></td>
+				<td><a href=/?query=Jack+Doyle+(TE)>Jack Doyle</a></td>
 				<td><a href=/?query=Hunter+Henry+(TE)>Hunter Henry</a></td>
 				<td><a href=/?query=Delanie+Walker+(TE)>Delanie Walker</a></td>
 				</tr>
 			<tr>
-				<td><a href=/?query=Tyler+Eifert+(TE)>Tyler Eifert</a></td>
+				<td><a href=/?query=Eric+Ebron+(TE)>Eric Ebron</a></td>
 				<td><a href=/?query=Austin+Hooper+(TE)>Austin Hooper</a></td>
 				<td><a href=/?query=Benjamin+Watson+(TE)>Benjamin Watson</a></td>
+				</tr>
+			<tr>
+				<td><a href=/?query=Tyler+Eifert+(TE)>Tyler Eifert</a></td>
+				<td><a href=/?query=O.J.+Howard+(TE)>O.J. Howard</a></td>
+				<td></td>
 				</tr>
 		</tbody>
 		</table>
@@ -530,6 +530,8 @@ function addLink(link, linkNum, link_id_ht) {
 
 	if (link.includes("npr")) {
 		$(link_id_ht).append("<a class='incidentSource' href='" + link + "'>NPR</a>");
+	} else if (link.includes("cnn")) {
+		$(link_id_ht).append("<a class='incidentSource' href='" + link + "'>CNN</a>");
 	} else if (link.includes("tmz")) {
 		$(link_id_ht).append("<a class='incidentSource' href='" + link + "'>TMZ</a>");
 	} else if (link.includes("vice")) {

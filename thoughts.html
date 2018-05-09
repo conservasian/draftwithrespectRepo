@@ -105,6 +105,8 @@ function addLink(link, linkNum, link_id_ht) {
 
 	if (link.includes("npr")) {
 		$(link_id_ht).append("<a class='incidentSource' href='" + link + "'>NPR</a>");
+	} else if (link.includes("cnn")) {
+		$(link_id_ht).append("<a class='incidentSource' href='" + link + "'>CNN</a>");
 	} else if (link.includes("tmz")) {
 		$(link_id_ht).append("<a class='incidentSource' href='" + link + "'>TMZ</a>");
 	} else if (link.includes("vice")) {
