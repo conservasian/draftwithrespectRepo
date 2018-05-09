@@ -99,7 +99,7 @@
 	<tr>
 		<td><a href=/?query=DAL+defense+(Cowboys)>DAL defense (Cowboys)</a></td>
 		<td><font color='red'>3</font></td>
-		<td>12</td>
+		<td>13</td>
 	</tr>
 	<tr>
 		<td><a href=/?query=DEN+defense+(Broncos)>DEN defense (Broncos)</a></td>
@@ -114,7 +114,7 @@
 	<tr>
 		<td><a href=/?query=GB+defense+(Packers)>GB defense (Packers)</a></td>
 		<td>0</td>
-		<td>12</td>
+		<td>13</td>
 	</tr>
 	<tr>
 		<td><a href=/?query=HOU+defense+(Texans)>HOU defense (Texans)</a></td>
@@ -124,7 +124,7 @@
 	<tr>
 		<td><a href=/?query=IND+defense+(Colts)>IND defense (Colts)</a></td>
 		<td>0</td>
-		<td>10</td>
+		<td>11</td>
 	</tr>
 	<tr>
 		<td><a href=/?query=JAX+defense+(Jaguars)>JAX defense (Jaguars)</a></td>
@@ -134,7 +134,7 @@
 	<tr>
 		<td><a href=/?query=KC+defense+(Chiefs)>KC defense (Chiefs)</a></td>
 		<td>0</td>
-		<td>11</td>
+		<td>12</td>
 	</tr>
 	<tr>
 		<td><a href=/?query=LAC+defense+(Chargers)>LAC defense (Chargers)</a></td>
@@ -144,7 +144,7 @@
 	<tr>
 		<td><a href=/?query=LAR+defense+(Rams)>LAR defense (Rams)</a></td>
 		<td><font color='red'>2</font></td>
-		<td>11</td>
+		<td>13</td>
 	</tr>
 	<tr>
 		<td><a href=/?query=MIA+defense+(Dolphins)>MIA defense (Dolphins)</a></td>
@@ -179,7 +179,7 @@
 	<tr>
 		<td><a href=/?query=OAK+defense+(Raiders)>OAK defense (Raiders)</a></td>
 		<td><font color='red'>1</font></td>
-		<td>10</td>
+		<td>12</td>
 	</tr>
 	<tr>
 		<td><a href=/?query=PHI+defense+(Eagles)>PHI defense (Eagles)</a></td>
@@ -199,7 +199,7 @@
 	<tr>
 		<td><a href=/?query=SEA+defense+(Seahawks)>SEA defense (Seahawks)</a></td>
 		<td><font color='red'>2</font></td>
-		<td>11</td>
+		<td>12</td>
 	</tr>
 	<tr>
 		<td><a href=/?query=TB+defense+(Buccaneers)>TB defense (Buccaneers)</a></td>
@@ -209,7 +209,7 @@
 	<tr>
 		<td><a href=/?query=TEN+defense+(Titans)>TEN defense (Titans)</a></td>
 		<td>0</td>
-		<td>12</td>
+		<td>13</td>
 	</tr>
 	<tr>
 		<td><a href=/?query=WAS+defense+(Redskins)>WAS defense (Redskins)</a></td>
@@ -270,6 +270,8 @@ function addLink(link, linkNum, link_id_ht) {
 
 	if (link.includes("npr")) {
 		$(link_id_ht).append("<a class='incidentSource' href='" + link + "'>NPR</a>");
+	} else if (link.includes("cnn")) {
+		$(link_id_ht).append("<a class='incidentSource' href='" + link + "'>CNN</a>");
 	} else if (link.includes("tmz")) {
 		$(link_id_ht).append("<a class='incidentSource' href='" + link + "'>TMZ</a>");
 	} else if (link.includes("vice")) {
