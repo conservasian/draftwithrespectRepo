@@ -51,7 +51,7 @@ for i in range(len(incidents["incidents"])):
 		
 		# screen by position for only defensive players
 		this_player_position = roster_position[roster_idx]
-		if (this_player_position == "DT") | (this_player_position == "DE") | (this_player_position == "NT") | ("LB" in this_player_position) | (this_player_position == "DB") | (this_player_position == "CB") | (this_player_position == "SS") | (this_player_position == "FS") | (this_player_position == "SAF"):
+		if (this_player_position == "DT") | (this_player_position == "DE") | (this_player_position == "NT") | ("LB" in this_player_position) | (this_player_position == "DB") | (this_player_position == "CB") | (this_player_position == "SAF"):
 		
 			this_player_name = incidents["incidents"][i]["Name"]
 			df_names.append(this_player_name)
@@ -75,6 +75,11 @@ for i in range(len(incidents["incidents"])):
 			this_player_links = incidents["incidents"][i]["Link"]
 			df_links.append(this_player_links)
 
+
+## save list of defensive players
+# this is for checking if all first-line players are accounted for
+with open('defensive_playerNames.json', 'w') as e:
+     json.dump(df_names, e)
 
 ## now sort out list of defensive players with incidents by team
 

@@ -6,7 +6,6 @@ import math
 
 ## make list of all active players (all draftable offensive players)
 # start with only players I've looked up
-# eventually add defensive teams
 
 
 
