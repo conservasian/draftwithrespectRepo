@@ -8,7 +8,6 @@
 \f0\fs24 \cf0 draftwithrespect readme\
 \
 To do:\
-- use defensive depth chart for defensive players\
 - display defensive players with incident first\
 \'97 better yet, present them in a defensive lineup format\
 \
@@ -27,7 +26,6 @@ To do:\
 \
 - make list of non-active players with incidents\
 \
-- web scrape ourlads.com for internal script\
 - internal script that checks if first-line defensive players from each team have been looked up\
 \
 \
@@ -41,23 +39,26 @@ How to maintain:\
 1. update NFL roster so players\'92 teams are up-to-date\
 >> python nfl_scraper.py\
 \
-2. keep incidents database updated\
+2. check if first-line defensive players are accurate\
+>> python depth_scraper.py\
+>> python first_line.py\
+\
+3. keep incidents database updated\
 - download Google Sheet as .csv file\
 >> python incidents2json.py\
->> python check_incident_positions.py\
+>> python check_incident_positions.py (for checking misspellings)\
 \
-2a. if offensive players added\
->> python make_table_page.py\
+4a. if offensive players added\
+>> python makeTableOffensePage.py\
 \
-2b. if defensive players added\
+4b. if defensive players added\
 >> python team_defenses.py\
->> python team_defenses_table.py\
+>> python makeTableDefensePage.py\
 \
-3. if index.html changes (e.g. script), update side and table pages\
->> python make_side_pages.py\
->> python make_table_page.py\
+5. if index.html changes (e.g. script), update side and table pages\
+>> python makeSidePages.py\
 \
-4. push to GitHub\
+6. push to GitHub\
 >> git add .\
 >> git commit -m \'93message\'94\
 >> git push origin master}
