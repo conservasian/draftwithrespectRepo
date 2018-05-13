@@ -21,8 +21,16 @@ with open('#dwr - Incidents.csv', 'rb') as csvfile:
 		link.append(row[11])
 
 
+
+
 import json
 
+## save list of all looked-up player names
+with open('lookedUpNames.json', 'w') as t:
+     json.dump(playerName, t)
+
+
+## save everything into json file
 data = {}
 data["incidents"] = []
 
@@ -40,4 +48,4 @@ for k in range(1, len(playerName)):
 with open('incidents.json', 'w') as f:
      json.dump(data, f)
      
-print json.dumps(data, sort_keys=True, indent=4, separators=(',', ': '))
+#print json.dumps(data, sort_keys=True, indent=4, separators=(',', ': '))

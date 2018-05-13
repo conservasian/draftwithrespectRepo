@@ -76,11 +76,6 @@ for i in range(len(incidents["incidents"])):
 			df_links.append(this_player_links)
 
 
-## save list of defensive players
-# this is for checking if all first-line players are accounted for
-with open('defensive_playerNames.json', 'w') as e:
-     json.dump(df_names, e)
-
 ## now sort out list of defensive players with incidents by team
 
 team_abbrev = ['ARI', 'ATL', 'BAL', 'BUF', 'CAR', 'CHI', 'CIN', 'CLE', 'DAL', 'DEN', 'DET', 'GB', 'HOU', 'IND', 'JAX', 'KC', 'LAC', 'LA', 'MIA', 'MIN', 'NE', 'NO', 'NYG', 'NYJ', 'OAK', 'PHI', 'PIT', 'SF', 'SEA', 'TB', 'TEN', 'WAS']
