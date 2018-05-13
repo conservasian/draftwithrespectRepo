@@ -10,6 +10,8 @@ status = []
 details = []
 link = []
 
+playerNamePos_hit = []
+
 with open('#dwr - Incidents.csv', 'rb') as csvfile:
 	filereader = csv.reader(csvfile)
 	for row in filereader:
@@ -20,6 +22,8 @@ with open('#dwr - Incidents.csv', 'rb') as csvfile:
 		details.append(row[5])
 		link.append(row[11])
 
+		if row[4] == '1':
+			playerNamePos_hit.append(row[0] + ' (' + row[2] + ')')
 
 
 
@@ -28,6 +32,10 @@ import json
 ## save list of all looked-up player names
 with open('lookedUpNames.json', 'w') as t:
      json.dump(playerName, t)
+
+## save list of player names with incidents
+with open('incidentNamePos.json', 'w') as t:
+     json.dump(playerNamePos_hit, t)
 
 
 ## save everything into json file
