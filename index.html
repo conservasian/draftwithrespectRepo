@@ -253,6 +253,11 @@ function findPlayerData(namePos, data_incidents, data_roster) {
 
 <script>
 function displayPositionTeam(position, team) {
+	
+	if (team == 'LA') {
+		team = 'LAR';
+	}
+
 	// position and team	
 	$("#results_div").append("<p id='positionteam' class='results'>Position: " + position + "<br>Team: " + team + "</p>")
 }
