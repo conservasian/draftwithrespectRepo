@@ -40,4 +40,8 @@ for i in range(len(incidents["incidents"])):
 		# don't forget some players share same names
 		this_player_name = incidents["incidents"][i]["Name"]
 		if (this_player_name in roster_name):
-			print("name active, position changed?")		
+			idx_name = roster_name.index(this_player_name)
+			print("name active, position changed?")
+			print("possibly " + roster_namePos[idx_name])
+		
+		print("")
