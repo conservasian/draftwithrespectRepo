@@ -1,4 +1,4 @@
-Player Name,Search Date,Position,Team (as of May 2017),Assault-related?,Details,Status,NFL response,Team response,Incident Date,Source Date,Link
+Player Name,Search Date,Position,Team when searched,Assault-related?,Details,Status,NFL response,Team response,Incident Date,Source Date,Link
 Josh Brown,5/20/2017,K,New York Giants (formerly),1,"domestic assault; 'physically, verbally and emotionally abused his wife'",Publicly admitted,1 game suspension + investigation,cut from team 10/25/16,May 2015,2/2/17,http://www.espn.com/nfl/story/_/id/18604215/former-new-york-giants-kicker-josh-brown-admits-domestic-violence-denies-hitting-wife
 Daryl Washington,5/20/2017,LB,Arizona Cardinals,1,assaulting the mother of his child',Pleaded guilty,??,??,May 2013,4/23/2014,https://www.usatoday.com/story/sports/nfl/cardinals/2014/04/23/daryl-washington-arizona-probation-assualt/8057881/
 Aaron Rodgers,6/3/2017,QB,Green Bay Packers,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
@@ -29,7 +29,6 @@ Sam Bradford,6/11/2017,QB,Minnesota Vikings,0,N/A,No records found,N/A,N/A,N/A,N
 David Johnson,6/14/2017,RB,Arizona Cardinals,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
 Ezekiel Elliott,5/19/2017,RB,Dallas Cowboys,1,accused of assaulting ex-girlfriend five times,"Accused, not charged",6 game suspension completed,no response,July 2016,11/19/17,https://www.sbnation.com/2017/11/19/16666714/ezekiel-elliott-nfl-suspension-cowboys-ex
 Le'Veon Bell,6/14/2017,RB,Pittsburgh Steelers,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
-LeSean McCoy,6/14/2017,RB,Buffalo Bills,0,accused of assault of two off-duty police officers,No records of assault on women found,??,??,2/8/2016,4/4/2016,http://www.sbnation.com/nfl/2016/4/4/10955346/lesean-mccoy-arrest-warrant-philadelphia-nfl-bills-assault
 LeSean McCoy,6/14/2017,RB,Philadelphia Eagles,1,accused of assault and battery,"Accused, not charged",??,??,12/18/2012,5/14/2013,http://www.huffingtonpost.com/2013/05/14/lesean-mccoy-sued-assault_n_3274652.html
 Devonta Freeman,6/14/2017,RB,Atlanta Falcons,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
 Melvin Gordon,6/14/2017,RB,Los Angeles Chargers,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
@@ -743,9 +742,12 @@ Star Lotulelei,6/23/2018,DT,Buffalo Bills,0,N/A,No records found,N/A,N/A,N/A,N/A
 Kemoko Turay,6/23/2018,DE,Indianapolis Colts,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
 Adrian Colbert,6/23/2018,DB,San Francisco 49ers,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
 Derrius Guice,7/21/2018,RB,Washington Redskins,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
-Mike Hughes,7/21/2018,DT,Jacksonville Jaguars,1,sexual assault,"accused, not charged",N/A,N/A,2016,4/20/2018,http://www.nfl.com/news/story/0ap3000000927620/article/2018-nfl-draft-four-talented-prospects-under-heavy-scrutiny
+Mike Hughes,7/21/2018,DT,Jacksonville Jaguars,1,sexual assault,"Accused, not charged",N/A,N/A,2016,4/20/2018,http://www.nfl.com/news/story/0ap3000000927620/article/2018-nfl-draft-four-talented-prospects-under-heavy-scrutiny
 Jake Butt,7/21/2018,TE,Denver Broncos,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
 Rashaan Melvin,7/21/2018,DB,Oakland Raiders,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
 Jeff Heath,7/21/2018,DB,Dallas Cowboys,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
 Maurice Alexander,7/21/2018,DB,Seattle Seahawks,0,charged with aggravated assault on a teammate,No records of assault on women found,N/A,N/A,2012,3/16/2018,https://www.seattletimes.com/sports/seahawks/looks-like-seahawks-have-added-another-safety-in-former-ram-maurice-alexander/
 Jeremy Kerley,7/21/2018,WR,Buffalo Bills,0,N/A,No records found,N/A,N/A,N/A,N/A,N/A
+Marcell Dareus,7/21/2018,DT,Jacksonville Jaguars,1,sexually assaulted her while unconscious and exposed her to herpes,Accused,N/A,N/A,4/7/2018,7/12/2018,https://www.cbssports.com/nfl/news/jaguars-marcell-dareus-facing-sexual-assault-lawsuits-from-two-different-women/
+Marcell Dareus,7/21/2018,DT,Jacksonville Jaguars,1,sexually assaulted her while unconscious,Accused,N/A,N/A,1/7/2017,7/12/2018,https://www.cbssports.com/nfl/news/jaguars-marcell-dareus-facing-sexual-assault-lawsuits-from-two-different-women/
+LeSean McCoy,7/21/2018,RB,Buffalo Bills,1,"assaulted ex-girlfriend, causing severe facial injuries",Accused,N/A,N/A,7/9/2018,7/10/2018,http://www.tmz.com/2018/07/10/lesean-mccoy-investiagtion-domestic-violence-attack/
