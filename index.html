@@ -193,37 +193,18 @@ function findAndDisplayDefenseData(teamAbbrev, data_defense, incidents_json, ros
 			if (numDefResults > 0) {
 			
 				// display name, position, status, details, link
-// 				for (y = 0; y < numDefResults; y++) {
-// 				
-// 					var name = data_defense.team_defenses[t][y].Name;
-// 					var position = data_defense.team_defenses[t][y].Position;
-// 					var namePos = data_defense.team_defenses[t][y].NamePos;
-// 					var status = data_defense.team_defenses[t][y].Status;
-// 					var details = data_defense.team_defenses[t][y].Details;
-// 					var link = data_defense.team_defenses[t][y].Link;
-// 					
-// 					$("#results_div").append("<p id='positionteam' class='results'><b>" + namePos + "</b></p>")
-// 					displayResults(status, details, link, y);
-// 				}
-			
-			
-				for (z = 0; z < numDefPlayersUnique; z++) {
-					var namePos = uniqueDefNames[z]
+				for (y = 0; y < numDefResults; y++) {
+				
+					var name = data_defense.team_defenses[t][y].Name;
+					var position = data_defense.team_defenses[t][y].Position;
+					var namePos = data_defense.team_defenses[t][y].NamePos;
+					var status = data_defense.team_defenses[t][y].Status;
+					var details = data_defense.team_defenses[t][y].Details;
+					var link = data_defense.team_defenses[t][y].Link;
+					
 					$("#results_div").append("<p id='positionteam' class='results'><b>" + namePos + "</b></p>")
-			
-					var result = findPlayerData(namePos, incidents_json, roster_json);
-					var position = result[1];
-					var team = result[2];
-			
-					var status = result[3];
-					var numIncidents = status.length;
-					for (j=0; j < numIncidents; j++) {
-						status = result[3][j];
-						details = result[4][j];
-						link = result[5][j];
-						displayResults(status, details, link, j)
-					}
-				}	
+					displayResults(status, details, link, y);
+				}
 			
 			}
 					
