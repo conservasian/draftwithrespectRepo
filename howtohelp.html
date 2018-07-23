@@ -82,7 +82,7 @@
 </div>
 <div id="jumbotron4" class="jumbotron text-center">
       <h2>About Us</h2>
-      <p>Kelsey (an avid Cardinals fan) was drafting her fantasy team but didn't want any players with a history of violence against women. Googling each possible pick in her draft window was too slow and tiresome. So, we made this database to help her and other fantasy league managers #draftwithrespect.</p>  
+      <p>Kelsey was drafting her fantasy team but didn't want any players with a history of violence. Googling each possible pick in her draft window was too slow and tiresome. Thus, the idea of this database was born to help fantasy league managers everywhere #draftwithrespect.</p>  
 </div>
 <div id="missing_info" class="jumbotron text-center">
 	<h2>Someone missing?</h2>
@@ -160,7 +160,7 @@ function addLink(link, linkNum, link_id_ht) {
 </script>
 
 <script>
-function findAndDisplayDefenseData(teamAbbrev, data_defense) {
+function findAndDisplayDefenseData(teamAbbrev, data_defense, incidents_json, roster_json) {
 	
 	for (t in data_defense.team_defenses) {
 		if (t == teamAbbrev) {
@@ -218,8 +218,7 @@ function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 					$("#results_div").append("<p id='positionteam' class='results'><b>" + namePos + "</b></p>")
 					displayResults(status, details, link, y);
 				}
-				
-
+			
 			}
 					
 		}
@@ -449,7 +448,7 @@ $(document).ready(function(){
 			
 			console.log(team_abbrev)
 
-			findAndDisplayDefenseData(team_abbrev, defense_json);
+			findAndDisplayDefenseData(team_abbrev, defense_json, incidents_json, roster_json);
         
         // if the query is a player name	
         } else { 
