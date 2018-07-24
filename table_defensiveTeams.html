@@ -58,7 +58,7 @@
 
 	<tr>
 		<td><a href=/?query=ARI+defense+(Cardinals)>ARI defense (Cardinals)</a></td>
-		<td>0</td>
+		<td><font color='red'>2</font></td>
 		<td>14</td>
 	</tr>
 	<tr>
@@ -78,7 +78,7 @@
 	</tr>
 	<tr>
 		<td><a href=/?query=CAR+defense+(Panthers)>CAR defense (Panthers)</a></td>
-		<td>0</td>
+		<td><font color='red'>1</font></td>
 		<td>12</td>
 	</tr>
 	<tr>
@@ -103,7 +103,7 @@
 	</tr>
 	<tr>
 		<td><a href=/?query=DEN+defense+(Broncos)>DEN defense (Broncos)</a></td>
-		<td><font color='red'>3</font></td>
+		<td><font color='red'>5</font></td>
 		<td>12</td>
 	</tr>
 	<tr>
@@ -123,12 +123,12 @@
 	</tr>
 	<tr>
 		<td><a href=/?query=IND+defense+(Colts)>IND defense (Colts)</a></td>
-		<td>0</td>
+		<td><font color='red'>1</font></td>
 		<td>12</td>
 	</tr>
 	<tr>
 		<td><a href=/?query=JAX+defense+(Jaguars)>JAX defense (Jaguars)</a></td>
-		<td><font color='red'>2</font></td>
+		<td><font color='red'>3</font></td>
 		<td>14</td>
 	</tr>
 	<tr>
@@ -153,12 +153,12 @@
 	</tr>
 	<tr>
 		<td><a href=/?query=MIN+defense+(Vikings)>MIN defense (Vikings)</a></td>
-		<td>0</td>
+		<td><font color='red'>1</font></td>
 		<td>11</td>
 	</tr>
 	<tr>
 		<td><a href=/?query=NE+defense+(Patriots)>NE defense (Patriots)</a></td>
-		<td>0</td>
+		<td><font color='red'>1</font></td>
 		<td>11</td>
 	</tr>
 	<tr>
@@ -168,12 +168,12 @@
 	</tr>
 	<tr>
 		<td><a href=/?query=NYG+defense+(Giants)>NYG defense (Giants)</a></td>
-		<td>0</td>
+		<td><font color='red'>1</font></td>
 		<td>12</td>
 	</tr>
 	<tr>
 		<td><a href=/?query=NYJ+defense+(Jets)>NYJ defense (Jets)</a></td>
-		<td><font color='red'>1</font></td>
+		<td><font color='red'>2</font></td>
 		<td>13</td>
 	</tr>
 	<tr>
@@ -183,7 +183,7 @@
 	</tr>
 	<tr>
 		<td><a href=/?query=PHI+defense+(Eagles)>PHI defense (Eagles)</a></td>
-		<td><font color='red'>2</font></td>
+		<td><font color='red'>4</font></td>
 		<td>15</td>
 	</tr>
 	<tr>
@@ -198,7 +198,7 @@
 	</tr>
 	<tr>
 		<td><a href=/?query=SEA+defense+(Seahawks)>SEA defense (Seahawks)</a></td>
-		<td><font color='red'>2</font></td>
+		<td><font color='red'>3</font></td>
 		<td>13</td>
 	</tr>
 	<tr>
@@ -213,7 +213,7 @@
 	</tr>
 	<tr>
 		<td><a href=/?query=WAS+defense+(Redskins)>WAS defense (Redskins)</a></td>
-		<td>0</td>
+		<td><font color='red'>1</font></td>
 		<td>11</td>
 	</tr>
 	</tbody>
@@ -243,7 +243,7 @@
 </div>
 <div id="jumbotron4" class="jumbotron text-center">
       <h2>About Us</h2>
-      <p>Kelsey (an avid Cardinals fan) was drafting her fantasy team but didn't want any players with a history of violence against women. Googling each possible pick in her draft window was too slow and tiresome. So, we made this database to help her and other fantasy league managers #draftwithrespect.</p>  
+      <p>Kelsey was drafting her fantasy team but didn't want any players with a history of violence. Googling each possible pick in her draft window was too slow and tiresome. Thus, the idea of this database was born to help fantasy league managers everywhere #draftwithrespect.</p>  
 </div>
 <div id="missing_info" class="jumbotron text-center">
 	<h2>Someone missing?</h2>
@@ -251,7 +251,7 @@
 </div>
 <div id="jumbotron5" class="jumbotron text-center">
       <h2>How This Was Made</h2>
-      <p>At least two Google searches were performed for each player, e.g. "joe schmo domestic violence" and "joe schmo assault." The top 10 results were scanned for anything significant from a reputable source. Additional searching was done if an incident was found. Assaults on women and their children were classified as significant incidents; assaults on men were not.</p>  
+      <p>At least two Google searches were performed for each player, e.g. "joe schmo domestic violence" and "joe schmo assault." The top 10 results were scanned for anything significant from a reputable source. Additional searching was done if an incident was found.</p>  
 </div>
 
 
@@ -321,7 +321,7 @@ function addLink(link, linkNum, link_id_ht) {
 </script>
 
 <script>
-function findAndDisplayDefenseData(teamAbbrev, data_defense) {
+function findAndDisplayDefenseData(teamAbbrev, data_defense, incidents_json, roster_json) {
 	
 	for (t in data_defense.team_defenses) {
 		if (t == teamAbbrev) {
@@ -379,8 +379,7 @@ function findAndDisplayDefenseData(teamAbbrev, data_defense) {
 					$("#results_div").append("<p id='positionteam' class='results'><b>" + namePos + "</b></p>")
 					displayResults(status, details, link, y);
 				}
-				
-
+			
 			}
 					
 		}
@@ -610,7 +609,7 @@ $(document).ready(function(){
 			
 			console.log(team_abbrev)
 
-			findAndDisplayDefenseData(team_abbrev, defense_json);
+			findAndDisplayDefenseData(team_abbrev, defense_json, incidents_json, roster_json);
         
         // if the query is a player name	
         } else { 
